@@ -1,46 +1,47 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+Um desafio enfrentado por escolas infantis, pais e professores é a falta de uma comunicação eficiente e transparente sobre as atividades diárias e eventos escolares. A tradicional troca de bilhetes, muitas vezes, resulta na perda de informações importantes, impedindo que os pais acompanhem de perto o desenvolvimento de seus filhos na escola. Esse cenário levanta a necessidade premente de uma solução inovadora para superar as barreiras na comunicação escolar, proporcionando uma experiência mais integrada e facilitando o fluxo de informações entre a instituição educacional e os responsáveis pelos alunos. 
+
+A perda de bilhetes e a falta de uma plataforma centralizada impactam diretamente na qualidade da comunicação, levando a situações em que reuniões importantes, eventos escolares e até mesmo informações cruciais sobre o dia a dia e desempenho dos alunos não chegam aos pais de maneira eficaz. Diante desse cenário, a implementação de uma agenda digital surge como uma solução estratégica, visando eliminar essas lacunas e promover uma comunicação mais fluida entre escola, professores e pais, proporcionando um ambiente educacional mais transparente e participativo. 
+
+A criação da agenda digital não apenas solucionará o problema da perda de informações, mas também promoverá uma maior interação entre os professores e os pais, possibilitando um acompanhamento mais próximo do progresso acadêmico e das atividades cotidianas das crianças. Essa iniciativa visa fortalecer os laços entre a comunidade escolar, promovendo uma educação mais colaborativa e alinhada aos anseios e expectativas dos pais, contribuindo, assim, para o desenvolvimento saudável e feliz das crianças no ambiente escolar. 
 
 ## Problema
-Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
 
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
+O problema identificado é a falta de uma comunicação efetiva entre a escola infantil, professores e os pais das crianças, devido à algumas dificuldades em manter os pais informados sobre eventos, reuniões e feedback do dia a dia dos filhos na escola. 
 
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
-
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
 
 ## Objetivos
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
-
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
+Desenvolver e implementar uma agenda digital inovadora para escolas infantis, com o objetivo principal de aprimorar a comunicação entre escola, professores e pais, proporcionando uma experiência mais integrada e transparente no acompanhamento do desenvolvimento acadêmico e das atividades cotidianas dos alunos. E assim, melhorar a participação dos pais na vida escolar de seus filhos.
  
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+## Objetivos Específicos
+
+- Criar uma plataforma de agenda digital intuitiva e de fácil acesso para pais, professores e funcionários da escola. 
+
+- Eliminar as lacunas na comunicação escolar, garantindo que informações cruciais sobre reuniões, eventos escolares e o cotidiano dos alunos sejam transmitidas de forma eficaz. 
+
+- Facilitar a participação ativa dos pais no acompanhamento do progresso acadêmico de seus filhos, fornecendo atualizações regulares sobre atividades, desempenho e eventos importantes. 
+
+- Estabelecer um canal direto de comunicação entre pais e professores, permitindo a troca de mensagens, esclarecimento de dúvidas e discussão de estratégias para o desenvolvimento educacional das crianças. 
+
+- Fortalecer a colaboração entre a comunidade escolar, promovendo uma relação mais próxima e compreensiva entre professores, pais e alunos. 
+
+- Promover transparência na gestão escolar, fornecendo informações detalhadas sobre o cronograma de atividades, currículo escolar, avaliações e outras informações relevantes. 
+
+- Avaliar periodicamente a eficácia da agenda digital, por meio de feedbacks de pais, professores e demais membros da comunidade escolar, para realizar ajustes e melhorias contínuas. 
+
+- Contribuir para a construção de um ambiente educacional mais alinhado aos interesses e expectativas dos pais, visando o desenvolvimento saudável e feliz das crianças no contexto escolar. 
+
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
-
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
-
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+A implementação da agenda digital visa modernizar a comunicação escolar, oferecendo praticidade, eficiência e agilidade na transmissão de informações entre a escola e os pais. Além de economizar tempo, a transição para uma plataforma digital promove sustentabilidade, possibilita o acompanhamento contínuo do progresso acadêmico, envia notificações e lembretes automáticos, e contribui para a inclusão e acessibilidade, fortalecendo a parceria entre escola e família.
 
 ## Público-Alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações
-hierárquicas, etc.
+- Escolas infantis 
 
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
+- Professores 
 
-> **Links Úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+- Pais de crianças matriculadas na escola 
