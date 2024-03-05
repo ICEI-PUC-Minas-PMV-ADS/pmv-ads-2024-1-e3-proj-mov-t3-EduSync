@@ -109,30 +109,24 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|RF-001| Sistema de Mensagens: Possibilidade de troca de mensagens diretas entre professores e pais. | ALTA | 
+|RF-002| Calendário Integrado: Funcionalidade que permita a inclusão e visualização de eventos escolares no calenário digital.  | Alta |
+|RF-003| Atualizações Diárias: Capacidade de professores enviarem atualizações diárias sobre o desempenho e atividades dos alunos.  | Alta |
+|RF-004| Notificações Push: Implementação de notificações push para alertar pais e professores sobre eventos, atualizações e prazos importantes.  | MÉDIA |
+|RF-005| Relatórios de Progresso: Geração de relatórios de progresso acadêmico, permitindo aos pais acompanhar o desenvolvimento de seus filhos ao longo do tempo  | MÉDIA |
+|RF-006| Intefração com Agenda Pessoal: Possibilidade de integrar a agenda digital com as agendas pessoais dos pais e professores   | BAIXA |
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
+|RNF-001| Usabilidade Intuitiva: A interface do usuário deve ser intuitiva, facilitando o uso tanto para professores quanto para pais.| ALTA | 
+|RNF-002| Segurança da Informação: Garantir a segurança dos dados pessoais dos alunos e informações sensíveis, seguindo práticas de proteção de dados. |  ALTA |
+|RNF-003| Desempenho Eficiente: O sistema deve ter desempenho eficiente mesmo com um grande número de usuários simultâneos. |  MÉDIA | 
+|RNF-004| Acessibilidade: Garantir que a plataforma seja acessivel a todos, considerando diferentes dispositivos e necessidades especiais |  MÉDIA | 
+|RNF-005| Manutenção Simples: Facilidade na manutenção do sistema para implementação de atualizações e correções.|  BAIXA |  
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
+Esses requisitos funcionais e não funcionais fornecem uma base para o desenvolvimento da agenda digital, priorizando as funcionalidades essenciais e os aspectos cruciais de usabilidade, segurança e desempenho. 
 
 ## Restrições
 
@@ -141,13 +135,10 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
 |01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
+|02| A equipe não pode subcontratar o desenvolvimento do trabalho, devendo ser desenvolvido apenas pelo grupo de alunos      |
+|03| O projeto deve ser publicado no GitHub       |
 
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
 
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
 
 ## Diagrama de Casos de Uso
 
