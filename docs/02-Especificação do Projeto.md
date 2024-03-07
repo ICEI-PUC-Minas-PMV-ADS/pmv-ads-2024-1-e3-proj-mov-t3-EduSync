@@ -142,6 +142,70 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ## Diagrama de Casos de Uso
 
+|CAU001 | ENVIAR MENSAGEM             |
+|-------|-----------------------------|
+|Objetivo     | Troca e envio de mensagens de  usuários da comunidade escolar  | 
+|Requisitos   | RF-001 |
+|Atores       | Responsáveis, Educadores | 
+|Prioridade   | ALTA| 
+|Pré-condições| Se for um responsável ele precisa estar associado a um aluno | 
+|Frequencia de Uso| ALTA | 
+|Pós-condições| Registro de Mensagem para usuário desejado | 
+
+
+|CAU002 | Registrar Envento Calendário  letivo           |
+|-------|-----------------------------|
+|Objetivo     | Registrar Eventos e data especiais da comunidade escolar  | 
+|Requisitos   | RF-002 |
+|Atores       | Educadores | 
+|Prioridade   | ALTA| 
+|Pré-condições| Para registrar precisa ser um usupario com perfil de Educador | 
+|Frequencia de Uso| ALTA | 
+|Pós-condições| Registro de Evento para o calendário letivo | 
+
+|CAU003 | Remove Envento Calendário  letivo           |
+|-------|-----------------------------|
+|Objetivo     | Remover Eventos e data especiais do calendário  | 
+|Requisitos   | RF-002 |
+|Atores       | Educadores | 
+|Prioridade   | ALTA| 
+|Pré-condições| Somente Educadores, e Remoção apenas de registros realizados pelo usuário | 
+|Frequencia de Uso| ALTA | 
+|Pós-condições| Remoção de registro feito no caso de uso CAU002 | 
+
+
+|CAU004 | Registrar Diário Aluno (Mural)          |
+|-------|-----------------------------|
+|Objetivo     | Registrar Atividades diárias do aluno  | 
+|Requisitos   | RF-003 |
+|Atores       | Educadores | 
+|Prioridade   | ALTA| 
+|Pré-condições| Para registrar precisa ser um usupario com perfil de Educador,e estar associado a uma turma | 
+|Frequencia de Uso| ALTA | 
+|Pós-condições| Registro de Atividade realizada pelo aluno  | 
+
+|CAU005 | Remover Atividade Diário Aluno (Mural)          |
+|-------|-----------------------------|
+|Objetivo     | Remover Atividades diárias do aluno  | 
+|Requisitos   | RF-003 |
+|Atores       | Educadores | 
+|Prioridade   | ALTA| 
+|Pré-condições| Para remover precisa ser um usupario com perfil de Educador,e estar associado a uma turma e ser um registro feito pelo usupario| 
+|Frequencia de Uso| ALTA | 
+|Pós-condições| Remoção do registro realizado pelo caso de uso CAU004   | 
+
+
+|CAU005 | Imprimir progresso Aluno          |
+|-------|-----------------------------|
+|Objetivo     | Criar um relatório que liste o progresso do aluno | 
+|Requisitos   | RF-005 |
+|Atores       | Responsáveis | 
+|Prioridade   | ALTA| 
+|Pré-condições| Para imprimir o relatório de progresso, precisa ser um usuário com perfil 'Responsável'  e  estar associado a um aluno| 
+|Frequencia de Uso| ALTA | 
+|Pós-condições| Remoção do registro realizado pelo caso de uso CAU004   | 
+
+
 O diagrama de casos de uso é o próximo passo após a elicitação de requisitos, que utiliza um modelo gráfico e uma tabela com as descrições sucintas dos casos de uso e dos atores. Ele contempla a fronteira do sistema e o detalhamento dos requisitos funcionais com a indicação dos atores, casos de uso e seus relacionamentos. 
 
 As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Casos de Uso”.
