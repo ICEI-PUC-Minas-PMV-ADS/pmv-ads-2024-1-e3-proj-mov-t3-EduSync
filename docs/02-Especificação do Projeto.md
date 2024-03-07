@@ -195,7 +195,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |Pós-condições| Remoção do registro realizado pelo caso de uso CAU004   | 
 
 
-|CAU005 | Imprimir progresso Aluno          |
+|CAU006 | Imprimir progresso Aluno          |
 |-------|-----------------------------|
 |Objetivo     | Criar um relatório que liste o progresso do aluno | 
 |Requisitos   | RF-005 |
@@ -204,6 +204,9 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |Pré-condições| Para imprimir o relatório de progresso, precisa ser um usuário com perfil 'Responsável'  e  estar associado a um aluno| 
 |Frequencia de Uso| ALTA | 
 |Pós-condições| Remoção do registro realizado pelo caso de uso CAU004   | 
+
+
+![Diagrama caso de uso](img/casodeuso.png)
 
 
 O diagrama de casos de uso é o próximo passo após a elicitação de requisitos, que utiliza um modelo gráfico e uma tabela com as descrições sucintas dos casos de uso e dos atores. Ele contempla a fronteira do sistema e o detalhamento dos requisitos funcionais com a indicação dos atores, casos de uso e seus relacionamentos. 
