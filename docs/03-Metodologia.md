@@ -1,9 +1,7 @@
 
 # Metodologia
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
-
-Descreva aqui a metodologia de trabalho do grupo para atacar o problema. Definições sobre os ambiente de trabalho utilizados pela  equipe para desenvolver o projeto. Abrange a relação de ambientes utilizados, a estrutura para gestão do código fonte, além da definição do processo e ferramenta através dos quais a equipe se organiza (Gestão de Times).
+Neste documento, apresentaremos a metodologia aplicada pela nossa equipe no desenvolvimento do sistema de agenda digital para escola infantil. Abordaremos as ferramentas e ambientes cruciais para o projeto, incluindo uma análise detalhada dos ambientes utilizados e a estruturação do código-fonte. Além disso, discutiremos o processo e as ferramentas utilizadas para coordenar e supervisionar a equipe ao longo do projeto, visando a eficácia na criação deste aplicativo móvel educacional.
 
 ## Relação de Ambientes de Trabalho
 
