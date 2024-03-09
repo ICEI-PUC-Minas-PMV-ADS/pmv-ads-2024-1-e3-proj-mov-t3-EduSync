@@ -74,11 +74,15 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 ### Análise da Situação Atual
 
-Apresente aqui os problemas existentes que viabilizam sua proposta. Apresente o modelo do sistema como ele funciona hoje. Caso sua proposta seja inovadora e não existam processos claramente definidos, apresente como as tarefas que o seu sistema pretende implementar são executadas atualmente, mesmo que não se utilize tecnologia computacional. 
+Atualmente, a comunicação escolar enfrenta desafios substanciais que comprometem a eficácia da troca de informações entre escolas, professores e pais. A utilização de métodos tradicionais, como a troca de bilhetes impressos e reuniões presenciais, revela-se ineficiente e propensa a perda de informações cruciais. A falta de uma plataforma centralizada limita o acesso rápido dos pais às atividades e ao progresso acadêmico de seus filhos, gerando dificuldades e frustrações.
+
+Além disso, obstáculos geográficos e temporais dificultam a participação ativa dos pais na vida escolar das crianças, contribuindo para uma comunicação desigual entre professores e responsáveis. A ausência de um método eficaz de acompanhamento online impede uma compreensão abrangente do dia a dia escolar e do desenvolvimento dos alunos.
 
 ### Descrição Geral da Proposta
 
-Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente aqui as oportunidades de melhorias.
+Diante desses desafios, a proposta de uma Agenda Digital Escolar surge como uma solução inovadora e eficaz. Essa plataforma digital busca remodelar e otimizar o processo de comunicação escolar, promovendo eficiência na troca de informações. A Agenda Digital proporcionará aos pais um acesso rápido e fácil às informações relevantes, eliminando os entraves presentes nos métodos tradicionais.
+
+Ao centralizar as informações e introduzir uma abordagem digital, a proposta visa criar uma comunicação mais transparente entre escola, professores e pais. Dessa forma, pretende-se não apenas resolver os desafios atuais, mas também promover uma participação mais ativa e inclusiva na vida acadêmica das crianças, garantindo que os pais estejam plenamente envolvidos no progresso e nas atividades de seus filhos na escola.
 
 ### Processo 1 – NOME DO PROCESSO
 
