@@ -9,6 +9,7 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 ## Personas
 
 ## Clara Oliveira
+<img src="img/Clara Oliveira.jpg" alt="image" width="300" height="auto">
 
 ## Profissão: Professora de Ensino Infantil
 
@@ -21,6 +22,7 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 **Frustrações:** Dificuldades na troca de informações com os pais, falta de ferramentas eficientes para a gestão de tarefas escolares.
 
 ## Marcos Silva
+<img src="img/Marcos Silva.jpg" alt="image" width="300" height="auto">
 
 ## Profissão: Professor de Ensino Infantil
 
@@ -35,6 +37,7 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 
 ## Maria Santos
+<img src="img/Maria Santos.jpg" alt="image" width="300" height="auto">
 
 ## Profissão: Arquiteta
 
@@ -47,6 +50,7 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 **Frustrações:** Dificuldades em obter informações oportunas e relevantes sobre o progresso do filho na escola sem precisar ir presencialmente a ela, falta de praticidade na comunicação com os professores.
 
 ## Paulo Oliveira
+<img src="img/Paulo Oliveira.jpg" alt="image" width="300" height="auto">
 
 ## Profissão: Engenheiro de Software
 
