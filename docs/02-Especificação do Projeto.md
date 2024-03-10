@@ -86,7 +86,7 @@ Ao centralizar as informações e introduzir uma abordagem digital, a proposta v
 
 ### Processo de acesso do app EduSync
 
-![Processo 1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t3-EduSync/assets/104398945/68790ad7-ac9b-406b-b609-3e7993fa9ec6)
+![Processo 1](img/diagram.svg)
 
 <!--- ### Processo 2 – NOME DO PROCESSO
 
