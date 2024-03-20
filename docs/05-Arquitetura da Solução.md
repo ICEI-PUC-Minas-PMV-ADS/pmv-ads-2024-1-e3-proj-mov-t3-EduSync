@@ -6,6 +6,23 @@ Definição de como o software é estruturado em termos dos componentes que faze
 
 ![Arquitetura da Solução](img/diagramadasolucao.jpeg)
 
+MOBILE APP EDUSYNC / API EDUSYNC
+
+*Frontend (React Native):
+
+> -Telas (Screens)
+> - Componentes de UI Reutilizáveis
+> - Navegação (React Navigation)
+> - Estado Global (Context API ou Redux)
+ 
+ *Backend (SQLite e Arquivos JSON):
+ 
+> - SQLite (Banco de Dados Local):
+> - Armazena dados essenciais localmente no dispositivo.
+> - Arquivos JSON (Simulação de API):
+Representam dados simulados de uma API RESTful para complementação das  informações e futuras implementações.
+
+
 ## Diagrama de Classes
 
 O diagrama de classes ilustra graficamente como será a estrutura do software, e como cada uma das classes da sua estrutura estarão interligadas. Essas classes servem de modelo para materializar os objetos que executarão na memória.
