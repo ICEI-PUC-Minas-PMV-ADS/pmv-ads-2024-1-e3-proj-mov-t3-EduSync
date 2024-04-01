@@ -41,7 +41,7 @@ const Login = () => {
           <Text style={styles.register}> Não tem uma conta ?
           </Text>
 
-          <TouchableOpacity style ={styles.btnRegister}>
+          <TouchableOpacity>
 
             <Text style ={styles.registerText}>Cadastre-se</Text>
           </TouchableOpacity>
