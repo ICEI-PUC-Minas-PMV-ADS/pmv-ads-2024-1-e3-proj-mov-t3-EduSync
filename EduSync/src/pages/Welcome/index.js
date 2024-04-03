@@ -18,7 +18,7 @@ const Welcome = () => {
       <View style= {styles.containerLogo}>
 
         <Image source ={require('../../assets/EduSync.png')}
-        style={{width: '80%'}}
+        style={{width: '60%'}}
         resizeMode="contain"
         
       

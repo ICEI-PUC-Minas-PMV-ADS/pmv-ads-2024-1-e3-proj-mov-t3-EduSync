@@ -1,7 +1,10 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 
 const Login = () => { 
+
+  const navigation = useNavigation();
 
 
   return (
@@ -41,7 +44,7 @@ const Login = () => {
           <Text style={styles.register}> Não tem uma conta ?
           </Text>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Cadastrar')}>
 
             <Text style ={styles.registerText}>Cadastre-se</Text>
           </TouchableOpacity>
