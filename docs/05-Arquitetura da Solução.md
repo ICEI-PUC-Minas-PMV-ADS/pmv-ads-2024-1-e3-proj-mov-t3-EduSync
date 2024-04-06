@@ -58,15 +58,9 @@ Descreva aqui qual(is) tecnologias você vai usar para resolver o seu problema, 
 Apresente também uma figura explicando como as tecnologias estão relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até retornar uma resposta ao usuário.
 
 ## Hospedagem
-
-Explique como a hospedagem e o lançamento da plataforma foi feita.
-
-> **Links Úteis**:
->
-> - [Website com GitHub Pages](https://pages.github.com/)
-> - [Programação colaborativa com Repl.it](https://repl.it/)
-> - [Getting Started with Heroku](https://devcenter.heroku.com/start)
-> - [Publicando Seu Site No Heroku](http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html)
+ 
+O site utiliza a plataforma do Github Pages como ambiente de hospedagem do site do projeto.
+A publicação do site do Github Pages é feita por meio de uma submissão do projeto (push) via git para o repositório que se encontra no endereço: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t3-EduSync
 
 ## Qualidade de Software
 
