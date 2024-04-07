@@ -51,9 +51,19 @@ Arquivo de script sql para criação das tabelas do banco de dados.
 
 ## Tecnologias Utilizadas
 
-Descreva aqui qual(is) tecnologias você vai usar para resolver o seu problema, ou seja, implementar a sua solução. Liste todas as tecnologias envolvidas, linguagens a serem utilizadas, serviços web, frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
+Iremos utilizar as seguimentes ferramentas para o desenvolvimento da aplicação mobile:
 
-Apresente também uma figura explicando como as tecnologias estão relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até retornar uma resposta ao usuário.
+
+| Categoria  | Tecnologia |
+| ------------- | ------------- |
+| Linguagem  | JavaScript  |
+| Framework  | ReactNative |
+| IDE  | Visual Studio Code |
+| Banco de dados	  | Microsoft Azure SQL Database |
+| Ferramentas de versionamento	  | Git |
+| Ferramentas de Gestão de Projeto	  | Github |
+| Ferramentas Wireframes	  | Figma |
+| Ferramentas de Comunicação	  | WhatsApp, Canvas e Teams |
 
 ## Hospedagem
  
