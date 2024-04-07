@@ -17,8 +17,13 @@ Visão geral da interação do usuário pelas telas do sistema e protótipo inte
 
 ## Wireframes
 
-![Exemplo de Wireframe](img/wireframe-example.png)
+#### Wireframe - Responsáveis
+![Wireframe - Responsáveis](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t3-EduSync/blob/main/docs/img/Wireframe%20-%20Respons%C3%A1veis.png)
 
-São protótipos usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante do layout de elementos fundamentais na interface.
+#### Wireframe - Professores e secretários
+![Wireframe - Professores e secretários](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t3-EduSync/blob/main/docs/img/Wireframe%20-%20Professores-secret%C3%A1rios.png)
+<hr>
+
+[Visualizar Wireframe no Figma](https://www.figma.com/file/YRti5BoTII6Qmq02nlYYpn/EduSync---Wireframe?type=design&node-id=363%3A44&mode=design&t=gUgjlGmuvT3CXwIG-1)
  
 
