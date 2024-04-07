@@ -72,15 +72,14 @@ A publicação do site do Github Pages é feita por meio de uma submissão do pr
 
 ## Qualidade de Software
 
-Conceituar qualidade de fato é uma tarefa complexa, mas ela pode ser vista como um método gerencial que através de procedimentos disseminados por toda a organização, busca garantir um produto final que satisfaça às expectativas dos stakeholders.
+A qualidade de software é essencial para garantir que a Agenda Digital Escolar atenda às necessidades e expectativas dos usuários de forma eficiente e satisfatória. Considerando os atributos fundamentais da qualidade de software, podemos destacar os seguintes pontos específicos relacionados ao projeto:
 
-No contexto de desenvolvimento de software, qualidade pode ser entendida como um conjunto de características a serem satisfeitas, de modo que o produto de software atenda às necessidades de seus usuários. Entretanto, tal nível de satisfação nem sempre é alcançado de forma espontânea, devendo ser continuamente construído. Assim, a qualidade do produto depende fortemente do seu respectivo processo de desenvolvimento.
+**Funcionalidade:** A Agenda Digital deve ser capaz de oferecer funcionalidades como troca de mensagens entre escola, professores e pais, integração de calendário escolar, atualizações diárias sobre o desempenho dos alunos.
 
-A norma internacional ISO/IEC 25010, que é uma atualização da ISO/IEC 9126, define oito características e 30 subcaracterísticas de qualidade para produtos de software.
-Com base nessas características e nas respectivas sub-características, identifique as sub-características que sua equipe utilizará como base para nortear o desenvolvimento do projeto de software considerando-se alguns aspectos simples de qualidade. Justifique as subcaracterísticas escolhidas pelo time e elenque as métricas que permitirão a equipe avaliar os objetos de interesse.
+**Confiabilidade:** É crucial que o sistema seja confiável, garantindo um desempenho consistente e evitando falhas inesperadas, especialmente em momentos críticos, como durante a troca de mensagens ou o acesso a informações importantes.
 
-> **Links Úteis**:
->
-> - [ISO/IEC 25010:2011 - Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models](https://www.iso.org/standard/35733.html/)
-> - [Análise sobre a ISO 9126 – NBR 13596](https://www.tiespecialistas.com.br/analise-sobre-iso-9126-nbr-13596/)
-> - [Qualidade de Software - Engenharia de Software 29](https://www.devmedia.com.br/qualidade-de-software-engenharia-de-software-29/18209/)
+**Usabilidade:** A interface da Agenda Digital deve ser intuitiva e amigável, facilitando o uso para todos os usuários, independentemente de sua experiência técnica. Isso inclui a navegação fácil pelo calendário, a troca de mensagens e a visualização de relatórios de progresso.
+
+**Eficiência:** O sistema deve ser eficiente em termos de tempo de resposta e consumo de recursos, garantindo uma experiência de usuário fluida e sem interrupções, mesmo durante períodos de alta demanda, como no início do ano letivo ou durante eventos escolares importantes.
+
+**Manutenção:** É importante que a Agenda Digital seja facilmente mantida e atualizada ao longo do tempo, permitindo a introdução de novas funcionalidades, correções de bugs e adaptações às necessidades em evolução da escola e dos usuários.
