@@ -51,9 +51,19 @@ Arquivo de script sql para criação das tabelas do banco de dados.
 
 ## Tecnologias Utilizadas
 
-Descreva aqui qual(is) tecnologias você vai usar para resolver o seu problema, ou seja, implementar a sua solução. Liste todas as tecnologias envolvidas, linguagens a serem utilizadas, serviços web, frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
+Iremos utilizar as seguimentes ferramentas para o desenvolvimento da aplicação mobile:
 
-Apresente também uma figura explicando como as tecnologias estão relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até retornar uma resposta ao usuário.
+
+| Categoria  | Tecnologia |
+| ------------- | ------------- |
+| Linguagem  | JavaScript  |
+| Framework  | ReactNative |
+| IDE  | Visual Studio Code |
+| Banco de dados	  | Microsoft Azure SQL Database |
+| Ferramentas de versionamento	  | Git |
+| Ferramentas de Gestão de Projeto	  | Github |
+| Ferramentas Wireframes	  | Figma |
+| Ferramentas de Comunicação	  | WhatsApp, Canvas e Teams |
 
 ## Hospedagem
  
@@ -72,4 +82,8 @@ A qualidade de software é essencial para garantir que a Agenda Digital Escolar 
 
 **Eficiência:** O sistema deve ser eficiente em termos de tempo de resposta e consumo de recursos, garantindo uma experiência de usuário fluida e sem interrupções, mesmo durante períodos de alta demanda, como no início do ano letivo ou durante eventos escolares importantes.
 
+<<<<<<< HEAD
 **Manutenção:** É importante que a Agenda Digital seja facilmente mantida e atualizada ao longo do tempo, permitindo a introdução de novas funcionalidades, correções de bugs e adaptações às necessidades em evolução da escola e dos usuários.
+=======
+**Manutenção:** É importante que a Agenda Digital seja facilmente mantida e atualizada ao longo do tempo, permitindo a introdução de novas funcionalidades, correções de bugs e adaptações às necessidades em evolução da escola e dos usuários.
+>>>>>>> 5d16becc1744a30b54cbf7e67e14d9cb1bfe12e6
