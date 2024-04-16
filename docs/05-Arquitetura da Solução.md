@@ -82,8 +82,4 @@ A qualidade de software é essencial para garantir que a Agenda Digital Escolar 
 
 **Eficiência:** O sistema deve ser eficiente em termos de tempo de resposta e consumo de recursos, garantindo uma experiência de usuário fluida e sem interrupções, mesmo durante períodos de alta demanda, como no início do ano letivo ou durante eventos escolares importantes.
 
-<<<<<<< HEAD
 **Manutenção:** É importante que a Agenda Digital seja facilmente mantida e atualizada ao longo do tempo, permitindo a introdução de novas funcionalidades, correções de bugs e adaptações às necessidades em evolução da escola e dos usuários.
-=======
-**Manutenção:** É importante que a Agenda Digital seja facilmente mantida e atualizada ao longo do tempo, permitindo a introdução de novas funcionalidades, correções de bugs e adaptações às necessidades em evolução da escola e dos usuários.
->>>>>>> 5d16becc1744a30b54cbf7e67e14d9cb1bfe12e6
