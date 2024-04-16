@@ -11,7 +11,7 @@ const Cadastrar = () => {
 
       <View style = {styles.containerLogo}>
 
-        <Image source={require('../../assets/EduSync.png')}
+        <Image source={require('../../assets/EduSync.jpg')}
         style ={{width: '60%'}}
         resizeMode='contain'/>
 

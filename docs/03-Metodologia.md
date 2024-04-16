@@ -59,27 +59,27 @@ A equipe está organizada da seguinte forma:
 
 **Scrum Master:** 
 
-- 
+- Bárbara Sena
 
 **Product Owner:** 
 
-- 
+- Rafael Cassiano
 
 **Equipe de Desenvolvimento:** 
-- 
-- 
+- Lucas Sampaio
+- Bárbara Sena
 - Gleyston Guimarães Silva.
-- 
-- 
-- 
+- Eduarda
+- Cassio
+- Rafael Cassiano
 
 **Equipe de Design:**
-- 
-- 
+- Lucas Sampaio
+- Bárbara Sena
 - Gleyston Guimarães Silva.
-- 
-- 
-- 
+- Eduarda
+- Cassio
+- Rafael Cassiano
 
 ### Processo
 
