@@ -1,7 +1,6 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-
 import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 
 
 
@@ -11,103 +10,125 @@ const Welcome = () => {
 
   return (
 
+      <View style={styles.container}>
 
-    <View style= {styles.container }>
 
+        <View style={styles.containerLogo}>
 
-      <View style= {styles.containerLogo}>
+          <Image source = {require('../../assets/EduSync.jpg')}/>
 
-        <Image source ={require('../../assets/EduSync.jpg')}
-        style={{width: '60%'}}
-        resizeMode="contain"
-        
-      
-        
-        
-        />
-        <View style={styles.containerForm}>
+        </View>
 
-          <Text style={styles.title}>Fique por dentro de tudo que acontece na escola de seu filho!</Text>
-          <Text style={styles.text}>Faça o Login para começar</Text>
+        <View style={styles.btn}>
 
-          <TouchableOpacity style={styles.button}
-            onPress= {() => navigation.navigate('Login')}
-          >
-            <Text style={styles.buttonText}>Acessar</Text>
-          </TouchableOpacity>
+          <Text style={styles.title}> Conexão dentro e fora de casa  </Text>
+          <Text style={styles.text}> Fique por dentro de tudo que acontece na escola de seu filho(a).</Text>
+
+        </View>
+
+        <View style={styles.btnText}>
+
+          <Text style={styles.text}>Faça o login para começar</Text>
 
         </View>
 
 
+        <TouchableOpacity style={styles.btnSubmit}
+          onPress={() => navigation.navigate('Login')}
+        >
+
+          <Text style={styles.submitText}>Acessar</Text>
+
+        </TouchableOpacity>
+
+
+
+
       </View>
 
-    </View>
   );
 };
 
 const styles = StyleSheet.create ({
 
   container: {
+
     flex:1,
-    backgroundColor: '#87cefa'
+    backgroundColor: '#fff',
+    
+    
 
   },
 
   containerLogo: {
 
-    flex: 2,
-    backgroundColor: '#87cefa',
-    justifyContent: 'center',
-    alignItems: 'center',
-    
-  },
-
-  containerForm : {
-
-    
-    flex: 1,
-    backgroundColor: '#FFF',
-    borderRadius: 30,
-    marginBottom: 20,
-    paddingStart: '5%',
-    paddingEnd: '5%',
-
-  },
-
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginTop: 20,
-    marginBottom: 12,
-  },
-
-  text: {
-
     marginTop: '30%',
-    fontSize: 20,
-    color: '#a1a1a1'
-  },
-
-  button: {
-    position: 'absolute',
-    backgroundColor: '#87cefa',
-    borderRadius: 50,
-    paddingVertical: 8,
-    width: '60%',
-    alignSelf: 'center',
-    bottom: '15%',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    
+  },
+
+
+  btn: {
+
+    width:'90%',
+    
+    alignItems:'center',
+    alignContent: 'center',
+    alignSelf: 'center',
+    
 
   },
 
-  buttonText: {
+  title:{
+    
+    textAlign:'center',
+    fontSize: 35,
+    fontWeight: 'bold',
+    marginTop: '10%',
+    marginBottom: '10%',
+    
 
+  },
+
+  text:{
+
+
+    textAlign:'center',
+    fontSize: 20,
+    color: '#a1a1a1',
+    marginBottom:10,
+
+  },
+
+  btnText:{
+    
+    marginTop:'10%',
+    fontSize: 20,
+    alignItems:'center',
+    alignContent:'center',
+    marginBottom: 10,
+  },
+
+  btnSubmit:{
+
+   
+    backgroundColor: '#87cefa',
+    width:'90%',
+    height: 45,
+    alignItems: 'center',
+    justifyContent:'center',
+    alignSelf:'center',
+    borderRadius: 20,
+
+  },
+
+  submitText: {
+    
     fontSize: 18,
     color: '#fff',
     fontWeight: 'bold',
-
-  }
+  },
 
 
 
