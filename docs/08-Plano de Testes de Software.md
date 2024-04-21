@@ -10,36 +10,48 @@ Enumere quais cenários de testes foram selecionados para teste. Neste tópico o
 
 | RF/RFN  | Cenário   |
 | ------- | -------- |
-| RF-001   | Verificar se as mensagens estão sendo enviadas corretamente.   |
+| -   | Verificar aparecimento da tela de carregamento.   |
 
 ### Caso de Teste 02
+
+| RF/RFN  | Cenário   |
+| ------- | -------- |
+| -   | Verificar se página de login está aparecendo conforme esperado.   |
+
+### Caso de Teste 03
+
+| RF/RFN  | Cenário   |
+| ------- | -------- |
+| RF-001   | Verificar se as mensagens estão sendo enviadas corretamente.   |
+
+### Caso de Teste 04
 | RF/RFN  | Cenário   |
 | ------- | -------- |
 | RF-002   | Verificar se calendário exibe os eventos escolares corretamente |
 | RF-002   | Verificar se calendário permite navegação entre meses |
 | RF-002   | Verificar funcionalidade de adicionar, editar e excluir evento (cenário da escola) |
 
-### Caso de Teste 03
+### Caso de Teste 04
  | RF/RFN  | Cenário   |
 | ------- | -------- |
 | RF-003   | Verificar se mural está aparecendo apenas para os professores e responsáveis |
 | RF-003   | Verificar se mural permite navegação entre os alunos da turma (cenário da escola) |
 | RF-003   | Verificar funcionalidade de adicionar, editar e excluir informações do mural (cenário da escola) |
 
-### Caso de Teste 04
+### Caso de Teste 05
 
  | RF/RFN  | Cenário   |
 | ------- | -------- |
 | RF-004   | Verificar se notificação está sendo exibida para os usuários |
 | RF-004   | Verificar tempo que demora para a notificaão aparecer |
 
-### Caso de Teste 05
+### Caso de Teste 06
 
  | RF/RFN  | Cenário   |
 | ------- | -------- |
 | RF-005   | Verificar se relatório de progessor está sendo gerado corretamente |
 
-### Caso de Teste 06
+### Caso de Teste 07
 
  | RF/RFN  | Cenário   |
 | ------- | -------- |
