@@ -2,10 +2,37 @@
 
 O teste de usabilidade permite avaliar a qualidade da interface com o usuário da aplicação interativa. O Plano de Testes de Software é gerado a partir da especificação do sistema e consiste em casos de testes que deverão ser executados quando a implementação estiver parcial ou totalmente pronta.
 
-As referências abaixo irão auxiliá-lo na geração do artefato "Plano de Testes de Usabilidade".
 
-> **Links Úteis**:
-> - [Teste De Usabilidade: O Que É e Como Fazer Passo a Passo (neilpatel.com)](https://neilpatel.com/br/blog/teste-de-usabilidade/)
-> - [Teste de usabilidade: tudo o que você precisa saber! | by Jon Vieira | Aela.io | Medium](https://medium.com/aela/teste-de-usabilidade-o-que-voc%C3%AA-precisa-saber-39a36343d9a6/)
-> - [Planejando testes de usabilidade: o que (e o que não) fazer | iMasters](https://imasters.com.br/design-ux/planejando-testes-de-usabilidade-o-que-e-o-que-nao-fazer/)
-> - [Ferramentas de Testes de Usabilidade](https://www.usability.gov/how-to-and-tools/resources/templates.html)
+| Critérios de Avaliação de Usabilidade                                       | Descrição                                                                                                                                                             |
+|------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1. **Facilidade de Navegação e Localização das Funcionalidades**             | - Avaliação da facilidade com que os participantes conseguem encontrar e acessar as diferentes funcionalidades do aplicativo.                                      |
+|                                                                              | - Observação da clareza da estrutura de navegação e da disposição dos elementos de interface.                                                                         |
+| 2. **Clareza das Informações Apresentadas**                                  | - Análise da clareza e da relevância das informações apresentadas em cada seção do aplicativo.                                                                        |
+|                                                                              | - Verificação se as informações são apresentadas de maneira compreensível e se estão disponíveis de forma adequada para os usuários.                                |
+| 3. **Facilidade de Envio e Recebimento de Mensagens**                        | - Avaliação da facilidade de uso do sistema de mensagens para enviar e receber mensagens entre pais e professores.                                           |
+|                                                                              | - Verificação da intuitividade das etapas necessárias para criar uma nova mensagem, selecionar destinatários e enviar mensagens.                                    |
+| 4. **Eficiência na Visualização do Calendário Escolar**                      | - Observação da eficiência com que os usuários conseguem visualizar e compreender o calendário escolar.                                                              |
+|                                                                              | - Verificação da capacidade dos usuários de identificar eventos importantes, como reuniões de pais e mestres e feriados escolares.                          |
+| 5. **Intuitividade na Utilização do Mural do Aluno**                         | - Avaliação da facilidade de uso e da intuitividade do mural do aluno para registrar informações como presença, refeições consumidas e outras atividades.           |
+|                                                                              | - Verificação da clareza das opções disponíveis para os usuários e da facilidade de registro de informações relevantes.                                            |
+
+| Recursos Necessários                                                         |                                                                                                                            
+|------------------------------------------------------------------------------|
+| - Dispositivos móveis e computadores para os participantes.                 | 
+|- Espaço de teste tranquilo e adequado.|
+|- Observadores e entrevistadores qualificados.| 
+|- Acesso ao ambiente de desenvolvimento do aplicativo para implementar melhorias. |
+
+| Participantes                                                                |                                                                                                                            
+|------------------------------------------------------------------------------|
+| - Pais de alunos da educação infantil.                                     | 
+|- Secretários(as) da escola. 
+|- Professores(as) da educação infatil.      |           
+
+| Cronograma                                                                   |                                                                    
+|------------------------------------------------------------------------------|
+| - Preparação e recrutamento de participantes: 1 semana                      | 
+|- Realização dos testes: 1 semana |
+|- Análise dos resultados: 1 semana |
+|- Apresentação dos resultados e implementação de melhorias: 2 semanas                       |
+
