@@ -4,13 +4,17 @@
 
 |EU IA    | Descrição do Requisito  | Artefato(s) Produzido(s) |
 |------|-----------------------------------------|----|
+| RF-001 | Sistema de Mensagens: Possibilidade de troca de mensagens diretas entre professores e pais. |   |
 
-| RF-001 | Sistema de Mensagens: Possibilidade de troca de mensagens diretas entre professores e pais. | .  |
-| RF-002 | Calendário Integrado: Funcionalidade que permite a inclusão e visualização de eventos escolares no calendário digital. |  . |
-| RF-003 | Atualizações Diárias: Capacidade de professores enviar atualizações diárias sobre o desempenho e atividades dos alunos. |  . |
-| RF-004 | Notificações Push: Implementação de notificações push para alertar pais e professores sobre eventos, atualizações e prazos importantes. | .  |
-| RF-005 | Relatórios de Progresso: Geração de relatórios de progresso acadêmico, permitindo aos pais acompanhar o desenvolvimento de seus filhos ao longo do tempo. | . |
-| RF-006 | Integração com Agenda Pessoal: Possibilidade de integrar a agenda digital com as agendas pessoais dos pais e professores. | . |
+| RF-002 | Calendário Integrado: Funcionalidade que permite a inclusão e visualização de eventos escolares no calendário digital. |   |
+
+| RF-003 | Atualizações Diárias: Capacidade de professores enviar atualizações diárias sobre o desempenho e atividades dos alunos. |   |
+
+| RF-004 | Notificações Push: Implementação de notificações push para alertar pais e professores sobre eventos, atualizações e prazos importantes. |   |
+
+| RF-005 | Relatórios de Progresso: Geração de relatórios de progresso acadêmico, permitindo aos pais acompanhar o desenvolvimento de seus filhos ao longo do tempo. |  |
+
+| RF-006 | Integração com Agenda Pessoal: Possibilidade de integrar a agenda digital com as agendas pessoais dos pais e professores. |  |
 
 ### Requisitos não Funcionais
 
