@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import Ionicons  from 'react-native-vector-icons/Feather';
 import { CheckBox } from '@rneui/themed';
+import { Picker } from '@react-native-picker/picker';
 
 const Login = () => { 
 
@@ -11,6 +12,11 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const[hidePass, setHidePass] = useState(true);
+
+  const [selectedUser, setSelectedUser] = useState('');
+  const [selectedResponsavel, setSelectedResponsavel] = useState(false);
+  const [selectedEscola, setSelectedEscola] = useState(false);
+  const [selectedProfessor, setSelectedProfessor] = useState(false);
   
 
 
@@ -20,9 +26,29 @@ const Login = () => {
       return;
     }
 
-     navigation.navigate('Perfil');
+    switch (selectedUser) {
+
+      case 'responsavel':
+        navigation.navigate('Responsavel');
+        break;
+  
+      case 'escola':
+        navigation.navigate('Escola');
+        break;
+  
+      case 'professor':
+        navigation.navigate('Professor');
+        break;
+
+        default:
+        alert('Selecione um tipo de usuário');
+  
+  
+    }
 
   };
+
+
 
 
 
@@ -42,7 +68,7 @@ const Login = () => {
 
         <View style={styles.inputArea}>
 
-        <TextInput style ={styles.input}
+          <TextInput style ={styles.input}
             placeholder=" Digite seu Email"
             autoCorrect={false}
             onChangeText={setEmail}
@@ -68,6 +94,7 @@ const Login = () => {
             secureTextEntry={hidePass}
           />
 
+
           <TouchableOpacity style={styles.icon} onPress={() => setHidePass(!hidePass)}>
 
             {hidePass?
@@ -77,6 +104,22 @@ const Login = () => {
             }
           
           </TouchableOpacity>
+
+        </View>
+
+        <View style={styles.inputArea}>
+
+          <Picker style={styles.picker}
+
+            selectedValue={selectedUser}
+            onValueChange={(itemValue, itemIndex) => setSelectedUser(itemValue)}
+
+          >
+            <Picker.Item label="Selecionar perfil" value="" />
+            <Picker.Item label="Responsável" value="responsavel" />
+            <Picker.Item label="Escola" value="escola" />
+            <Picker.Item label="Professor" value="professor" />
+          </Picker>
 
         </View>
 
@@ -132,12 +175,14 @@ const styles = StyleSheet.create({
     
     justifyContent: 'center',
     alignItems:'center',
-    marginBottom: '20%',
+    marginBottom: '8%',
+
     
   },
 
   inputArea: {
 
+    
     flexDirection: 'row',
     width: '90%',
     backgroundColor: '#fff',
@@ -226,7 +271,7 @@ const styles = StyleSheet.create({
       height: 45,
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: 20,
+      borderRadius: 7,
       
   
     },
@@ -238,6 +283,12 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
 
+    picker: {
+      flex: 1,
+      height: 50,
+      color: '#a9a9a9',
+      padding: 8,
+    },
 
 
 });
