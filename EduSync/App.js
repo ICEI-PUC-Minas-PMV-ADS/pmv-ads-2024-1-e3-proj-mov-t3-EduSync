@@ -9,6 +9,9 @@ import Escola from './src/pages/Perfil/Escola';
 import Professor from './src/pages/Perfil/Professor';
 import Responsavel from './src/pages/Perfil/Responsavel';
 import Cadastrar from './src/pages/Cadastrar';
+import PerfilEscola from './src/pages/Perfil/Escola/PerfilEscola';
+import PerfilResponsavel from './src/pages/Perfil/Responsavel/PerfilResponsavel';
+import PerfilProfessor from './src/pages/Perfil/Professor/PerfilProfessor';
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +51,22 @@ const App = () => {
         <Stack.Screen 
           name="Responsavel"
           component={Responsavel}
+        />
+
+        <Stack.Screen 
+          name="PerfilEscola"
+          component={PerfilEscola}
+
+        />
+
+        <Stack.Screen 
+          name="PerfilProfessor"
+          component={PerfilProfessor}
+        />
+
+        <Stack.Screen 
+          name="PerfilResponsavel"
+          component={PerfilResponsavel}
         />
 
       </Stack.Navigator>
