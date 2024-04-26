@@ -19,59 +19,59 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        
+
         <Stack.Screen
           name="Welcome"
           component={Welcome}
-          
-          
+
+
         />
-        <Stack.Screen 
+        <Stack.Screen
           name="Login"
           component={Login}
-          
+
         />
 
-        <Stack.Screen 
+        <Stack.Screen
           name="Cadastrar"
           component={Cadastrar}
-          
+
         />
 
-        <Stack.Screen 
+        <Stack.Screen
           name="Escola"
           component={Escola}
         />
 
-        <Stack.Screen 
+        <Stack.Screen
           name="Professor"
           component={Professor}
         />
 
-        <Stack.Screen 
+        <Stack.Screen
           name="Responsavel"
           component={Responsavel}
         />
 
-        <Stack.Screen 
+        <Stack.Screen
           name="PerfilEscola"
           component={PerfilEscola}
 
         />
 
-        <Stack.Screen 
+        <Stack.Screen
           name="PerfilProfessor"
           component={PerfilProfessor}
         />
 
-        <Stack.Screen 
+        <Stack.Screen
           name="PerfilResponsavel"
           component={PerfilResponsavel}
         />
 
       </Stack.Navigator>
 
-        <StatusBar backgroundColor="#87cefa" barStyle="light-content"/>
+      <StatusBar backgroundColor="#87cefa" barStyle="light-content" />
 
     </NavigationContainer>
   );

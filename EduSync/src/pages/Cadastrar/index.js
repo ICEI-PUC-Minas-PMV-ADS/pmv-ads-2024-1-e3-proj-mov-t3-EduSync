@@ -5,62 +5,105 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const Cadastrar = () => {
+
   return (
 
-    <View style ={styles.container}>
+    <View style={styles.container}>
 
-      <View style = {styles.containerLogo}>
+      {/* <View style={styles.containerLogo}>
 
         <Image source={require('../../assets/EduSync.jpg')}
-        style ={{width: '60%'}}
-        resizeMode='contain'/>
+          style={{ width: '60%' }}
+          resizeMode='contain' />
 
-      </View>
+      </View> */}
 
-      <View style = {styles.containerForm}>
+      <View style={styles.containerForm}>
 
-        <View style ={styles.containerInput}>
+        <View style={styles.containerInput}>
 
-          <TextInput style = {styles.input}
-            placeholder = "Nome"
-            autoCorrect = {false}
-            onChangeText ={() => {}} 
-
+          <TextInput style={styles.input}
+            placeholder="Login"
+            autoCorrect={false}
+            onChangeText={() => { }}
           />
 
-          <TextInput style = {styles.input}
-            placeholder = "Email"
-            autoCorrect = {false}
-            onChangeText ={() => {}} 
-            
+          <TextInput style={styles.input}
+            placeholder="Senha"
+            autoCorrect={false}
+            onChangeText={() => { }}
           />
 
-          <TextInput style = {styles.input}
-            placeholder = "Senha"
-            autoCorrect = {false}
-            onChangeText ={() => {}} 
-            
+          <TextInput style={styles.input}
+            placeholder="Confirmar Senha"
+            autoCorrect={false}
+            onChangeText={() => { }}
           />
 
-          <TextInput style = {styles.input}
-            placeholder = "Confirmar Senha"
-            autoCorrect = {false}
-            onChangeText ={() => {}} 
-            
+          <TextInput style={styles.input}
+            placeholder="Nome"
+            autoCorrect={false}
+            onChangeText={() => { }}
           />
-            
 
-            <TouchableOpacity style ={styles.btnSubmit}>
+          <TextInput style={styles.input}
+            placeholder="Email"
+            autoCorrect={false}
+            onChangeText={() => { }}
+          />
 
-              <Text style ={styles.submitText}>Cadastrar</Text>
+          <TextInput style={styles.input}
+            placeholder="CEP"
+            autoCorrect={false}
+            onChangeText={() => { }}
+          />
 
-            </TouchableOpacity>
+          <TextInput style={styles.input}
+            placeholder="Logradouro"
+            autoCorrect={false}
+            onChangeText={() => { }}
+          />
+
+          <TextInput style={styles.input}
+            placeholder="Número"
+            autoCorrect={false}
+            onChangeText={() => { }}
+          />
+
+          <TextInput style={styles.input}
+            placeholder="Complemento"
+            autoCorrect={false}
+            onChangeText={() => { }}
+          />
+
+          <TextInput style={styles.input}
+            placeholder="Bairro"
+            autoCorrect={false}
+            onChangeText={() => { }}
+          />
+
+          <TextInput style={styles.input}
+            placeholder="Cidade"
+            autoCorrect={false}
+            onChangeText={() => { }}
+          />
+
+          <TextInput style={styles.input}
+            placeholder="Tipo"
+            autoCorrect={false}
+            onChangeText={() => { }}
+          />
+
+          <TextInput style={styles.input}
+            placeholder="Matrícula"
+            autoCorrect={false}
+            onChangeText={() => { }}
+          />
 
 
-
-
-
-
+          <TouchableOpacity style={styles.btnSubmit}>
+            <Text style={styles.submitText}>Cadastrar</Text>
+          </TouchableOpacity>
 
         </View>
 
@@ -76,70 +119,59 @@ const Cadastrar = () => {
 const styles = StyleSheet.create({
 
   container: {
-
+    width: '100%',
     flex: 1,
-    backgroundColor: '#87cefa'
-
+    backgroundColor: '#87cefa',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   containerLogo: {
-
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
-
   },
 
 
   containerForm: {
-
     flex: 1,
     width: '90%',
-    alignItems: 'center',
     justifyContent: 'center',
-    alignSelf: 'center',
-    backgroundColor: '#fff',
+    alignItems: 'center',
+    // backgroundColor: '#fff',
     borderRadius: 30,
-    marginBottom: 15,
-
+    margin: 15,
   },
 
   containerInput: {
-
-    width: 300,
-    
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
   },
 
   input: {
-
-    
-    width:300,
-    backgroundColor: '#2222',
+    width: '90%',
+    backgroundColor: '#fff',
     marginBottom: 10,
-    padding: 6,
-    borderRadius:10,
+    padding: 10,
+    borderRadius: 10,
     fontSize: 15,
-
   },
 
-
   btnSubmit: {
-
-    backgroundColor: '#87cefa',
-    width: '100%',
+    backgroundColor: '#fff',
+    width: '60%',
     height: 40,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 7,
-
   },
 
   submitText: {
-
     fontSize: 17,
-    color: '#fff',
+    color: '#87cefa',
     fontWeight: 'bold',
-
   },
 
 });

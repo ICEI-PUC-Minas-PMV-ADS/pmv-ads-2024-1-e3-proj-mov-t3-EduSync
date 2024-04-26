@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
-import Ionicons  from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/AntDesign';
 import { CheckBox } from '@rneui/themed';
 import { Picker } from '@react-native-picker/picker';
 
@@ -10,7 +10,7 @@ const Responsavel = () => {
   const navigation = useNavigation();
 
   const PerfilResponsavel = () => {
-    navigation.navigate('PerfilResponsavel'); 
+    navigation.navigate('PerfilResponsavel');
   };
 
   return (
@@ -19,7 +19,7 @@ const Responsavel = () => {
 
       <TouchableOpacity>
 
-        <Ionicons style={styles.BellsIcon} name= "bells" color={"#fff"} size={25}/>
+        <Ionicons style={styles.BellsIcon} name="bells" color={"#fff"} size={25} />
 
       </TouchableOpacity>
 
@@ -29,21 +29,21 @@ const Responsavel = () => {
 
       </View>
 
+      <TouchableOpacity style={styles.button}>
+
+        <Text>CADASTRAR</Text>
+
+        <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
+
+      </TouchableOpacity>
+
       <View style={styles.grid}>
-
-        <TouchableOpacity style={styles.button}>
-
-          <Text>MURAL</Text>
-
-          <Ionicons style={styles.icon} name= "exclamationcircleo" color={"#a9a9a9"} size={25}/>
-
-        </TouchableOpacity>
 
         <TouchableOpacity style={styles.button}>
 
           <Text>MENSAGENS</Text>
 
-          <Ionicons style={styles.icon} name= "mail" color={"#a9a9a9"} size={25}/>
+          <Ionicons style={styles.icon} name="mail" color={"#a9a9a9"} size={25} />
 
         </TouchableOpacity>
 
@@ -51,7 +51,7 @@ const Responsavel = () => {
 
           <Text>CALENDÁRIO</Text>
 
-          <Ionicons style={styles.icon} name= "calendar" color={"#a9a9a9"} size={25}/>
+          <Ionicons style={styles.icon} name="calendar" color={"#a9a9a9"} size={25} />
 
         </TouchableOpacity>
 
@@ -59,7 +59,7 @@ const Responsavel = () => {
 
           <Text>PERFIL</Text>
 
-          <Ionicons style={styles.icon} name= "user" color={"#a9a9a9"} size={25}/>
+          <Ionicons style={styles.icon} name="user" color={"#a9a9a9"} size={25} />
 
         </TouchableOpacity>
 
@@ -79,9 +79,9 @@ const styles = StyleSheet.create({
 
   BellsIcon: {
 
-    marginLeft:'80%',
+    marginLeft: '80%',
     marginBottom: '20%',
-    
+
 
 
   },

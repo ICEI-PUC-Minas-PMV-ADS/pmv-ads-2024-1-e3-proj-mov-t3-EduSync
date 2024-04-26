@@ -1,16 +1,22 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
-import Ionicons  from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/AntDesign';
 import { CheckBox } from '@rneui/themed';
 import { Picker } from '@react-native-picker/picker';
+import { Icon } from '@rneui/base';
+import Cadastrar from '../../Cadastrar';
 
 const Professor = () => {
 
   const navigation = useNavigation();
 
   const PerfilProfessor = () => {
-    navigation.navigate('PerfilProfessor'); 
+    navigation.navigate('PerfilProfessor');
+  };
+
+  const Cadastrar = () => {
+    navigation.navigate('Cadastrar');
   };
 
   return (
@@ -19,7 +25,7 @@ const Professor = () => {
 
       <TouchableOpacity>
 
-        <Ionicons style={styles.BellsIcon} name= "bells" color={"#fff"} size={25}/>
+        <Ionicons style={styles.BellsIcon} name="bells" color={"#fff"} size={25} />
 
       </TouchableOpacity>
 
@@ -31,11 +37,19 @@ const Professor = () => {
 
       <View style={styles.grid}>
 
+        <TouchableOpacity style={styles.button} onPress={Cadastrar}>
+
+          <Text>CADASTRAR</Text>
+
+          <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
+
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.button}>
 
           <Text>MURAL</Text>
 
-          <Ionicons style={styles.icon} name= "exclamationcircleo" color={"#a9a9a9"} size={25}/>
+          <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
 
         </TouchableOpacity>
 
@@ -43,7 +57,7 @@ const Professor = () => {
 
           <Text>MENSAGENS</Text>
 
-          <Ionicons style={styles.icon} name= "mail" color={"#a9a9a9"} size={25}/>
+          <Ionicons style={styles.icon} name="mail" color={"#a9a9a9"} size={25} />
 
         </TouchableOpacity>
 
@@ -51,7 +65,7 @@ const Professor = () => {
 
           <Text>CALENDÁRIO</Text>
 
-          <Ionicons style={styles.icon} name= "calendar" color={"#a9a9a9"} size={25}/>
+          <Ionicons style={styles.icon} name="calendar" color={"#a9a9a9"} size={25} />
 
         </TouchableOpacity>
 
@@ -59,7 +73,7 @@ const Professor = () => {
 
           <Text>PERFIL</Text>
 
-          <Ionicons style={styles.icon} name= "user" color={"#a9a9a9"} size={25}/>
+          <Ionicons style={styles.icon} name="user" color={"#a9a9a9"} size={25} />
 
         </TouchableOpacity>
 
@@ -78,12 +92,8 @@ const styles = StyleSheet.create({
   },
 
   BellsIcon: {
-
-    marginLeft:'80%',
+    marginLeft: '80%',
     marginBottom: '20%',
-    
-
-
   },
 
   welcome: {
@@ -100,13 +110,17 @@ const styles = StyleSheet.create({
 
   button: {
     width: '40%',
-    height: 100,
+    height: 120,
     backgroundColor: '#fff',
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 15,
   },
+
+  icon: {
+    marginTop: '5%',
+  }
 
 });
 
