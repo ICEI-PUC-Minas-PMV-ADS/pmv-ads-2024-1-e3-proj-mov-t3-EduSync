@@ -5,7 +5,6 @@ import Ionicons from 'react-native-vector-icons/AntDesign';
 import { CheckBox } from '@rneui/themed';
 import { Picker } from '@react-native-picker/picker';
 import { Icon } from '@rneui/base';
-import Cadastrar from '../../Cadastrar';
 
 const Professor = () => {
 
@@ -17,6 +16,10 @@ const Professor = () => {
 
   const Cadastrar = () => {
     navigation.navigate('Cadastrar');
+  };
+
+  const Mural = () => {
+    navigation.navigate('Mural');
   };
 
   return (
@@ -37,15 +40,7 @@ const Professor = () => {
 
       <View style={styles.grid}>
 
-        <TouchableOpacity style={styles.button} onPress={Cadastrar}>
-
-          <Text>CADASTRAR</Text>
-
-          <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
-
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={Mural}>
 
           <Text>MURAL</Text>
 

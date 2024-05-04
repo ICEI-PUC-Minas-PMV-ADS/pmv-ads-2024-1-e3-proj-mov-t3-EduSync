@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
-import Ionicons  from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/AntDesign';
 import { CheckBox } from '@rneui/themed';
 import { Picker } from '@react-native-picker/picker';
 
@@ -14,7 +14,7 @@ const PerfilProfessor = () => {
   const [address, setAddress] = useState('');
 
   return (
-<View style={styles.container}>
+    <View style={styles.container}>
 
       <TouchableOpacity style={styles.ConfigIcons} >
 
@@ -28,29 +28,29 @@ const PerfilProfessor = () => {
 
       </View>
 
-      
+
       <View style={styles.navBar}>
-        <TouchableOpacity style={styles.icons} onPress={() => {}}>
+        <TouchableOpacity style={styles.icons} onPress={() => { }}>
           <Ionicons name="home" size={30} color={"#a9a9a9"} />
           <Text>Inicio</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.icons} onPress={() => {}}>
+        <TouchableOpacity style={styles.icons} onPress={() => { }}>
           <Ionicons name="exclamationcircleo" size={30} color={"#a9a9a9"} />
           <Text>Mural</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.icons} onPress={() => {}}>
+        <TouchableOpacity style={styles.icons} onPress={() => { }}>
           <Ionicons name="calendar" size={30} color={"#a9a9a9"} />
           <Text>Calendário</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.icons} onPress={() => {}}>
+        <TouchableOpacity style={styles.icons} onPress={() => { }}>
           <Ionicons name="mail" size={30} color={"#a9a9a9"} />
           <Text>Mensagens</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.icons} onPress={() => {}}>
+        <TouchableOpacity style={styles.icons} onPress={() => { }}>
           <Ionicons name="user" size={30} color={"#a9a9a9"} />
           <Text>Perfil</Text>
         </TouchableOpacity>
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  
+
   navBar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -88,11 +88,11 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
 
-  ConfigIcons:{
+  ConfigIcons: {
 
-    marginLeft:'80%',
-    
-    
+    marginLeft: '80%',
+
+
   },
 
   icons: {

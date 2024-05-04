@@ -12,6 +12,7 @@ import Cadastrar from './src/pages/Cadastrar';
 import PerfilEscola from './src/pages/Perfil/Escola/PerfilEscola';
 import PerfilResponsavel from './src/pages/Perfil/Responsavel/PerfilResponsavel';
 import PerfilProfessor from './src/pages/Perfil/Professor/PerfilProfessor';
+import Mural from './src/pages/Mural';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,12 @@ const App = () => {
         <Stack.Screen
           name="Cadastrar"
           component={Cadastrar}
+
+        />
+
+        <Stack.Screen
+          name="Mural"
+          component={Mural}
 
         />
 

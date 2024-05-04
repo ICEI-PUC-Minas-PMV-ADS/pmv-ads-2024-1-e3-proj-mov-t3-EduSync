@@ -13,6 +13,14 @@ const Escola = () => {
     navigation.navigate(PerfilEscola);
   };
 
+  const Mural = () => {
+    navigation.navigate(Mural);
+  };
+
+  const Cadastrar = () => {
+    navigation.navigate(Cadastrar);
+  };
+
   return (
 
     <View style={styles.container}>
@@ -31,7 +39,15 @@ const Escola = () => {
 
       <View style={styles.grid}>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={Cadastrar}>
+
+          <Text>CADASTRAR</Text>
+
+          <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
+
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={Mural}>
 
           <Text>MURAL</Text>
 
@@ -78,12 +94,8 @@ const styles = StyleSheet.create({
   },
 
   BellsIcon: {
-
     marginLeft: '80%',
     marginBottom: '20%',
-
-
-
   },
 
   welcome: {
@@ -100,13 +112,17 @@ const styles = StyleSheet.create({
 
   button: {
     width: '40%',
-    height: 100,
+    height: 120,
     backgroundColor: '#fff',
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 15,
   },
+
+  icon: {
+    marginTop: '5%',
+  }
 
 });
 

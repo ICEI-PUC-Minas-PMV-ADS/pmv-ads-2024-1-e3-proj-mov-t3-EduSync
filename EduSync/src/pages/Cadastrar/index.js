@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, Image, TouchableOpacity } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+
 
 
 const Cadastrar = () => {
