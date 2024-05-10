@@ -52,7 +52,7 @@ const Mural = () => {
 
 const styles = StyleSheet.create({
   mainTitle: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
     margin: 20,
     textAlign: 'left',
