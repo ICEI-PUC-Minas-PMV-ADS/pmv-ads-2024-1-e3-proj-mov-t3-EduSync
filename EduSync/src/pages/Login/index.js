@@ -1,9 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Platform } from 'react-native';
 import Ionicons  from 'react-native-vector-icons/Feather';
 import { CheckBox } from '@rneui/themed';
-import { Picker } from '@react-native-picker/picker';
+import  Picker  from 'react-native-picker-select';
 
 const Login = () => { 
 
@@ -26,26 +26,19 @@ const Login = () => {
       return;
     }
 
-    switch (selectedUser) {
-
+    switch (selectedUser) { 
       case 'responsavel':
         navigation.navigate('Responsavel');
         break;
-  
       case 'escola':
         navigation.navigate('Escola');
         break;
-  
       case 'professor':
         navigation.navigate('Professor');
         break;
-
-        default:
+      default:
         alert('Selecione um tipo de usuário');
-  
-  
     }
-
   };
 
 
@@ -109,20 +102,30 @@ const Login = () => {
 
         <View style={styles.inputArea}>
 
-          <Picker style={styles.picker}
+        
 
-            selectedValue={selectedUser}
-            onValueChange={(itemValue, itemIndex) => setSelectedUser(itemValue)}
+          <Picker 
+            style={pickerSelectStyles}
+            onValueChange={(value) => setSelectedUser(value)}
+            value={selectedUser}
+            items={[
+              { label: 'Responsável', value: 'responsavel' },
+              { label: 'Escola', value: 'escola' },
+              { label: 'Professor', value: 'professor' },
+            ]}
+          />
+       
+          {Platform.OS === 'android' && selectedUser && (
+            <View style={styles.selectedProfileContainer}>
+              <Text style={styles.selectedProfile}>{selectedUser}</Text>
+            </View>
+          )}
 
-          >
-            <Picker.Item label="Selecionar perfil" value="" />
-            <Picker.Item label="Responsável" value="responsavel" />
-            <Picker.Item label="Escola" value="escola" />
-            <Picker.Item label="Professor" value="professor" />
-          </Picker>
 
         </View>
 
+
+      
           
         <View style={styles.btn}>
 
@@ -283,13 +286,44 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
 
-    picker: {
-      flex: 1,
-      height: 50,
-      color: '#a9a9a9',
-      padding: 8,
+    selectedProfileContainer: {
+      alignItems: 'center',
+      marginTop: 15,
+      marginTop: 6,
     },
 
+    selectedProfile: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: '#a9a9a9',
+    },
+
+
+
+
+});
+
+const pickerSelectStyles = StyleSheet.create({
+
+  inputIOS: {
+    
+    alignItems: 'center',
+    fontSize: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    color: '#a9a9a9',
+    paddingRight: 30,
+  },
+
+  inputAndroid: {
+
+    borderRadius: 4,
+    fontSize: 16,
+    paddingHorizontal: 10,
+    color: '#a9a9a9',
+    paddingRight: 30,
+
+  },
 
 });
 
