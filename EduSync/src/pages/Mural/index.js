@@ -1,56 +1,87 @@
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
-import React from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
-
+const formatDate = (date) => {
+  const options = {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    locale: 'pt-BR',
+  };
+  const formattedDate = new Date(date).toLocaleDateString('pt-BR', options);
+  const [weekday, day, , month] = formattedDate.split(' ');
+  return { weekday: weekday, day, month };
+};
 
 const Mural = () => {
+  const [currentDate, setCurrentDate] = useState({});
 
-    return (
+  useEffect(() => {
+    const getCurrentDate = () => {
+      const date = new Date();
+      setCurrentDate(formatDate(date));
+    };
 
-        <View>
-            <View style={styles.container}>
-                <Text style={styles.mainTitle}>Mural</Text>
+    getCurrentDate();
 
-                <View>
-                    <Text style={styles.currentDay}>Quarta-feira</Text>
-                    <Text style={styles.currentDate}>3 de Abril</Text>
-                </View>
-            </View>
-        </View >
-    )
+    const interval = setInterval(getCurrentDate, 1000);
 
-}
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <View>
+      <Text style={styles.mainTitle}>MURAL</Text>
+      <LinearGradient
+        colors={['#2499DB', '#37BCE7']}
+        start={{ x: 1, y: 0 }}
+        end={{ x: 0, y: 0 }}
+        style={styles.container}>
+        <Text style={styles.date}>
+          <Text style={styles.weekday}>{currentDate.weekday}</Text>
+        </Text>
+        <Text style={styles.date}>
+          <Text style={styles.day}>{currentDate.day} </Text>
+          <Text style={styles.month}>de {currentDate.month}</Text>
+        </Text>
+      </LinearGradient>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
+  mainTitle: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    margin: 20,
+    textAlign: 'left',
+  },
+  container: {
+    padding: 20,
+    borderRadius: 10,
+    elevation: 5,
+    alignSelf: 'center',
+    alignItems: 'left',
+    justifyContent: 'center',
+    width: '80%',
+  },
+  date: {
+    fontSize: 20,
+    color: 'white',
+  },
+  weekday: {
+    color: 'white',
+    fontSize: 20,
+  },
+  day: {
+    color: 'white',
+    fontSize: 30,
+  },
+  month: {
+    color: 'white',
+    fontSize: 30,
+  },
+});
 
-    container: {
-        margin: 50,
-        width: '100%',
-    },
-
-    mainTitle: {
-        fontSize: 34,
-        fontWeight: 700,
-        color: 'red',
-    },
-
-    containerDate: {
-        flex: 1,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    currentDay: {
-        fontSize: 20,
-        color: 'black',
-    },
-
-    currentDate: {
-        fontSize: 32,
-        color: 'black',
-    }
-})
-
-export default Mural
+export default Mural;
