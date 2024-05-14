@@ -2,8 +2,6 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/AntDesign';
-import { CheckBox } from '@rneui/themed';
-import { Picker } from '@react-native-picker/picker';
 
 const Escola = () => {
 
