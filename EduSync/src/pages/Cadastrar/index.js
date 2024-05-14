@@ -31,33 +31,38 @@ const Cadastrar = () => {
   //Função de cadastrar usuário
   const cadastrarUsuario = async () => {
 
-    let payload = {
-      nome: nome,
-      sobreNome: sobrenome,
-      email: email,
-      login: login,
-      senha: senha,
-      tipoPerfil: parseInt(value),
+    if (handleCadastrar()) {
+
+
+      let payload = {
+        nome: nome,
+        sobreNome: sobrenome,
+        email: email,
+        login: login,
+        senha: senha,
+        tipoPerfil: parseInt(value),
+      }
+
+      console.log('payload', payload)
+      //Chamada a API Edusync
+      const response = await fetch('https://edusync20240424230659.azurewebsites.net/api/Usuarios', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+        .then((response) => response.json())
+      console.log('response', response)
+        .then((json) => console.log(json));
+
+      useEffect(() => {
+        consultarCep();
+      }, []);
+
     }
-
-    console.log('payload', payload)
-    //Chamada a API Edusync
-    const response = await fetch('https://edusync20240424230659.azurewebsites.net/api/Usuarios', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    })
-      .then((response) => response.json())
-    console.log('response', response)
-      .then((json) => console.log(json));
-
-    useEffect(() => {
-      consultarCep();
-    }, []);
-
   }
+
   useEffect(() => {
     // Atualize os campos de endereço sempre que o estado `endereco` mudar
     if (endereco) {
@@ -79,6 +84,18 @@ const Cadastrar = () => {
     }
   };
 
+  const handleCadastrar = () => {
+
+    if (login === '' || senha === '' || confirmaSenha === '' || nome === '' || sobrenome === ''
+      || email === '' || cep === '' || logradouro === '' || numero === '' || complemento === ''
+      || bairro === '' || cidade === '' || matricula === '') {
+      alert('Preencha todos os campos');
+      return false;
+    }
+    return true
+  }
+
+
   return (
 
     <ScrollView>
@@ -91,20 +108,27 @@ const Cadastrar = () => {
             <TextInput style={styles.input}
               placeholder="Login"
               autoCorrect={false}
+              required={true}
               onChangeText={login => setLogin(login)}
             />
 
             <TextInput style={styles.input}
               placeholder="Senha"
               autoCorrect={false}
+              secureTextEntry={true}
               onChangeText={senha => setSenha(senha)}
             />
 
             <TextInput style={styles.input}
               placeholder="Confirmar Senha"
               autoCorrect={false}
+              secureTextEntry={true}
               onChangeText={confirmaSenha => setconfirmaSenha(confirmaSenha)}
             />
+
+            <View style={styles.warningContainer}>
+              <Text style={styles.warningMessage}></Text>
+            </View>
 
             <TextInput style={styles.input}
               placeholder="Nome"
@@ -245,6 +269,20 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     fontSize: 15,
+  },
+
+  warningContainer: {
+    flex: 1,
+    width: '90%',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    flexWrap: 'wrap',
+  },
+
+  warningMessage: {
+    color: '#B62323',
+    fontSize: 12,
+    marginBottom: 15,
   },
 
   btnSubmit: {
