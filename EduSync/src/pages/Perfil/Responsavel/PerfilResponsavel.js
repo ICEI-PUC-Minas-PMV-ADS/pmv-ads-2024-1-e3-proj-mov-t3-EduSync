@@ -1,39 +1,72 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-ionicons';
 import Ionicons from 'react-native-vector-icons/AntDesign';
 
 const PerfilResponsavel = () => {
-  const [name, setName] = useState('');
-  const [dob, setDob] = useState('');
-  const [role, setRole] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch('https://edusync20240424230659.azurewebsites.net/api/Usuarios/1', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Erro ao buscar dados do usuário');
+        }
+
+        const data = await response.json();
+        setUserData(data);
+      } catch (error) {
+        console.error('Erro ao buscar dados do usuário', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Image style={styles.loading} source={require('../../../assets/loading.gif')} />
+      </View>
+    );
+  }
+
+  if (!userData) {
+    return (
+      <View style={styles.container}>
+        <Text>Erro ao carregar dados do usuário</Text>
+      </View>
+    );
+  }
 
   return (
     <ScrollView>
       <View style={styles.container}>
-
-        <TouchableOpacity style={styles.ConfigIcons} >
-
+        <TouchableOpacity style={styles.ConfigIcons}>
           <Ionicons name="setting" size={30} color={"#a9a9a9"} />
-
         </TouchableOpacity>
 
         <View style={styles.title}>
-
           <Text style={styles.title}>Perfil</Text>
-
         </View>
 
         <View style={styles.containerName}>
           <Image style={styles.profileImage} source={require('../../../assets/Profile.jpg')} />
-          <Text style={styles.name}>João Ferreira</Text>
+          <Text style={styles.name}>{userData.nome} {userData.sobreNome}</Text>
         </View>
 
         <View style={styles.containerInfo}>
-
           <View style={styles.info}>
             <View style={styles.editContainer}>
               <Text style={styles.label}>Nome:</Text>
@@ -41,20 +74,20 @@ const PerfilResponsavel = () => {
                 <Text style={styles.edit}>Alterar</Text>
               </TouchableOpacity>
             </View>
-            <Text style={styles.value}>João Ferreira</Text>
+            <Text style={styles.value}>{userData.nome} {userData.sobreNome}</Text>
             <View style={styles.border} />
           </View>
 
-          <View style={styles.info}>
+          {/* <View style={styles.info}>
             <View style={styles.editContainer}>
               <Text style={styles.label}>Endereço:</Text>
               <TouchableOpacity>
                 <Text style={styles.edit}>Alterar</Text>
               </TouchableOpacity>
             </View>
-            <Text style={styles.value}>Rua do Carmo - Centro - Santa Luzia</Text>
+            <Text style={styles.value}> Rua {userData.address}</Text>
             <View style={styles.border} />
-          </View>
+          </View> */}
 
           <View style={styles.info}>
             <View style={styles.editContainer}>
@@ -63,29 +96,27 @@ const PerfilResponsavel = () => {
                 <Text style={styles.edit}>Alterar</Text>
               </TouchableOpacity>
             </View>
-            <Text style={styles.value}>joao.ferreira@gmai.com</Text>
+            <Text style={styles.value}>{userData.email} </Text>
             <View style={styles.border} />
           </View>
 
-          <View style={styles.info}>
+          {/* <View style={styles.info}>
             <View style={styles.editContainer}>
               <Text style={styles.label}>Celular:</Text>
               <TouchableOpacity>
                 <Text style={styles.edit}>Alterar</Text>
               </TouchableOpacity>
             </View>
-            <Text style={styles.value}>(31) 99834-0943</Text>
+            <Text style={styles.value}>{userData.}</Text>
             <View style={styles.border} />
           </View>
 
           <View style={styles.info}>
-            <Text style={styles.label}>Nome</Text>
-            <Text style={styles.value}>João Ferreira</Text>
+            <Text style={styles.label}>Data de Nascimento</Text>
+            <Text style={styles.value}>{userData.}</Text>
             <View style={styles.border} />
-          </View>
-
+          </View> */}
         </View>
-
       </View>
 
       <View style={styles.navBar}>
@@ -95,12 +126,12 @@ const PerfilResponsavel = () => {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.icons} onPress={() => { }}>
-          <Ionicons name="exclamationcircleo" size={30} color={"#a9a9a9"} />
+          <Icon name="information-circle-outline" size={20} color={"#a9a9a9"} />
           <Text>Mural</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.icons} onPress={() => { }}>
-          <Ionicons name="calendar" size={30} color={"#a9a9a9"} />
+          <Icon name="calendar-outline" size={20} color={"#a9a9a9"} />
           <Text>Calendário</Text>
         </TouchableOpacity>
 
@@ -113,12 +144,23 @@ const PerfilResponsavel = () => {
           <Ionicons name="user" size={30} color={"#a9a9a9"} />
           <Text>Perfil</Text>
         </TouchableOpacity>
-
       </View>
-    </ScrollView >
+    </ScrollView>
   );
 };
+
 const styles = StyleSheet.create({
+
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  loading: {
+    width: 80,
+    height: 80,
+  },
 
   container: {
     flex: 1,
@@ -153,6 +195,7 @@ const styles = StyleSheet.create({
   containerInfo: {
     flex: 1,
     paddingTop: 35,
+    paddingBottom: '100%',
   },
 
   info: {
@@ -162,12 +205,12 @@ const styles = StyleSheet.create({
   editContainer: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
 
   edit: {
-    font: 10,
-    color: '#31A05F'
+    fontSize: 10,
+    color: '#31A05F',
   },
 
   label: {
@@ -192,8 +235,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     paddingRight: 20,
     paddingLeft: 20,
-    marginBottom: 10,
-    marginTop: 50,
+    paddingVertical: 10,
+    backgroundColor: '#F6F6F9', // Adiciona uma cor de fundo para o navBar
   },
 
   ConfigIcons: {
