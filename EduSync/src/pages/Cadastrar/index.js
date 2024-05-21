@@ -19,6 +19,7 @@ const Cadastrar = () => {
   const [tipo, setTipo] = useState(null);
   const [matricula, setMatricula] = useState('');
   const [endereco, setEndereco] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (cep.length === 8) {
@@ -35,7 +36,11 @@ const Cadastrar = () => {
   }, [endereco]);
 
   const cadastrarUsuario = async () => {
-    if (handleCadastrar()) {
+    if (loading) return;
+
+    setLoading(true);
+
+    if (Validate()) {
       let payload = {
         nome: nome,
         sobreNome: sobrenome,
@@ -66,7 +71,11 @@ const Cadastrar = () => {
       } catch (error) {
         console.error('Erro ao cadastrar usuário:', error);
         alert('Erro ao cadastrar usuário')
+      } finally {
+        setLoading(false);
       }
+    } else {
+      setLoading(false);
     }
   };
 
@@ -81,7 +90,7 @@ const Cadastrar = () => {
     }
   };
 
-  const handleCadastrar = () => {
+  const Validate = () => {
     if (login === '' || senha === '' || nome === '' || sobrenome === '' || email === '' || cep === '' || logradouro === '' || numero === '' || complemento === '' || bairro === '' || cidade === '' || matricula === '') {
       alert('Preencha todos os campos');
       return false;
@@ -98,125 +107,140 @@ const Cadastrar = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={{ flex: 1 }}
     >
-      <ScrollView>
-        <View style={styles.container}>
-          <Text style={styles.title}>Cadastre um usuário</Text>
-          <View style={styles.containerForm}>
-            <View style={styles.containerInput}>
-              <TextInput
-                style={styles.input}
-                placeholder="Login"
-                autoCorrect={false}
-                required={true}
-                onChangeText={login => setLogin(login)}
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Senha"
-                autoCorrect={false}
-                secureTextEntry={true}
-                passwordRules=""
-                textContentType="none"
-                onChangeText={senha => setSenha(senha)}
-              />
-              {/* <TextInput
-                style={styles.input}
-                placeholder="Confirmar Senha"
-                autoCorrect={false}
-                textContentType="none"
-                passwordRules=""
-                secureTextEntry={true}
-                onChangeText={confirmaSenha => setConfirmaSenha(confirmaSenha)}
-              /> */}
-              <TextInput
-                style={styles.input}
-                placeholder="Nome"
-                autoCorrect={false}
-                onChangeText={nome => setNome(nome)}
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Sobrenome"
-                autoCorrect={false}
-                onChangeText={sobrenome => setSobrenome(sobrenome)}
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Email"
-                autoCorrect={false}
-                onChangeText={email => setEmail(email)}
-                keyboardType='email-address'
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="CEP"
-                autoCorrect={false}
-                onChangeText={cep => setCep(cep)}
-                keyboardType='numeric'
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Logradouro"
-                value={logradouro}
-                autoCorrect={false}
-                onChangeText={value => setLogradouro(value)}
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Número"
-                autoCorrect={false}
-                onChangeText={value => setNumero(value)}
-                keyboardType='numeric'
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Complemento"
-                autoCorrect={false}
-                onChangeText={value => setComplemento(value)}
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Bairro"
-                value={bairro}
-                autoCorrect={false}
-                onChangeText={value => setBairro(value)}
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Cidade"
-                value={cidade}
-                autoCorrect={false}
-                onChangeText={value => setCidade(value)}
-              />
-              <Picker
-                style={pickerSelectStyles}
-                onValueChange={(value) => setTipo(value)}
-                value={tipo}
-                items={[
-                  { label: 'Responsável', value: '1' },
-                  { label: 'Escola', value: '2' },
-                  { label: 'Professor', value: '3' },
-                ]}
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Matrícula"
-                autoCorrect={false}
-                onChangeText={matricula => setMatricula(matricula)}
-                keyboardType='numeric'
-              />
-              <TouchableOpacity style={styles.btnSubmit}>
-                <Button title="Cadastrar" onPress={cadastrarUsuario} style={styles.submitText} />
-              </TouchableOpacity>
+      {loading ? (
+        <View style={styles.loadingContainer}>
+          <Image style={styles.loading} source={require('../../assets/loading.gif')} />
+        </View>
+      ) : (
+        <ScrollView>
+          <View style={styles.container}>
+            <Text style={styles.title}>Cadastre um usuário</Text>
+            <View style={styles.containerForm}>
+              <View style={styles.containerInput}>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Login"
+                  autoCorrect={false}
+                  required={true}
+                  onChangeText={login => setLogin(login)}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Senha"
+                  autoCorrect={false}
+                  secureTextEntry={true}
+                  passwordRules=""
+                  textContentType="none"
+                  onChangeText={senha => setSenha(senha)}
+                />
+                {/* <TextInput
+                  style={styles.input}
+                  placeholder="Confirmar Senha"
+                  autoCorrect={false}
+                  textContentType="none"
+                  passwordRules=""
+                  secureTextEntry={true}
+                  onChangeText={confirmaSenha => setConfirmaSenha(confirmaSenha)}
+                /> */}
+                <TextInput
+                  style={styles.input}
+                  placeholder="Nome"
+                  autoCorrect={false}
+                  onChangeText={nome => setNome(nome)}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Sobrenome"
+                  autoCorrect={false}
+                  onChangeText={sobrenome => setSobrenome(sobrenome)}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Email"
+                  autoCorrect={false}
+                  onChangeText={email => setEmail(email)}
+                  keyboardType='email-address'
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="CEP"
+                  autoCorrect={false}
+                  onChangeText={cep => setCep(cep)}
+                  keyboardType='numeric'
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Logradouro"
+                  value={logradouro}
+                  autoCorrect={false}
+                  onChangeText={value => setLogradouro(value)}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Número"
+                  autoCorrect={false}
+                  onChangeText={value => setNumero(value)}
+                  keyboardType='numeric'
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Complemento"
+                  autoCorrect={false}
+                  onChangeText={value => setComplemento(value)}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Bairro"
+                  value={bairro}
+                  autoCorrect={false}
+                  onChangeText={value => setBairro(value)}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Cidade"
+                  value={cidade}
+                  autoCorrect={false}
+                  onChangeText={value => setCidade(value)}
+                />
+                <Picker
+                  style={pickerSelectStyles}
+                  onValueChange={(value) => setTipo(value)}
+                  value={tipo}
+                  items={[
+                    { label: 'Responsável', value: '1' },
+                    { label: 'Escola', value: '2' },
+                    { label: 'Professor', value: '3' },
+                  ]}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Matrícula"
+                  autoCorrect={false}
+                  onChangeText={matricula => setMatricula(matricula)}
+                  keyboardType='numeric'
+                />
+                <TouchableOpacity style={styles.btnSubmit}>
+                  <Button title="Cadastrar" onPress={cadastrarUsuario} style={styles.submitText} />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      )}
     </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  loading: {
+    width: 80,
+    height: 80,
+  },
   container: {
     width: '100%',
     flex: 1,

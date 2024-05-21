@@ -19,6 +19,10 @@ const Escola = () => {
     navigation.navigate(Cadastrar);
   };
 
+  const Usuarios = () => {
+    navigation.navigate(Usuarios);
+  };
+
   return (
 
     <View style={styles.container}>
@@ -72,6 +76,14 @@ const Escola = () => {
         <TouchableOpacity style={styles.button} onPress={PerfilEscola}>
 
           <Text>PERFIL</Text>
+
+          <Ionicons style={styles.icon} name="user" color={"#a9a9a9"} size={25} />
+
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={Usuarios}>
+
+          <Text>USUÁRIOS</Text>
 
           <Ionicons style={styles.icon} name="user" color={"#a9a9a9"} size={25} />
 
