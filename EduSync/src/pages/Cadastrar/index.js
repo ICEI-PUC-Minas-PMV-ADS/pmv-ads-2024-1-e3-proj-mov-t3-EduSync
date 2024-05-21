@@ -64,8 +64,8 @@ const Cadastrar = () => {
         const json = await response.json();
         console.log('response', json);
       } catch (error) {
-        alert('Erro ao cadastrar usuário')
         console.error('Erro ao cadastrar usuário:', error);
+        alert('Erro ao cadastrar usuário')
       }
     }
   };
@@ -82,14 +82,14 @@ const Cadastrar = () => {
   };
 
   const handleCadastrar = () => {
-    if (login === '' || senha === '' || confirmaSenha === '' || nome === '' || sobrenome === '' || email === '' || cep === '' || logradouro === '' || numero === '' || complemento === '' || bairro === '' || cidade === '' || matricula === '') {
+    if (login === '' || senha === '' || nome === '' || sobrenome === '' || email === '' || cep === '' || logradouro === '' || numero === '' || complemento === '' || bairro === '' || cidade === '' || matricula === '') {
       alert('Preencha todos os campos');
       return false;
     }
-    if (senha !== confirmaSenha) {
-      alert('As senhas não coincidem');
-      return false;
-    }
+    // if (senha !== confirmaSenha) {
+    //   alert('As senhas não coincidem');
+    //   return false;
+    // }
     return true;
   };
 
@@ -115,15 +115,19 @@ const Cadastrar = () => {
                 placeholder="Senha"
                 autoCorrect={false}
                 secureTextEntry={true}
+                passwordRules=""
+                textContentType="none"
                 onChangeText={senha => setSenha(senha)}
               />
-              <TextInput
+              {/* <TextInput
                 style={styles.input}
                 placeholder="Confirmar Senha"
                 autoCorrect={false}
+                textContentType="none"
+                passwordRules=""
                 secureTextEntry={true}
                 onChangeText={confirmaSenha => setConfirmaSenha(confirmaSenha)}
-              />
+              /> */}
               <TextInput
                 style={styles.input}
                 placeholder="Nome"
