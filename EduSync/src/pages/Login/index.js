@@ -20,24 +20,29 @@ const Login = () => {
   
 
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (email === '' || password === '') {
       alert('Preencha todos os campos');
       return;
     }
 
-    switch (selectedUser) { 
-      case 'responsavel':
-        navigation.navigate('Responsavel');
-        break;
-      case 'escola':
-        navigation.navigate('Escola');
-        break;
-      case 'professor':
-        navigation.navigate('Professor');
-        break;
-      default:
-        alert('Selecione um tipo de usuário');
+    try {
+      const response = await fetch('https://edusync20240424230659.azurewebsites.net/api/Usuarios', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ DS_LOGIN: email, DS_SENHA: password }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert('Login bem-sucedido');
+      } else {
+        alert('Credenciais inválidas');
+      }
+    } catch (error) {
+      alert('Erro ao fazer login');
+      console.error(error);
     }
   };
 
@@ -47,120 +52,84 @@ const Login = () => {
 
   return (
 
-      <View style={styles.container}>
+    <View style={styles.container}>
 
 
-        <View style={styles.containerLogo}>
+      <View style={styles.containerLogo}>
 
-         <Image
+        <Image
           source={require('../../assets/Logo.png')}
 
-         />
+        />
 
-        </View>
+      </View>
 
-        <View style={styles.inputArea}>
+      <View style={styles.inputArea}>
 
-          <TextInput style ={styles.input}
-            placeholder=" Digite seu Email"
-            autoCorrect={false}
-            onChangeText={setEmail}
-            placeholderTextColor= "#a9a9a9"
-            value={email}
+        <TextInput style ={styles.input}
+          placeholder=" Digite seu Email"
+          autoCorrect={false}
+          onChangeText={setEmail}
+          placeholderTextColor= "#a9a9a9"
+          value={email}
             
-          />
+        />
             
           
-          <Ionicons style={styles.iconEmail} name= "mail" color={"#a9a9a9"} size={25}/>
+        <Ionicons style={styles.iconEmail} name= "mail" color={"#a9a9a9"} size={25}/>
             
 
-        </View>
+      </View>
 
-        <View style={styles.inputArea}>
+      <View style={styles.inputArea}>
 
-          <TextInput style ={styles.input}
+        <TextInput style ={styles.input}
           placeholderTextColor= "#a9a9a9"
-            placeholder=" Digite sua Senha"
-            autoCorrect={false}
-            onChangeText={setPassword}
-            value={password}
+          placeholder=" Digite sua Senha"
+          autoCorrect={false}
+          onChangeText={setPassword}
+          value={password}
             secureTextEntry={hidePass}
           />
 
 
-          <TouchableOpacity style={styles.icon} onPress={() => setHidePass(!hidePass)}>
+        <TouchableOpacity style={styles.icon} onPress={() => setHidePass(!hidePass)}>
 
-            {hidePass?
-              <Ionicons name = "lock" color={"#a9a9a9"} size={25}/>
-              :
-              <Ionicons name = "unlock" color={"#a9a9a9"} size={25}/>
-            }
+          {hidePass?
+            <Ionicons name = "lock" color={"#a9a9a9"} size={25}/>
+            :
+            <Ionicons name = "unlock" color={"#a9a9a9"} size={25}/>
+          }
           
-          </TouchableOpacity>
+        </TouchableOpacity>
 
-        </View>
-
-        <View style={styles.inputArea}>
-
-        
-
-          <Picker 
-            style={pickerSelectStyles}
-            onValueChange={(value) => setSelectedUser(value)}
-            value={selectedUser}
-            items={[
-              { label: 'Responsável', value: 'responsavel' },
-              { label: 'Escola', value: 'escola' },
-              { label: 'Professor', value: 'professor' },
-            ]}
-          />
-       
-          {Platform.OS === 'android' && selectedUser && (
-            <View style={styles.selectedProfileContainer}>
-              <Text style={styles.selectedProfile}>{selectedUser}</Text>
-            </View>
-          )}
+      </View>
 
 
-        </View>
-
-
-      
           
-        <View style={styles.btn}>
-
-          <CheckBox checked= {accept} onPress={() => {setAccept ((prev) => !prev);
-          
-          }} 
-          />
-
-          <View >
-            
-            <Text  style={styles.lembrarSenha}> Lembrar Senha
-            </Text>
-
-          </View>
-
-          <TouchableOpacity >
-
-            <Text style ={styles.recuperarSenha} >Recuperar Senha</Text>
-
-          </TouchableOpacity>
+      <View style={styles.btn}>
 
 
-        </View>
+        <TouchableOpacity >
 
+          <Text style ={styles.recuperarSenha} >Recuperar Senha</Text>
 
-          <TouchableOpacity style={styles.btnSubmit} onPress={handleLogin} >
-
-            <Text style={styles.submitText}>Acessar</Text>
-
-         </TouchableOpacity>
-
+        </TouchableOpacity>
 
 
       </View>
 
+
+      <TouchableOpacity style={styles.btnSubmit} onPress={handleLogin} >
+
+        <Text style={styles.submitText}>Acessar</Text>
+
+      </TouchableOpacity>
+
+
+
+    </View>
+       
   );
 };
 
@@ -233,7 +202,7 @@ const styles = StyleSheet.create({
 
     btn:{
 
-      flexDirection: 'row',
+      
       backgroundColor: '#fff',
       alignItems: 'center',
       alignContent: 'center',
@@ -241,22 +210,11 @@ const styles = StyleSheet.create({
 
     },
 
-    lembrarSenha: {
-
-      end: 30,
-      height: 50,
-      color: '#a9a9a9',
-      padding: 8,
-      fontSize: 18,
-
-      
-
-    },
-
 
     recuperarSenha:{
 
-      marginLeft:15,
+      
+      marginLeft:'50%',
       height: 50,
       color: '#a9a9a9',
       padding: 8,
@@ -265,6 +223,7 @@ const styles = StyleSheet.create({
 
 
     },
+
 
 
     btnSubmit: {
@@ -286,44 +245,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
 
-    selectedProfileContainer: {
-      alignItems: 'center',
-      marginTop: 15,
-      marginTop: 6,
-    },
 
-    selectedProfile: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      color: '#a9a9a9',
-    },
-
-
-
-
-});
-
-const pickerSelectStyles = StyleSheet.create({
-
-  inputIOS: {
-    
-    alignItems: 'center',
-    fontSize: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    color: '#a9a9a9',
-    paddingRight: 30,
-  },
-
-  inputAndroid: {
-
-    borderRadius: 4,
-    fontSize: 16,
-    paddingHorizontal: 10,
-    color: '#a9a9a9',
-    paddingRight: 30,
-
-  },
 
 });
 
