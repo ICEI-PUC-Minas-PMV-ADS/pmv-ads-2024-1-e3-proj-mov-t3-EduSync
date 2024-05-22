@@ -17,6 +17,7 @@ import Usuarios from './src/pages/Perfil/Escola/Usuarios';
 import TipoCadastro from './src/pages/TipoCadastro';
 import CadastrarResponsavel from './src/pages/CadastrarResponsavel';
 import CadastrarTurma from './src/pages/CadastrarTurma';
+import EditarUsuario from './src/pages/Perfil/Responsavel/EditarUsuario';
 
 const Stack = createNativeStackNavigator();
 
@@ -94,6 +95,10 @@ const App = () => {
           component={CadastrarTurma}
         />
 
+        <Stack.Screen
+          name="EditarUsuario"
+          component={EditarUsuario}
+        />
       </Stack.Navigator>
 
       <StatusBar backgroundColor="#87cefa" barStyle="light-content" />
