@@ -5,13 +5,20 @@ import Icon from 'react-native-ionicons';
 import Ionicons from 'react-native-vector-icons/AntDesign';
 
 const PerfilResponsavel = () => {
+
+  const navigation = useNavigation();
+
+  const EditarUsuario = () => {
+    navigation.navigate('EditarUsuario');
+  };
+
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('https://edusync20240424230659.azurewebsites.net/api/Usuarios/1', {
+        const response = await fetch('https://edusync20240424230659.azurewebsites.net/api/Usuarios/11', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -71,7 +78,7 @@ const PerfilResponsavel = () => {
             <View style={styles.editContainer}>
               <Text style={styles.label}>Nome:</Text>
               <TouchableOpacity>
-                <Text style={styles.edit}>Alterar</Text>
+                <Text style={styles.edit} onPress={EditarUsuario}>Alterar</Text>
               </TouchableOpacity>
             </View>
             <Text style={styles.value}>{userData.nome} {userData.sobreNome}</Text>
@@ -82,7 +89,7 @@ const PerfilResponsavel = () => {
             <View style={styles.editContainer}>
               <Text style={styles.label}>E-mail:</Text>
               <TouchableOpacity>
-                <Text style={styles.edit}>Alterar</Text>
+                <Text style={styles.edit} onPress={EditarUsuario}>Alterar</Text>
               </TouchableOpacity>
             </View>
             <Text style={styles.value}>{userData.email} </Text>
