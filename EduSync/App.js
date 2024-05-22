@@ -14,6 +14,9 @@ import PerfilResponsavel from './src/pages/Perfil/Responsavel/PerfilResponsavel'
 import PerfilProfessor from './src/pages/Perfil/Professor/PerfilProfessor';
 import Mural from './src/pages/Mural';
 import Usuarios from './src/pages/Perfil/Escola/Usuarios';
+import TipoCadastro from './src/pages/TipoCadastro';
+import CadastrarResponsavel from './src/pages/CadastrarResponsavel';
+import CadastrarTurma from './src/pages/CadastrarTurma';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,12 +34,6 @@ const App = () => {
         <Stack.Screen
           name="Login"
           component={Login}
-
-        />
-
-        <Stack.Screen
-          name="Cadastrar"
-          component={Cadastrar}
 
         />
 
@@ -80,6 +77,21 @@ const App = () => {
         <Stack.Screen
           name="Usuarios"
           component={Usuarios}
+        />
+
+        <Stack.Screen
+          name="TipoCadastro"
+          component={TipoCadastro}
+        />
+
+        <Stack.Screen
+          name="CadastrarResponsavel"
+          component={CadastrarResponsavel}
+        />
+
+        <Stack.Screen
+          name="CadastrarTurma"
+          component={CadastrarTurma}
         />
 
       </Stack.Navigator>

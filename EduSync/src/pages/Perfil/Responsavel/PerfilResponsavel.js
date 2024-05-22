@@ -78,17 +78,6 @@ const PerfilResponsavel = () => {
             <View style={styles.border} />
           </View>
 
-          {/* <View style={styles.info}>
-            <View style={styles.editContainer}>
-              <Text style={styles.label}>Endereço:</Text>
-              <TouchableOpacity>
-                <Text style={styles.edit}>Alterar</Text>
-              </TouchableOpacity>
-            </View>
-            <Text style={styles.value}> Rua {userData.address}</Text>
-            <View style={styles.border} />
-          </View> */}
-
           <View style={styles.info}>
             <View style={styles.editContainer}>
               <Text style={styles.label}>E-mail:</Text>
@@ -99,23 +88,6 @@ const PerfilResponsavel = () => {
             <Text style={styles.value}>{userData.email} </Text>
             <View style={styles.border} />
           </View>
-
-          {/* <View style={styles.info}>
-            <View style={styles.editContainer}>
-              <Text style={styles.label}>Celular:</Text>
-              <TouchableOpacity>
-                <Text style={styles.edit}>Alterar</Text>
-              </TouchableOpacity>
-            </View>
-            <Text style={styles.value}>{userData.}</Text>
-            <View style={styles.border} />
-          </View>
-
-          <View style={styles.info}>
-            <Text style={styles.label}>Data de Nascimento</Text>
-            <Text style={styles.value}>{userData.}</Text>
-            <View style={styles.border} />
-          </View> */}
         </View>
       </View>
 
