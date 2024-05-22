@@ -15,8 +15,8 @@ const Escola = () => {
     navigation.navigate(Mural);
   };
 
-  const Cadastrar = () => {
-    navigation.navigate(Cadastrar);
+  const TipoCadastro = () => {
+    navigation.navigate(TipoCadastro);
   };
 
   const Usuarios = () => {
@@ -41,7 +41,7 @@ const Escola = () => {
 
       <View style={styles.grid}>
 
-        <TouchableOpacity style={styles.button} onPress={Cadastrar}>
+        <TouchableOpacity style={styles.button} onPress={TipoCadastro}>
 
           <Text>CADASTRAR</Text>
 
