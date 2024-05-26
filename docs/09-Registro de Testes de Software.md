@@ -3,8 +3,8 @@
 | | | | | | | | |
 |-|-|-|-|-|-|-|-|
 |Caso de Teste|Requisito Associado|Objetivo do Teste|Passos|Critérios de Êxito|Resultado Obtido|Cenários de testes|Imagem de Registro
-|CT-01 - Verificar aparecimento da tela de carregamento.| - | Vericar se App esta fazendo o carregamento corretamente| Instalar APP e Abrir| - | - | Abrir APP | - |
-|CT-02 - Verificar se página de login está aparecendo conforme esperado.| - | Vericar se App esta carregando tela de Login| Instalar APP e Abrir| - | - | Abrir APP | - |
+|CT-01 - Verificar aparecimento da tela de carregamento.| - | Vericar se App esta fazendo o carregamento corretamente da tela Inicial| Instalar APP e Abrir| Visualizar Tela Welcome | Sucesso | Intalar e Abrir APP |  ![likert](/docs/img/Welcome.jpeg) |
+|CT-02 - Verificar se página de login está aparecendo conforme esperado.| - | Vericar se App esta carregando tela de Login| Visualizar tela de login| Sucesso |Instalar APP e Abrir, depois clicar no botão Login da tela Welcome | - |
 |CT-03 - Verificar se ação de login esta funcionando corretamente .| - | Vericar se App fazendo login corretamente identificando o perfil do usuário| Preencher os campos de Login e senha| - | - | Acessar com perfis, ADM Escola, responsáveis e Professores | - |
 |CT-04 - Verificar se permissões concedidas aos usuários estão corretas| - | Vericar se App concede as permissões de acordo com perfil logado| Preencher os campos de Login e senha e acessar APP| - | - | Acessar com perfis, ADM Escola, responsáveis e Professores  | - |
 |CT-05 - Verificar se as mensagens estão sendo enviadas corretamente. | RF-001 | Vericar se App esta relaizando a troca de mensagem de forma correta| Acessar App e disparar mensagem| - | - | Disparar mensagens com os perfis ADM Escola, responsáveis e Professores | - |
