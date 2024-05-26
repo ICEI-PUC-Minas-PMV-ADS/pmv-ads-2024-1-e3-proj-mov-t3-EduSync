@@ -1,9 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Platform } from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Platform,Button,Alert } from 'react-native';
 import Ionicons  from 'react-native-vector-icons/Feather';
 import { CheckBox } from '@rneui/themed';
 import  Picker  from 'react-native-picker-select';
+
+import { login } from '../../Service/api'; 
+
+
 
 const Login = () => { 
 
@@ -17,10 +21,44 @@ const Login = () => {
   const [selectedResponsavel, setSelectedResponsavel] = useState(false);
   const [selectedEscola, setSelectedEscola] = useState(false);
   const [selectedProfessor, setSelectedProfessor] = useState(false);
+
+  const handleLogin = async () => {
+
+    try {
+      const userData = await login(email, password);
+
+      console.log('User data:', userData);      
+      navigation.navigate('Escola');
+      
+    } catch (error) {
+      Alert.alert('Falha no Login', 'Email ou Senha Inválidos');
+    }
+  };
+
+  /*return (
+    <View style={{ flex: 1, justifyContent: 'center', padding: 20 }}>
+      <Text>Email:</Text>
+      <TextInput
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 20 }}
+        onChangeText={setEmail}
+        value={email}
+        autoCapitalize='none'
+        keyboardType='email-address'
+      />
+      <Text>Password:</Text>
+      <TextInput
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 20 }}
+        onChangeText={setPassword}
+        value={password}
+        secureTextEntry
+      />
+      <Button title="Login" onPress={handleLogin} />
+    </View>
+  );*/
   
 
 
-  const handleLogin = async () => {
+  /*const handleLogin = async () => {
     if (email === '' || password === '') {
       alert('Preencha todos os campos');
       return;
@@ -44,45 +82,28 @@ const Login = () => {
       alert('Erro ao fazer login');
       console.error(error);
     }
-  };
-
-
-
-
+  };*/
 
   return (
-
+    
     <View style={styles.container}>
-
-
       <View style={styles.containerLogo}>
-
         <Image
           source={require('../../assets/Logo.png')}
-
         />
-
       </View>
-
       <View style={styles.inputArea}>
-
         <TextInput style ={styles.input}
           placeholder=" Digite seu Email"
           autoCorrect={false}
           onChangeText={setEmail}
           placeholderTextColor= "#a9a9a9"
-          value={email}
-            
-        />
-            
-          
+          value={email}            
+        />          
         <Ionicons style={styles.iconEmail} name= "mail" color={"#a9a9a9"} size={25}/>
-            
 
       </View>
-
       <View style={styles.inputArea}>
-
         <TextInput style ={styles.input}
           placeholderTextColor= "#a9a9a9"
           placeholder=" Digite sua Senha"
@@ -91,46 +112,24 @@ const Login = () => {
           value={password}
             secureTextEntry={hidePass}
           />
-
-
         <TouchableOpacity style={styles.icon} onPress={() => setHidePass(!hidePass)}>
-
           {hidePass?
             <Ionicons name = "lock" color={"#a9a9a9"} size={25}/>
             :
             <Ionicons name = "unlock" color={"#a9a9a9"} size={25}/>
-          }
-          
+          }          
         </TouchableOpacity>
-
-      </View>
-
-
-          
+      </View>          
       <View style={styles.btn}>
-
-
         <TouchableOpacity >
-
           <Text style ={styles.recuperarSenha} >Recuperar Senha</Text>
-
         </TouchableOpacity>
-
-
       </View>
-
-
       <TouchableOpacity style={styles.btnSubmit} onPress={handleLogin} >
-
         <Text style={styles.submitText}>Acessar</Text>
-
       </TouchableOpacity>
-
-
-
-    </View>
-       
-  );
+    </View>       
+  );  
 };
 
 const styles = StyleSheet.create({

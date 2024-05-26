@@ -8,14 +8,14 @@ import Login from './src/pages/Login';
 import Escola from './src/pages/Perfil/Escola';
 import Professor from './src/pages/Perfil/Professor';
 import Responsavel from './src/pages/Perfil/Responsavel';
-import Cadastrar from './src/pages/Cadastrar';
+//import Cadastrar from './src/pages/Cadastrar';
 import PerfilEscola from './src/pages/Perfil/Escola/PerfilEscola';
 import PerfilResponsavel from './src/pages/Perfil/Responsavel/PerfilResponsavel';
 import PerfilProfessor from './src/pages/Perfil/Professor/PerfilProfessor';
 import Mural from './src/pages/Mural';
 import Usuarios from './src/pages/Perfil/Escola/Usuarios';
 import TipoCadastro from './src/pages/TipoCadastro';
-import CadastrarResponsavel from './src/pages/CadastrarResponsavel';
+//import CadastrarResponsavel from './src/pages/CadastrarResponsavel';
 import CadastrarTurma from './src/pages/CadastrarTurma';
 import EditarUsuario from './src/pages/Perfil/Responsavel/EditarUsuario';
 
@@ -70,11 +70,7 @@ const App = () => {
           component={PerfilProfessor}
         />
 
-        <Stack.Screen
-          name="PerfilResponsavel"
-          component={PerfilResponsavel}
-        />
-
+        
         <Stack.Screen
           name="Usuarios"
           component={Usuarios}
@@ -85,10 +81,7 @@ const App = () => {
           component={TipoCadastro}
         />
 
-        <Stack.Screen
-          name="CadastrarResponsavel"
-          component={CadastrarResponsavel}
-        />
+        
 
         <Stack.Screen
           name="CadastrarTurma"
