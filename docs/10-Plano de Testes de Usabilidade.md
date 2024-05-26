@@ -2,6 +2,20 @@
 
 O teste de usabilidade permite avaliar a qualidade da interface com o usuário da aplicação interativa. O Plano de Testes de Software é gerado a partir da especificação do sistema e consiste em casos de testes que deverão ser executados quando a implementação estiver parcial ou totalmente pronta.
 
+Conforme imagem abaixo, usamos da escala negativa, pontos que a usabilidade da interface com usuário está comprometida, conforme a escala tende para o positivo a usabilidade está adequada as necessidades do usuário, usando dos pontos de (Concordância, Frequência, Importância e Probabilidade). 
+
+![likert](/docs/img/likert.png)
+
+Os pontos trabalhanos nessa escala são:
+
+- Concordância: o entrevistado dizer o quanto ele concorda ou discorda de usabilidade e aderencia a plataforma. 
+
+- Frequência: mede a frequência com que uma pessoa faz uma determinada coisa para chegar ao resultado.
+
+- Importância: verificar a importância ou relevância do produto ou serviço para a pessoa que está respondendo à pesquisa.
+
+- Probabilidade: o usuário do seu produto ou serviço tem a probabilidade de indicar.
+
 
 | Critérios de Avaliação de Usabilidade | Descrição  |
 |---------------|---------------|
