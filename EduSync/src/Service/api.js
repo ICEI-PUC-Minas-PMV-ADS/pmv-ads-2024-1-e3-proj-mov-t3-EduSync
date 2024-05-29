@@ -1,4 +1,6 @@
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const API_URL = 'https://edusync20240424230659.azurewebsites.net/api';
 
@@ -8,6 +10,14 @@ export const login = async (login, senha) => {
         login,
         senha,
     });
+    const userData = response.data;
+
+    if (userData && userData.user && userData.user.id && userData.user.nome && userData.user.tipoPerfil && userData.token) {
+      await AsyncStorage.setItem('userToken', userData.token);
+      await AsyncStorage.setItem('userId', userData.user.id.toString());
+      await AsyncStorage.setItem('userPerfil', userData.user.tipoPerfil.toString());
+      await AsyncStorage.setItem('userName', userData.user.nome);
+    }
     return response.data;
   } catch (error) {
 

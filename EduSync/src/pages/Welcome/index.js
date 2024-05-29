@@ -42,8 +42,6 @@ const Welcome = () => {
         </TouchableOpacity>
 
 
-
-
       </View>
 
   );
@@ -62,7 +60,7 @@ const styles = StyleSheet.create ({
 
   containerLogo: {
 
-    marginTop: '30%',
+    marginTop: '10%',
     justifyContent: 'center',
     alignItems: 'center',
     

@@ -1,10 +1,33 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/AntDesign';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const Escola = () => {
 
+  const [userNome, setUserNome] = useState('');
+  const [userPerfil, setUserPerfil] = useState('');
+  const [userToken, setUserToken] = useState('');
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const nome = await AsyncStorage.getItem('userName');
+        const perfil = await AsyncStorage.getItem('userPerfil');
+        const token = await AsyncStorage.getItem('userToken');
+        setUserNome(nome);
+        setUserPerfil(perfil);
+        setUserToken(token);
+
+      } catch (error) {
+        console.error('Failed to fetch user data from AsyncStorage:', error);
+      }
+    };
+    fetchUserData();
+  }, []);  
+  
   const navigation = useNavigation();
 
   const PerfilEscola = () => {
@@ -35,7 +58,7 @@ const Escola = () => {
 
       <View>
 
-        <Text style={styles.welcome}>Bem vindo(a)</Text>
+        <Text style={styles.welcome}>Bem vindo(a) , {userNome}</Text>
 
       </View>
 

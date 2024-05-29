@@ -7,82 +7,35 @@ import  Picker  from 'react-native-picker-select';
 
 import { login } from '../../Service/api'; 
 
-
-
 const Login = () => { 
 
   const navigation = useNavigation();
-  const [accept, setAccept] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const[hidePass, setHidePass] = useState(true);
 
-  const [selectedUser, setSelectedUser] = useState('');
-  const [selectedResponsavel, setSelectedResponsavel] = useState(false);
-  const [selectedEscola, setSelectedEscola] = useState(false);
-  const [selectedProfessor, setSelectedProfessor] = useState(false);
-
   const handleLogin = async () => {
-
     try {
-      const userData = await login(email, password);
-
-      console.log('User data:', userData);      
-      navigation.navigate('Escola');
+      const userData = await login(email, password);      
+     // Redirecionar com base no tipo de perfil
+     switch (userData.user.tipoPerfil) {
+      case 1:
+        navigation.navigate('Escola');
+        break;
+      case 2:
+        navigation.navigate('Professor');
+        break;
+      case 3:
+        navigation.navigate('Responsavel');
+        break;
+      default:
+        Alert.alert('Erro', 'Tipo de perfil desconhecido');
+    }  
       
     } catch (error) {
       Alert.alert('Falha no Login', 'Email ou Senha Inválidos');
     }
-  };
-
-  /*return (
-    <View style={{ flex: 1, justifyContent: 'center', padding: 20 }}>
-      <Text>Email:</Text>
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 20 }}
-        onChangeText={setEmail}
-        value={email}
-        autoCapitalize='none'
-        keyboardType='email-address'
-      />
-      <Text>Password:</Text>
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 20 }}
-        onChangeText={setPassword}
-        value={password}
-        secureTextEntry
-      />
-      <Button title="Login" onPress={handleLogin} />
-    </View>
-  );*/
-  
-
-
-  /*const handleLogin = async () => {
-    if (email === '' || password === '') {
-      alert('Preencha todos os campos');
-      return;
-    }
-
-    try {
-      const response = await fetch('https://edusync20240424230659.azurewebsites.net/api/Usuarios', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ DS_LOGIN: email, DS_SENHA: password }),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        alert('Login bem-sucedido');
-      } else {
-        alert('Credenciais inválidas');
-      }
-    } catch (error) {
-      alert('Erro ao fazer login');
-      console.error(error);
-    }
-  };*/
+  };  
 
   return (
     
@@ -139,21 +92,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems:'center',
     justifyContent:'center',
-
   },
 
   containerLogo: {
-    
     justifyContent: 'center',
     alignItems:'center',
     marginBottom: '8%',
-
-    
   },
 
   inputArea: {
-
-    
     flexDirection: 'row',
     width: '90%',
     backgroundColor: '#fff',
@@ -162,90 +109,60 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 15,
     borderColor:'#a9a9a9',
-    borderWidth: 3,
-   
-    
-
-
+    borderWidth: 3,  
   },
 
   input:{
-
     width: '85%',
     height: 50,
     color:'#a9a9a9',
     padding: 8,
     fontSize: 18,
-    fontWeight: 'bold',
-    
-    
+    fontWeight: 'bold',    
   },
 
     icon:{
-
       width:'15%',
       height: 50,
       justifyContent: 'center',
-      alignItems: 'center',
-      
-      
+      alignItems: 'center',      
     },
 
     iconEmail:{
-
       marginLeft: 15,
       justifyContent: 'center',
       alignItems: 'center',
-
     },
 
-    btn:{
-
-      
+    btn:{      
       backgroundColor: '#fff',
       alignItems: 'center',
       alignContent: 'center',
-      
-
     },
 
-
-    recuperarSenha:{
-
-      
+    recuperarSenha:{      
       marginLeft:'50%',
       height: 50,
       color: '#a9a9a9',
       padding: 8,
       fontSize: 18,
       fontWeight: 'bold',
-
-
     },
 
-
-
     btnSubmit: {
-
       backgroundColor: '#87cefa',
       width: '90%',
       height: 45,
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: 7,
-      
-  
+      borderRadius: 7, 
     },
 
     submitText: {
-
       fontSize: 18,
       color: '#fff',
       fontWeight: 'bold',
     },
-
-
-
 });
 
 export default Login;
