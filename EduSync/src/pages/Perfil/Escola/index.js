@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, {useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/AntDesign';
 
@@ -26,8 +26,8 @@ const Escola = () => {
       }
     };
     fetchUserData();
-  }, []);  
-  
+  }, []);
+
   const navigation = useNavigation();
 
   const PerfilEscola = () => {

@@ -15,7 +15,7 @@ import PerfilProfessor from './src/pages/Perfil/Professor/PerfilProfessor';
 import Mural from './src/pages/Mural';
 import Usuarios from './src/pages/Perfil/Escola/Usuarios';
 import TipoCadastro from './src/pages/TipoCadastro';
-//import CadastrarResponsavel from './src/pages/CadastrarResponsavel';
+import cadastrarUsuario from './src/pages/cadastrarUsuario';
 import CadastrarTurma from './src/pages/CadastrarTurma';
 import EditarUsuario from './src/pages/Perfil/Responsavel/EditarUsuario';
 
@@ -70,7 +70,7 @@ const App = () => {
           component={PerfilProfessor}
         />
 
-        
+
         <Stack.Screen
           name="Usuarios"
           component={Usuarios}
@@ -81,7 +81,10 @@ const App = () => {
           component={TipoCadastro}
         />
 
-        
+        <Stack.Screen
+          name="cadastrarUsuario"
+          component={cadastrarUsuario}
+        />
 
         <Stack.Screen
           name="CadastrarTurma"

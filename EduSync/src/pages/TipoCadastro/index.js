@@ -7,8 +7,8 @@ const TipoCadastro = () => {
 
     const navigation = useNavigation();
 
-    const CadastrarResponsavel = () => {
-        navigation.navigate(CadastrarResponsavel);
+    const cadastrarUsuario = () => {
+        navigation.navigate(cadastrarUsuario);
     };
 
     const CadastrarTurma = () => {
@@ -33,9 +33,9 @@ const TipoCadastro = () => {
 
             <View style={styles.grid}>
 
-                <TouchableOpacity style={styles.button} onPress={CadastrarResponsavel}>
+                <TouchableOpacity style={styles.button} onPress={cadastrarUsuario}>
 
-                    <Text>RESPONSÁVEL</Text>
+                    <Text>USUÁRIO</Text>
 
                     <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
 
