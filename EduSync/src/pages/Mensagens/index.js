@@ -43,20 +43,8 @@ const Mural = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.mainTitle}>MURAL</Text>
-      <LinearGradient
-        colors={['#2499DB', '#37BCE7']}
-        start={{ x: 1, y: 0 }}
-        end={{ x: 0, y: 0 }}
-        style={styles.gradientContainer}>
-        <Text style={styles.date}>
-          <Text style={styles.weekday}>{currentDate.weekday}</Text>
-        </Text>
-        <Text style={styles.date}>
-          <Text style={styles.day}>{currentDate.day} </Text>
-          <Text style={styles.month}>de {currentDate.month}</Text>
-        </Text>
-      </LinearGradient>
+      <Text style={styles.mainTitle}>Mensagens</Text>
+      
       <CustomNavBar />
     </View>
   );

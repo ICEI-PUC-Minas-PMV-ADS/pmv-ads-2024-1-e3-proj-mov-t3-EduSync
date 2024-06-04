@@ -1,84 +1,87 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Platform,Button,Alert } from 'react-native';
-import Ionicons  from 'react-native-vector-icons/Feather';
-import { CheckBox } from '@rneui/themed';
-import  Picker  from 'react-native-picker-select';
-
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Alert } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Feather';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { login } from '../../Service/api'; 
 
 const Login = () => { 
-
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const[hidePass, setHidePass] = useState(true);
+  const [hidePass, setHidePass] = useState(true);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const clearAsyncStorage = async () => {
+        try {
+          await AsyncStorage.clear();
+        } catch (error) {
+          console.error('Failed to clear AsyncStorage:', error);
+        }
+      };
+      clearAsyncStorage();
+    }, [])
+  );
 
   const handleLogin = async () => {
     try {
-      const userData = await login(email, password);      
-     // Redirecionar com base no tipo de perfil
-     switch (userData.user.tipoPerfil) {
-      case 1:
-        navigation.navigate('Escola');
-        break;
-      case 2:
-        navigation.navigate('Professor');
-        break;
-      case 3:
-        navigation.navigate('Responsavel');
-        break;
-      default:
-        Alert.alert('Erro', 'Tipo de perfil desconhecido');
-    }  
-      
+      const userData = await login(email, password);
+      switch (userData.user.tipoPerfil) {
+        case 1:
+          navigation.navigate('Escola');
+          break;
+        case 2:
+          navigation.navigate('Professor');
+          break;
+        case 3:
+          navigation.navigate('Responsavel');
+          break;
+        case 4:
+          navigation.navigate('Aluno');
+          break;
+        default:
+          navigation.navigate('Welcome');
+      }
     } catch (error) {
       Alert.alert('Falha no Login', 'Email ou Senha Inválidos');
     }
-  };  
+  };
 
   return (
-    
     <View style={styles.container}>
       <View style={styles.containerLogo}>
-        <Image
-          source={require('../../assets/Logo.png')}
-        />
+        <Image source={require('../../assets/Logo.png')} />
       </View>
       <View style={styles.inputArea}>
-        <TextInput style ={styles.input}
-          placeholder=" Digite seu Email"
+        <TextInput 
+          style={styles.input}
+          placeholder="Digite seu Email"
           autoCorrect={false}
           onChangeText={setEmail}
-          placeholderTextColor= "#a9a9a9"
+          placeholderTextColor="#a9a9a9"
           value={email}            
         />          
-        <Ionicons style={styles.iconEmail} name= "mail" color={"#a9a9a9"} size={25}/>
-
+        <Ionicons style={styles.iconEmail} name="mail" color="#a9a9a9" size={25} />
       </View>
       <View style={styles.inputArea}>
-        <TextInput style ={styles.input}
-          placeholderTextColor= "#a9a9a9"
-          placeholder=" Digite sua Senha"
+        <TextInput 
+          style={styles.input}
+          placeholder="Digite sua Senha"
           autoCorrect={false}
           onChangeText={setPassword}
           value={password}
-            secureTextEntry={hidePass}
-          />
+          secureTextEntry={hidePass}
+          placeholderTextColor="#a9a9a9"
+        />
         <TouchableOpacity style={styles.icon} onPress={() => setHidePass(!hidePass)}>
-          {hidePass?
-            <Ionicons name = "lock" color={"#a9a9a9"} size={25}/>
-            :
-            <Ionicons name = "unlock" color={"#a9a9a9"} size={25}/>
-          }          
+          <Ionicons name={hidePass ? "lock" : "unlock"} color="#a9a9a9" size={25} />          
         </TouchableOpacity>
       </View>          
-      <View style={styles.btn}>
-        <TouchableOpacity >
-          <Text style ={styles.recuperarSenha} >Recuperar Senha</Text>
-        </TouchableOpacity>
-      </View>
-      <TouchableOpacity style={styles.btnSubmit} onPress={handleLogin} >
+      <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('RecuperarSenha')}>
+        <Text style={styles.recuperarSenha}>Recuperar Senha</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.btnSubmit} onPress={handleLogin}>
         <Text style={styles.submitText}>Acessar</Text>
       </TouchableOpacity>
     </View>       
@@ -86,20 +89,17 @@ const Login = () => {
 };
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems:'center',
-    justifyContent:'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-
   containerLogo: {
     justifyContent: 'center',
-    alignItems:'center',
+    alignItems: 'center',
     marginBottom: '8%',
   },
-
   inputArea: {
     flexDirection: 'row',
     width: '90%',
@@ -108,61 +108,54 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: 'center',
     marginBottom: 15,
-    borderColor:'#a9a9a9',
+    borderColor: '#a9a9a9',
     borderWidth: 3,  
   },
-
-  input:{
+  input: {
     width: '85%',
     height: 50,
-    color:'#a9a9a9',
+    color: '#a9a9a9',
     padding: 8,
     fontSize: 18,
     fontWeight: 'bold',    
   },
-
-    icon:{
-      width:'15%',
-      height: 50,
-      justifyContent: 'center',
-      alignItems: 'center',      
-    },
-
-    iconEmail:{
-      marginLeft: 15,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-
-    btn:{      
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      alignContent: 'center',
-    },
-
-    recuperarSenha:{      
-      marginLeft:'50%',
-      height: 50,
-      color: '#a9a9a9',
-      padding: 8,
-      fontSize: 18,
-      fontWeight: 'bold',
-    },
-
-    btnSubmit: {
-      backgroundColor: '#87cefa',
-      width: '90%',
-      height: 45,
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: 7, 
-    },
-
-    submitText: {
-      fontSize: 18,
-      color: '#fff',
-      fontWeight: 'bold',
-    },
+  icon: {
+    width: '15%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',      
+  },
+  iconEmail: {
+    marginLeft: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  btn: {      
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    alignContent: 'center',
+  },
+  recuperarSenha: {      
+    marginLeft: '50%',
+    height: 50,
+    color: '#a9a9a9',
+    padding: 8,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  btnSubmit: {
+    backgroundColor: '#87cefa',
+    width: '90%',
+    height: 45,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 7, 
+  },
+  submitText: {
+    fontSize: 18,
+    color: '#fff',
+    fontWeight: 'bold',
+  },
 });
 
 export default Login;

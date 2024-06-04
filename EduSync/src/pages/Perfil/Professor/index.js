@@ -1,10 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
-import Ionicons from 'react-native-vector-icons/AntDesign';
-import { CheckBox } from '@rneui/themed';
-import { Picker } from '@react-native-picker/picker';
-import { Icon } from '@rneui/base';
+import React, { useLayoutEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity  } from 'react-native';
+import IoniconsA from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import CustomHeader from '../../../components/CustomHeader';
 
 const Professor = () => {
 
@@ -14,64 +13,53 @@ const Professor = () => {
     navigation.navigate('PerfilProfessor');
   };
 
-  const Cadastrar = () => {
-    navigation.navigate('Cadastrar');
+  const Mensagens = () => {
+    navigation.navigate('Mensagens');
   };
 
   const Mural = () => {
     navigation.navigate('Mural');
   };
 
+  const Calendario = () => {
+    navigation.navigate('Calendario');
+  };
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      header: () => <CustomHeader escolaNome="Escola - ED. Infantil" />,
+    });
+  }, [navigation]); 
+
   return (
 
     <View style={styles.container}>
-
-      <TouchableOpacity>
-
-        <Ionicons style={styles.BellsIcon} name="bells" color={"#fff"} size={25} />
-
-      </TouchableOpacity>
-
+      
       <View>
-
-        <Text style={styles.welcome}>Bem vindo(a)</Text>
-
+        <Text style={styles.welcome}>Aréa do Professor</Text>
       </View>
 
       <View style={styles.grid}>
 
         <TouchableOpacity style={styles.button} onPress={Mural}>
-
           <Text>MURAL</Text>
-
-          <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
-
+          <IoniconsA style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
-
+        <TouchableOpacity style={styles.button} onPress={Mensagens}>
           <Text>MENSAGENS</Text>
-
-          <Ionicons style={styles.icon} name="mail" color={"#a9a9a9"} size={25} />
-
+          <Ionicons style={styles.icon} name="mail" color={"#a9a9a9"} size={25}  />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
-
+        <TouchableOpacity style={styles.button} onPress={Calendario}>
           <Text>CALENDÁRIO</Text>
-
           <Ionicons style={styles.icon} name="calendar" color={"#a9a9a9"} size={25} />
-
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} onPress={PerfilProfessor}>
-
           <Text>PERFIL</Text>
-
-          <Ionicons style={styles.icon} name="user" color={"#a9a9a9"} size={25} />
-
+          <IoniconsA style={styles.icon} name="user" color={"#a9a9a9"} size={25} />
         </TouchableOpacity>
-
       </View>
     </View>
   );
@@ -93,8 +81,8 @@ const styles = StyleSheet.create({
 
   welcome: {
     fontSize: 24,
-    marginBottom: '15%',
     color: '#fff',
+    marginTop: 0,
   },
 
   grid: {

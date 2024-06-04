@@ -1,11 +1,13 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
-import Ionicons from 'react-native-vector-icons/AntDesign';
-import { CheckBox } from '@rneui/themed';
-import { Picker } from '@react-native-picker/picker';
+import {useNavigation} from '@react-navigation/native';
+import React, { useState ,useLayoutEffect} from 'react';
+import { View, Text, StyleSheet} from 'react-native';
+import CustomHeader from '../../../components/CustomHeader';
+import CustomNavBar from '../../../components/CustomNavBar';
 
 const PerfilProfessor = () => {
+
+  const navigation = useNavigation();
+
   const [name, setName] = useState('');
   const [dob, setDob] = useState('');
   const [role, setRole] = useState('');
@@ -13,73 +15,37 @@ const PerfilProfessor = () => {
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
 
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      header: () => <CustomHeader escolaNome="Escola - ED. Infantil" />,
+    });
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
-
-      <TouchableOpacity style={styles.ConfigIcons} >
-
-        <Ionicons name="setting" size={30} color={"#a9a9a9"} />
-
-      </TouchableOpacity>
-
       <View style={styles.profile}>
-
-        <Text style={styles.name}>Nome do Professor</Text>
-
+      <Text style={styles.name}>Nome do Professor</Text>
       </View>
-
-
-      <View style={styles.navBar}>
-        <TouchableOpacity style={styles.icons} onPress={() => { }}>
-          <Ionicons name="home" size={30} color={"#a9a9a9"} />
-          <Text>Inicio</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.icons} onPress={() => { }}>
-          <Ionicons name="exclamationcircleo" size={30} color={"#a9a9a9"} />
-          <Text>Mural</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.icons} onPress={() => { }}>
-          <Ionicons name="calendar" size={30} color={"#a9a9a9"} />
-          <Text>Calendário</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.icons} onPress={() => { }}>
-          <Ionicons name="mail" size={30} color={"#a9a9a9"} />
-          <Text>Mensagens</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.icons} onPress={() => { }}>
-          <Ionicons name="user" size={30} color={"#a9a9a9"} />
-          <Text>Perfil</Text>
-        </TouchableOpacity>
-
-
-      </View>
+      <CustomNavBar />
     </View>
   );
 };
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-
   profileImage: {
     width: 100,
     height: 100,
     borderRadius: 50,
   },
-
   name: {
     fontSize: 24,
     fontWeight: 'bold',
   },
-
-
   navBar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -89,10 +55,7 @@ const styles = StyleSheet.create({
   },
 
   ConfigIcons: {
-
     marginLeft: '80%',
-
-
   },
 
   icons: {
