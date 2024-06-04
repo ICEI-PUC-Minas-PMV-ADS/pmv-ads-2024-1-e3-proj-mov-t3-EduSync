@@ -17,8 +17,10 @@ const CustomNavBar = () => {
     }, []);
 
     const handleHomePress = () => {
+        
         switch (userPerfil) {
             case '1':
+                console.log('aqui')
                 navigation.navigate('Escola');
                 break;
             case '2':
@@ -35,6 +37,7 @@ const CustomNavBar = () => {
 
     return (
         <View style={styles.navBar}>
+            
             <TouchableOpacity style={styles.icons} onPress={handleHomePress}>
                 <Ionicons name="home" size={30} color={"#a9a9a9"} />
                 <Text>Inicio</Text>

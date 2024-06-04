@@ -2,38 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, Image, TouchableOpacity, Button, ScrollView, Platform, KeyboardAvoidingView } from 'react-native';
 import Picker from 'react-native-picker-select';
 
-const CadastrarTurma = () => {
+const CadastrarUsuario = () => {
 
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
-    const [confirmaSenha, setConfirmaSenha] = useState('');
+    // const [confirmaSenha, setConfirmaSenha] = useState('');
     const [nome, setNome] = useState('');
     const [sobrenome, setSobrenome] = useState('');
     const [email, setEmail] = useState('');
-    const [cep, setCep] = useState('');
-    const [logradouro, setLogradouro] = useState('');
-    const [numero, setNumero] = useState('');
-    const [complemento, setComplemento] = useState('');
-    const [bairro, setBairro] = useState('');
-    const [cidade, setCidade] = useState('');
+    // const [cep, setCep] = useState('');
+    // const [logradouro, setLogradouro] = useState('');
+    // const [numero, setNumero] = useState('');
+    // const [complemento, setComplemento] = useState('');
+    // const [bairro, setBairro] = useState('');
+    // const [cidade, setCidade] = useState('');
     const [tipo, setTipo] = useState(null);
     const [matricula, setMatricula] = useState('');
-    const [endereco, setEndereco] = useState({});
+    // const [endereco, setEndereco] = useState({});
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        if (cep.length === 8) {
-            consultarCep();
-        }
-    }, [cep]);
+    // useEffect(() => {
+    //     if (cep.length === 8) {
+    //         consultarCep();
+    //     }
+    // }, [cep]);
 
-    useEffect(() => {
-        if (endereco) {
-            setLogradouro(endereco.logradouro || '');
-            setBairro(endereco.bairro || '');
-            setCidade(endereco.localidade || '');
-        }
-    }, [endereco]);
+    // useEffect(() => {
+    //     if (endereco) {
+    //         setLogradouro(endereco.logradouro || '');
+    //         setBairro(endereco.bairro || '');
+    //         setCidade(endereco.localidade || '');
+    //     }
+    // }, [endereco]);
 
     const cadastrarUsuario = async () => {
         if (loading) return;
@@ -79,19 +79,19 @@ const CadastrarTurma = () => {
         }
     };
 
-    const consultarCep = async () => {
-        try {
-            const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-            const json = await response.json();
-            setEndereco(json);
-            console.log('endereco', json);
-        } catch (error) {
-            console.error('Erro ao consultar CEP:', error);
-        }
-    };
+    // const consultarCep = async () => {
+    //     try {
+    //         const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    //         const json = await response.json();
+    //         setEndereco(json);
+    //         console.log('endereco', json);
+    //     } catch (error) {
+    //         console.error('Erro ao consultar CEP:', error);
+    //     }
+    // };
 
     const Validate = () => {
-        if (login === '' || senha === '' || nome === '' || sobrenome === '' || email === '' || cep === '' || logradouro === '' || numero === '' || complemento === '' || bairro === '' || cidade === '' || matricula === '') {
+        if (login === '' || senha === '' || nome === '' || sobrenome === '' || email === '') {
             alert('Preencha todos os campos');
             return false;
         }
@@ -109,12 +109,12 @@ const CadastrarTurma = () => {
         >
             {loading ? (
                 <View style={styles.loadingContainer}>
-                    <Image style={styles.loading} source={require('../../assets/loading.gif')} />
+                    <Image style={styles.loading} source={require('../../../../../assets/loading.gif')} />
                 </View>
             ) : (
-                <ScrollView>
+                <ScrollView contentContainerStyle={styles.scrollView}>
                     <View style={styles.container}>
-                        <Text style={styles.title}>Cadastre uma turma</Text>
+                        <Text style={styles.title}>Cadastre um usuário</Text>
                         <View style={styles.containerForm}>
                             <View style={styles.containerInput}>
                                 <TextInput
@@ -161,7 +161,7 @@ const CadastrarTurma = () => {
                                     onChangeText={email => setEmail(email)}
                                     keyboardType='email-address'
                                 />
-                                <TextInput
+                                {/* <TextInput
                                     style={styles.input}
                                     placeholder="CEP"
                                     autoCorrect={false}
@@ -201,7 +201,7 @@ const CadastrarTurma = () => {
                                     value={cidade}
                                     autoCorrect={false}
                                     onChangeText={value => setCidade(value)}
-                                />
+                                /> */}
                                 <Picker
                                     style={pickerSelectStyles}
                                     onValueChange={(value) => setTipo(value)}
@@ -212,13 +212,13 @@ const CadastrarTurma = () => {
                                         { label: 'Professor', value: '3' },
                                     ]}
                                 />
-                                <TextInput
+                                {/* <TextInput
                                     style={styles.input}
                                     placeholder="Matrícula"
                                     autoCorrect={false}
                                     onChangeText={matricula => setMatricula(matricula)}
                                     keyboardType='numeric'
-                                />
+                                /> */}
                                 <TouchableOpacity style={styles.btnSubmit}>
                                     <Button title="Cadastrar" onPress={cadastrarUsuario} style={styles.submitText} />
                                 </TouchableOpacity>
@@ -232,6 +232,11 @@ const CadastrarTurma = () => {
 };
 
 const styles = StyleSheet.create({
+
+    scrollView: {
+        flexGrow: 1,
+    },
+
     loadingContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -242,7 +247,6 @@ const styles = StyleSheet.create({
         height: 80,
     },
     container: {
-        width: '100%',
         flex: 1,
         backgroundColor: '#00aaff',
         justifyContent: 'center',
@@ -317,4 +321,4 @@ const pickerSelectStyles = StyleSheet.create({
     },
 });
 
-export default CadastrarTurma;
+export default CadastrarUsuario;

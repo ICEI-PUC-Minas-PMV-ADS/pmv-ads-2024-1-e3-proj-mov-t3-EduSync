@@ -1,55 +1,66 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/AntDesign';
+
+import CustomHeader from '../../../../components/CustomHeader';
+
+import CustomNavBar from '../../../../components/CustomNavBar';
 
 const TipoCadastro = () => {
 
     const navigation = useNavigation();
 
-    const cadastrarUsuario = () => {
-        navigation.navigate(cadastrarUsuario);
+    const Usuarios = () => {
+        navigation.navigate(Usuarios);
     };
 
-    const CadastrarTurma = () => {
-        navigation.navigate(CadastrarTurma);
+    const Turmas = () => {
+        navigation.navigate(Turmas);
     };
+
+    const Atividades = () => {
+        navigation.navigate(Atividades);
+    };
+
+    const Matriculas = () => {
+        navigation.navigate(Matriculas);
+    };
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+          header: () => <CustomHeader escolaNome="Escola - ED. Infantil" />,
+        });
+      }, [navigation]); 
 
     return (
 
         <View style={styles.container}>
-
-            <TouchableOpacity>
-
-                <Ionicons style={styles.BellsIcon} name="bells" color={"#fff"} size={25} />
-
-            </TouchableOpacity>
-
             <View>
-
-                <Text style={styles.welcome}>Escolha o tipo de cadastro que deseja:</Text>
-
+                <Text style={styles.welcome}>Cadastros Permanentes</Text>
             </View>
-
             <View style={styles.grid}>
-
-                <TouchableOpacity style={styles.button} onPress={cadastrarUsuario}>
-
+                <TouchableOpacity style={styles.button} onPress={Usuarios}>
                     <Text>USUÁRIO</Text>
-
                     <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
-
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button} onPress={CadastrarTurma}>
-
+                <TouchableOpacity style={styles.button} onPress={Turmas}>
                     <Text>TURMA</Text>
-
                     <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
-
                 </TouchableOpacity>
 
+                <TouchableOpacity style={styles.button} onPress={Atividades}>
+                    <Text>ATIVIDADES</Text>
+                    <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.button}  onPress={Matriculas}>
+                    <Text>MATRÍCULA</Text>
+                    <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
+                </TouchableOpacity>
             </View>
+            <CustomNavBar />
         </View>
     );
 };
@@ -69,8 +80,8 @@ const styles = StyleSheet.create({
     },
 
     welcome: {
+        
         fontSize: 24,
-        marginBottom: '15%',
         color: '#fff',
     },
 

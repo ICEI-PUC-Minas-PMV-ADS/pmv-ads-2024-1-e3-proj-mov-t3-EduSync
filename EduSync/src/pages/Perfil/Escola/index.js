@@ -1,9 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
-import React, {useEffect, useState } from 'react';
+import React, {useEffect, useState,useLayoutEffect } from 'react';
 import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/AntDesign';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import CustomHeader from '../../../components/CustomHeader';
 
 const Escola = () => {
 
@@ -28,6 +30,12 @@ const Escola = () => {
     fetchUserData();
   }, []);
 
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      header: () => <CustomHeader escolaNome="Escola - ED. Infantil" />,
+    });
+  }, [navigation]); 
+
   const navigation = useNavigation();
 
   const PerfilEscola = () => {
@@ -42,75 +50,50 @@ const Escola = () => {
     navigation.navigate(TipoCadastro);
   };
 
-  const Usuarios = () => {
-    navigation.navigate(Usuarios);
+  const Mensagens = () => {
+    navigation.navigate(Mensagens);
   };
+
+  const Calendario = () => {
+    navigation.navigate(Calendario);
+  };
+
+  
 
   return (
 
     <View style={styles.container}>
 
-      <TouchableOpacity>
-
-        <Ionicons style={styles.BellsIcon} name="bells" color={"#fff"} size={25} />
-
-      </TouchableOpacity>
-
       <View>
-
-        <Text style={styles.welcome}>Bem vindo(a) , {userNome}</Text>
-
+        <Text style={styles.welcome}>Aréa da Escola</Text>
       </View>
 
       <View style={styles.grid}>
 
         <TouchableOpacity style={styles.button} onPress={TipoCadastro}>
-
           <Text>CADASTRAR</Text>
-
           <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
-
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} onPress={Mural}>
-
           <Text>MURAL</Text>
-
           <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
-
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
-
+        <TouchableOpacity style={styles.button} onPress={Mensagens}>
           <Text>MENSAGENS</Text>
-
           <Ionicons style={styles.icon} name="mail" color={"#a9a9a9"} size={25} />
-
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
-
+        <TouchableOpacity style={styles.button} onPress={Calendario}>
           <Text>CALENDÁRIO</Text>
-
           <Ionicons style={styles.icon} name="calendar" color={"#a9a9a9"} size={25} />
-
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} onPress={PerfilEscola}>
-
           <Text>PERFIL</Text>
-
           <Ionicons style={styles.icon} name="user" color={"#a9a9a9"} size={25} />
-
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button} onPress={Usuarios}>
-
-          <Text>USUÁRIOS</Text>
-
-          <Ionicons style={styles.icon} name="user" color={"#a9a9a9"} size={25} />
-
-        </TouchableOpacity>
+        </TouchableOpacity>      
 
       </View>
     </View>
