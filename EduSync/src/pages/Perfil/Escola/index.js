@@ -26,8 +26,8 @@ const Escola = () => {
       }
     };
     fetchUserData();
-  }, []);  
-  
+  }, []);
+
   const navigation = useNavigation();
 
   const PerfilEscola = () => {
