@@ -35,12 +35,12 @@ const MatriculasScreen = () => {
     }
   };
 
-  const handleEdit = (turma) => {
-    navigation.navigate('EditMatricula', { turma });
+  const handleEdit = (matricula) => {
+    navigation.navigate('EditMatricula', { matricula });
   };
 
   const handleAdd = () => {
-    navigation.navigate('AddMatricula');
+    navigation.navigate('CadastroMatriculas');
   };
 
   const renderMatircula= ({ item }) => (

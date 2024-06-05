@@ -43,10 +43,26 @@ const UsuarioScreen = () => {
     navigation.navigate('CadastrarUsuario');
   };
 
+  const getPerfilDescricao = (tipoPerfil) => {
+    switch (tipoPerfil) {
+      case 1:
+        return 'ADM';
+      case 2:
+        return 'Professor';
+      case 3:
+        return 'Responsável';
+      case 4:
+        return 'Aluno';
+      default:
+        return 'Desconhecido';
+    }
+  };
+
   const renderUsuario = ({ item }) => (
     <View style={styles.row}>
       <Text style={styles.cell}>{item.nome}</Text>
-      <Text style={styles.cell}>{item.email}</Text>
+      <Text style={styles.cell}>{getPerfilDescricao(item.tipoPerfil)}</Text>
+      <Text style={styles.cell}>{item.login}</Text>
       <TouchableOpacity style={styles.button} onPress={() => handleEdit(item)}>
         <Ionicons name="pencil" size={20} color="blue" />
       </TouchableOpacity>
@@ -55,6 +71,8 @@ const UsuarioScreen = () => {
       </TouchableOpacity>
     </View>
   );
+
+  
 
   if (loading) {
     return <ActivityIndicator size="large" color="#00aaff" />;
@@ -67,7 +85,8 @@ const UsuarioScreen = () => {
       </TouchableOpacity>
       <View style={styles.header}>
         <Text style={styles.headerCell}>Nome</Text>
-        <Text style={styles.headerCell}>Email</Text>
+        <Text style={styles.headerCell}>Perfil</Text>
+        <Text style={styles.headerCell}>Login</Text>
         <Text style={styles.headerCell}>Ações</Text>
       </View>
       <FlatList
