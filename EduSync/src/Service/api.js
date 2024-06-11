@@ -67,15 +67,3 @@ export const cadastrarTurma = async (turma) => {
   }
 };
 
-
-//Função para pegar dados dos professores
-export const fetchDadosUsuario = async () => {
-  try {
-    const response = await axios.get(`${API_URL}/Usuarios/${userData.user.id}`);
-    console.log('response.data', response.data)
-    return response.data;
-  } catch (error) {
-    console.error('Erro ao buscar o usuario:', error);
-    throw error;
-  }
-}
