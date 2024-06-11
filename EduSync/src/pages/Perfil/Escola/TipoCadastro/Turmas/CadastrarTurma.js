@@ -1,181 +1,148 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, Image, TouchableOpacity, Button, ScrollView, Platform, KeyboardAvoidingView } from 'react-native';
-import Picker from 'react-native-picker-select';
-import { fetchProfessores, cadastrarTurma } from '../../../../../Service/api'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import axios from 'axios';
+import RNPickerSelect from 'react-native-picker-select';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { format } from 'date-fns';
 
-const CadastrarTurma = ({ usuario }) => {
-
-    const [descricao, setDescricao] = useState('');
+const CadastrarTurma = () => {
     const [professores, setProfessores] = useState([]);
-    const [professorSelecionado, setProfessorSelecionado] = useState('');
-    const [loading, setLoading] = useState(true);
+    const [selectedProfessor, setSelectedProfessor] = useState(null);
+    const [descricao, setDescricao] = useState('');
 
     useEffect(() => {
-        const getProfessores = async () => {
+        const fetchData = async () => {
             try {
-                const professores = await fetchProfessores();
-                setProfessores(professores);
-                setLoading(false); // Dados carregados com sucesso
-                console.log('Professores:', professores);
-                professores.map(professor => (console.log('Professores:', professor.nome)));
-                professores.map(professor => (console.log('Professores id:', professor.id)));
+                const token = await AsyncStorage.getItem('userToken');
+                const professoresResponse = await axios.get('https://edusync20240424230659.azurewebsites.net/api/Usuarios/Professores', {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+                setProfessores(professoresResponse.data);
             } catch (error) {
-                console.error('Erro ao buscar os professores:', error);
-                setLoading(false); // Parar o carregamento em caso de erro
+                console.error(error);
+                Alert.alert('Erro', 'Não foi possível carregar os dados.');
             }
         };
 
-        getProfessores();
+        fetchData();
     }, []);
 
-    const handleCadastrarTurma = async () => {
-        const turma = {
-            descricao: descricao,
-            usuarioId: usuario.id,
-            usuario: usuario,
-            professorId: professorSelecionado,
-        };
+    const handleRegister = async () => {
+        if (!selectedProfessor || !descricao) {
+            Alert.alert('Erro', 'Por favor, preencha todos os campos obrigatórios.');
+            return;
+        }
 
         try {
-            await cadastrarTurma(turma);
-            Alert.alert('Sucesso', 'Turma cadastrada com sucesso!');
+            const token = await AsyncStorage.getItem('userToken');
+            await axios.post('https://edusync20240424230659.azurewebsites.net/api/Turmas', {
+                descricao: descricao,
+                usuarioId: selectedProfessor,
+            }, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+
+            Alert.alert('Sucesso', 'Turma registrada com sucesso!');
         } catch (error) {
-            console.error('Erro ao cadastrar a turma:', error);
-            Alert.alert('Erro', 'Não foi possível cadastrar a turma.');
+            console.error(error);
+            Alert.alert('Erro', 'Não foi possível registrar a turma.');
         }
     };
 
-    if (loading) {
-        return <Text>Carregando professores...</Text>;
-    }
-
     return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            style={{ flex: 1 }}
-        >
-            <ScrollView contentContainerStyle={styles.scrollView}>
-                <View style={styles.container}>
-                    <Text style={styles.title}>Cadastre uma turma</Text>
-                    <View style={styles.containerForm}>
-                        <View style={styles.containerInput}>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Descrição"
-                                autoCorrect={false}
-                                required={true}
-                                onChangeText={descricao => setDescricao(descricao)}
-                            />
-                            {/* <Picker
-                                selectedValue={professorSelecionado}
-                                onValueChange={itemValue => setProfessorSelecionado(itemValue)}
-                                style={styles.picker}
-                                key={0}
-                            >
-                                <Picker.Item
-                                    key={0}
-                                    label="Teste"
-                                    value="Teste"
-                                />
-                            </Picker> */}
-
-                            <TouchableOpacity style={styles.btnSubmit}>
-                                <Button title="Cadastrar" onPress={handleCadastrarTurma} style={styles.submitText} />
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
-            </ScrollView>
-        </KeyboardAvoidingView>
+        <View style={styles.container}>
+            <Text style={styles.label}>Descrição:</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Descrição"
+                autoCorrect={false}
+                required={true}
+                onChangeText={descricao => setDescricao(descricao)}
+            />
+            <Text style={styles.label}>Professor(a):</Text>
+            <RNPickerSelect
+                onValueChange={(value) => setSelectedProfessor(value)}
+                items={professores.map(professor => ({ label: `${professor.nome} ${professor.sobreNome}`, value: professor.id, key: professor.id }))}
+                style={pickerSelectStyles}
+                placeholder={{ label: 'Selecione o(a) professor(a)', value: null }}
+            />
+            {/* 
+      <Text style={styles.label}>Data da criação da turma</Text>
+      <TouchableOpacity onPress={() => setShowDatePicker(true)} style={styles.dateInput}>
+        <Text>{format(dataTurma, 'dd/MM/yyyy')}</Text>
+      </TouchableOpacity>
+      {showDatePicker && (
+        <DateTimePicker
+          value={dataTurma}
+          mode="date"
+          display="default"
+          onChange={handleDateChange}
+        />
+      )} */}
+            <TouchableOpacity style={styles.button} onPress={handleRegister}>
+                <Text style={styles.buttonText}>Registrar Turma</Text>
+            </TouchableOpacity>
+        </View>
     );
 };
+
 const styles = StyleSheet.create({
-
-    scrollView: {
-        flexGrow: 1,
-    },
-
-    loadingContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    loading: {
-        width: 80,
-        height: 80,
-    },
     container: {
         flex: 1,
-        backgroundColor: '#00aaff',
-        justifyContent: 'center',
-        alignItems: 'center',
+        padding: 16,
+        backgroundColor: '#fff',
     },
-    title: {
-        marginTop: 50,
-        color: '#fff',
-        fontSize: 25,
-    },
-    containerForm: {
-        flex: 1,
-        width: '90%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 30,
-        margin: 15,
-    },
-    containerInput: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
+    label: {
+        marginBottom: 8,
+        fontSize: 16,
+        fontWeight: 'bold',
     },
     input: {
-        width: '90%',
         backgroundColor: '#fff',
         marginBottom: 10,
-        padding: 20,
-        borderRadius: 10,
+        padding: 10,
+        borderRadius: 5,
         fontSize: 15,
+        borderWidth: 1,
+        borderColor: '#ccc',
     },
-    btnSubmit: {
-        backgroundColor: '#fff',
-        width: '60%',
-        height: 40,
-        alignItems: 'center',
+    dateInput: {
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+        marginBottom: 16,
         justifyContent: 'center',
-        borderRadius: 7,
-        marginBottom: 20,
-        marginTop: 20,
+        alignItems: 'center',
     },
-    submitText: {
-        fontSize: 17,
-        color: '#87cefa',
+    button: {
+        backgroundColor: '#00aaff',
+        padding: 15,
+        borderRadius: 5,
+        alignItems: 'center',
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 16,
         fontWeight: 'bold',
     },
 });
 
 const pickerSelectStyles = StyleSheet.create({
     inputIOS: {
-        alignItems: 'center',
-        fontSize: 16,
-        paddingVertical: 12,
-        paddingHorizontal: 10,
-        color: '#a9a9a9',
-        paddingRight: 30,
-        backgroundColor: '#fff',
-        width: '90%',
-        borderRadius: 7,
-        marginTop: 2,
-        marginBottom: 8,
-        width: '90%',
-        alignSelf: 'center',
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+        marginBottom: 16,
     },
     inputAndroid: {
-        borderRadius: 7,
-        fontSize: 16,
-        paddingHorizontal: 10,
-        color: '#a9a9a9',
-        paddingRight: 30,
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+        marginBottom: 16,
     },
 });
 

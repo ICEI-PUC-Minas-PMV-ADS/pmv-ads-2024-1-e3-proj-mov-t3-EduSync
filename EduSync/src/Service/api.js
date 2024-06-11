@@ -59,7 +59,7 @@ export const fetchProfessores = async () => {
 //Função para cadastrar uma turma
 export const cadastrarTurma = async (turma) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/Turmas`, turma);
+    const response = await axios.post(`${API_URL}/Turmas`, turma);
     return response.data;
   } catch (error) {
     console.error('Erro ao cadastrar a turma:', error);
@@ -67,3 +67,37 @@ export const cadastrarTurma = async (turma) => {
   }
 };
 
+
+// Função para verificar se a atividade já existe
+export const verificarAtividadeExistente = async (descricao, token) => {
+  try {
+    const response = await axios.get(`${API_URL}/Atividades`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    // Verificar localmente se a descrição já existe
+    const atividadesExistentes = response.data;
+    const descricaoLowerCase = descricao.toLowerCase();
+    const atividadeEncontrada = atividadesExistentes.find(atividade => atividade.descricao.toLowerCase() === descricaoLowerCase);
+    return atividadeEncontrada !== undefined;
+  } catch (error) {
+    console.error('Erro ao verificar a atividade:', error);
+    throw error;
+  }
+};
+
+// Função para cadastrar uma atividade
+export const cadastrarAtividade = async (atividade, token) => {
+  try {
+    const response = await axios.post(`${API_URL}/Atividades`, atividade, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao cadastrar a atividade:', error);
+    throw error;
+  }
+};

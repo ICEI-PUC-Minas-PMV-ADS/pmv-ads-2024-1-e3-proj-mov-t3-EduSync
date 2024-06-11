@@ -9,6 +9,7 @@ import CadastrarTurma from '../pages/Perfil/Escola/TipoCadastro/Turmas/Cadastrar
 import Matriculas from '../pages/Perfil/Escola/TipoCadastro/Matriculas/Matriculas';
 import CadastroMatriculas from '../pages/Perfil/Escola/TipoCadastro/Matriculas/CadastroMatriculas';
 import Atividades from '../pages/Perfil/Escola/TipoCadastro/Atividades/Atividades';
+import CadastrarAtividades from '../pages/Perfil/Escola/TipoCadastro/Atividades/CadastrarAtividades';
 import Mural from '../pages/Mural';
 import TipoCadastro from '../pages/Perfil/Escola/TipoCadastro';
 import Calendario from '../pages/Calendario';
@@ -27,6 +28,7 @@ const EscolaStack = () => (
     <Stack.Screen name="Matriculas" component={Matriculas} />
     <Stack.Screen name="CadastroMatriculas" component={CadastroMatriculas} />
     <Stack.Screen name="Atividades" component={Atividades} />
+    <Stack.Screen name="CadastrarAtividades" component={CadastrarAtividades} />
     <Stack.Screen name="Turmas" component={Turmas} />
     <Stack.Screen name="CadastrarTurma" component={CadastrarTurma} />
     <Stack.Screen name="Mural" component={Mural} />
