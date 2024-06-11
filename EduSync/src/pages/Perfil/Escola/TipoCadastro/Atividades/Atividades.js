@@ -63,7 +63,7 @@ const AtividadesScreen = () => {
   };
 
   const handleAdd = () => {
-    navigation.navigate('AddAtividade');
+    navigation.navigate('CadastrarAtividades');
   };
 
   const renderAtividade = ({ item }) => (

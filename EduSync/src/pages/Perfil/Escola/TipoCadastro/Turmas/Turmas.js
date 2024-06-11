@@ -9,6 +9,7 @@ const TurmasScreen = () => {
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
 
+
   useEffect(() => {
     const fetchTurmas = async () => {
       try {
@@ -40,10 +41,10 @@ const TurmasScreen = () => {
   };
 
   const handleAdd = () => {
-    navigation.navigate('Addturma');
+    navigation.navigate('CadastrarTurma');
   };
 
-  const renderTurma= ({ item }) => (
+  const renderTurma = ({ item }) => (
     <View style={styles.row}>
       <Text style={styles.cell}>{item.descricao}</Text>
       <TouchableOpacity style={styles.button} onPress={() => handleEdit(item)}>

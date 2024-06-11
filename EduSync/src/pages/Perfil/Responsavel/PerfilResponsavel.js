@@ -3,59 +3,25 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-ionicons';
 import Ionicons from 'react-native-vector-icons/AntDesign';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const PerfilResponsavel = () => {
-
-  const navigation = useNavigation();
-
-  const EditarUsuario = () => {
-    navigation.navigate('EditarUsuario');
-  };
-
-  const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [userName, setUserName] = useState(null);
+  const [sobreNome, setsobreNome] = useState(null);
+  const [email, setEmail] = useState(null);
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch('https://edusync20240424230659.azurewebsites.net/api/Usuarios/11', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error('Erro ao buscar dados do usuário');
-        }
-
-        const data = await response.json();
-        setUserData(data);
-      } catch (error) {
-        console.error('Erro ao buscar dados do usuário', error);
-      } finally {
-        setLoading(false);
-      }
+    const fetchUserName = async () => {
+      const nome = await AsyncStorage.getItem('userName');
+      setUserName(nome);
+      const sobrenome = await AsyncStorage.getItem('sobreNome');
+      setsobreNome(sobrenome);
+      const emailaddress = await AsyncStorage.getItem('email');
+      setEmail(emailaddress);
     };
-
-    fetchUserData();
+    fetchUserName();
   }, []);
-
-  if (loading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <Image style={styles.loading} source={require('../../../assets/loading.gif')} />
-      </View>
-    );
-  }
-
-  if (!userData) {
-    return (
-      <View style={styles.container}>
-        <Text>Erro ao carregar dados do usuário</Text>
-      </View>
-    );
-  }
 
   return (
     <ScrollView>
@@ -69,30 +35,24 @@ const PerfilResponsavel = () => {
         </View>
 
         <View style={styles.containerName}>
-          <Image style={styles.profileImage} source={require('../../../assets/Profile.jpg')} />
-          <Text style={styles.name}>{userData.nome} {userData.sobreNome}</Text>
+          <Image style={styles.profileImage} source={require('../../../assets/icon-responsavel.png')} />
+          <Text style={styles.name}>{userName} {sobreNome}</Text>
         </View>
 
         <View style={styles.containerInfo}>
           <View style={styles.info}>
             <View style={styles.editContainer}>
               <Text style={styles.label}>Nome:</Text>
-              <TouchableOpacity>
-                <Text style={styles.edit} onPress={EditarUsuario}>Alterar</Text>
-              </TouchableOpacity>
             </View>
-            <Text style={styles.value}>{userData.nome} {userData.sobreNome}</Text>
+            <Text style={styles.value}>{userName}</Text>
             <View style={styles.border} />
           </View>
 
           <View style={styles.info}>
             <View style={styles.editContainer}>
               <Text style={styles.label}>E-mail:</Text>
-              <TouchableOpacity>
-                <Text style={styles.edit} onPress={EditarUsuario}>Alterar</Text>
-              </TouchableOpacity>
             </View>
-            <Text style={styles.value}>{userData.email} </Text>
+            <Text style={styles.value}>{email}</Text>
             <View style={styles.border} />
           </View>
         </View>

@@ -6,34 +6,11 @@ const CadastrarUsuario = () => {
 
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
-    // const [confirmaSenha, setConfirmaSenha] = useState('');
     const [nome, setNome] = useState('');
     const [sobrenome, setSobrenome] = useState('');
     const [email, setEmail] = useState('');
-    // const [cep, setCep] = useState('');
-    // const [logradouro, setLogradouro] = useState('');
-    // const [numero, setNumero] = useState('');
-    // const [complemento, setComplemento] = useState('');
-    // const [bairro, setBairro] = useState('');
-    // const [cidade, setCidade] = useState('');
     const [tipo, setTipo] = useState(null);
-    const [matricula, setMatricula] = useState('');
-    // const [endereco, setEndereco] = useState({});
     const [loading, setLoading] = useState(false);
-
-    // useEffect(() => {
-    //     if (cep.length === 8) {
-    //         consultarCep();
-    //     }
-    // }, [cep]);
-
-    // useEffect(() => {
-    //     if (endereco) {
-    //         setLogradouro(endereco.logradouro || '');
-    //         setBairro(endereco.bairro || '');
-    //         setCidade(endereco.localidade || '');
-    //     }
-    // }, [endereco]);
 
     const cadastrarUsuario = async () => {
         if (loading) return;
@@ -79,26 +56,12 @@ const CadastrarUsuario = () => {
         }
     };
 
-    // const consultarCep = async () => {
-    //     try {
-    //         const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-    //         const json = await response.json();
-    //         setEndereco(json);
-    //         console.log('endereco', json);
-    //     } catch (error) {
-    //         console.error('Erro ao consultar CEP:', error);
-    //     }
-    // };
-
     const Validate = () => {
         if (login === '' || senha === '' || nome === '' || sobrenome === '' || email === '') {
             alert('Preencha todos os campos');
             return false;
         }
-        // if (senha !== confirmaSenha) {
-        //   alert('As senhas não coincidem');
-        //   return false;
-        // }
+
         return true;
     };
 
@@ -133,15 +96,6 @@ const CadastrarUsuario = () => {
                                     textContentType="none"
                                     onChangeText={senha => setSenha(senha)}
                                 />
-                                {/* <TextInput
-                  style={styles.input}
-                  placeholder="Confirmar Senha"
-                  autoCorrect={false}
-                  textContentType="none"
-                  passwordRules=""
-                  secureTextEntry={true}
-                  onChangeText={confirmaSenha => setConfirmaSenha(confirmaSenha)}
-                /> */}
                                 <TextInput
                                     style={styles.input}
                                     placeholder="Nome"
@@ -161,64 +115,18 @@ const CadastrarUsuario = () => {
                                     onChangeText={email => setEmail(email)}
                                     keyboardType='email-address'
                                 />
-                                {/* <TextInput
-                                    style={styles.input}
-                                    placeholder="CEP"
-                                    autoCorrect={false}
-                                    onChangeText={cep => setCep(cep)}
-                                    keyboardType='numeric'
-                                />
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Logradouro"
-                                    value={logradouro}
-                                    autoCorrect={false}
-                                    onChangeText={value => setLogradouro(value)}
-                                />
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Número"
-                                    autoCorrect={false}
-                                    onChangeText={value => setNumero(value)}
-                                    keyboardType='numeric'
-                                />
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Complemento"
-                                    autoCorrect={false}
-                                    onChangeText={value => setComplemento(value)}
-                                />
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Bairro"
-                                    value={bairro}
-                                    autoCorrect={false}
-                                    onChangeText={value => setBairro(value)}
-                                />
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Cidade"
-                                    value={cidade}
-                                    autoCorrect={false}
-                                    onChangeText={value => setCidade(value)}
-                                /> */}
+
                                 <Picker
                                     style={pickerSelectStyles}
                                     onValueChange={(value) => setTipo(value)}
                                     value={tipo}
                                     items={[
-                                        { label: 'Responsável', value: '1' },
-                                        { label: 'Escola', value: '2' },
-                                        { label: 'Professor', value: '3' },
+                                        { label: 'Escola', value: '1' },
+                                        { label: 'Professor', value: '2' },
+                                        { label: 'Responsável', value: '3' },
+                                        { label: 'Aluno', value: '4' },
                                     ]}
                                 />
-                                {/* <TextInput
-                                    style={styles.input}
-                                    placeholder="Matrícula"
-                                    autoCorrect={false}
-                                    onChangeText={matricula => setMatricula(matricula)}
-                                    keyboardType='numeric'
-                                /> */}
                                 <TouchableOpacity style={styles.btnSubmit}>
                                     <Button title="Cadastrar" onPress={cadastrarUsuario} style={styles.submitText} />
                                 </TouchableOpacity>
