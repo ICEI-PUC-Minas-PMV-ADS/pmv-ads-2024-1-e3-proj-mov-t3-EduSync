@@ -18,6 +18,15 @@ const CustomHeader = ({ escolaNome }) => {
     fetchUserName();
   }, []);
 
+  const handleLogout = async () => {
+    await logout();
+    navigation.navigate('Login');
+  };
+
+  const handleNotificationsPress = () => {
+    navigation.navigate('Mensagens');
+  };
+
   return (
     <View style={styles.headerContainer}>
       <View style={styles.headerTop}>
@@ -26,16 +35,10 @@ const CustomHeader = ({ escolaNome }) => {
       <View style={styles.headerBottom}>
         <Text style={styles.welcomeText}>Bem vindo, {userName}</Text>
         <View style={styles.iconsContainer}>
-          <TouchableOpacity style={{ marginRight: 15 }}>
+          <TouchableOpacity style={{ marginRight: 15 }} onPress={handleNotificationsPress}>
             <Ionicons name="notifications" size={24} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={async () => {
-              await logout();
-              navigation.navigate('Login');
-            }}
-            style={{ marginRight: 15 }}
-          >
+          <TouchableOpacity onPress={handleLogout} style={{ marginRight: 15 }}>
             <Feather name="log-out" size={24} color="black" />
           </TouchableOpacity>
         </View>

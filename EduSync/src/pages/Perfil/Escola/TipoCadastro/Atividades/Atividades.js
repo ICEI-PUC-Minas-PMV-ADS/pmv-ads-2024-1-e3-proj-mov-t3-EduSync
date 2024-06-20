@@ -1,31 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert, ActivityIndicator } from 'react-native';
-import axios from 'axios';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getAtividades, deleteAtividade } from '../../../../../Service/AtividadesService';
 
 const AtividadesScreen = () => {
   const [atividades, setAtividades] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     const fetchAtividades = async () => {
+      setLoading(true);
       try {
-        const token = await AsyncStorage.getItem('userToken'); // Obtém o token armazenado
-        if (!token) {
-          Alert.alert('Erro', 'Token de autenticação não encontrado.');
-          return;
-        }
-
-        const response = await axios.get('https://edusync20240424230659.azurewebsites.net/api/Atividades', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        setAtividades(response.data);
+        const dados = await getAtividades();
+        setAtividades(dados);
       } catch (error) {
         console.error(error);
         Alert.alert('Erro', 'Não foi possível carregar as Atividades.');
@@ -33,25 +23,16 @@ const AtividadesScreen = () => {
         setLoading(false);
       }
     };
-
-    fetchAtividades();
-  }, []);
+    if (isFocused) {
+      fetchAtividades();
+    }
+  }, [isFocused]);
 
   const handleDelete = async (id) => {
     try {
-      const token = await AsyncStorage.getItem('userToken'); // Obtém o token armazenado
-      if (!token) {
-        Alert.alert('Erro', 'Token de autenticação não encontrado.');
-        return;
-      }
-
-      await axios.delete(`https://edusync20240424230659.azurewebsites.net/api/Atividades/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
+      await deleteAtividade(id);
       setAtividades(atividades.filter(atividade => atividade.id !== id));
+      Alert.alert('Sucesso', 'Atividade Removida!');
     } catch (error) {
       console.error(error);
       Alert.alert('Erro', 'Não foi possível remover a atividade.');
@@ -59,7 +40,7 @@ const AtividadesScreen = () => {
   };
 
   const handleEdit = (atividade) => {
-    navigation.navigate('EditAtividade', { atividade });
+    navigation.navigate('EditarAtividade', { atividade });
   };
 
   const handleAdd = () => {

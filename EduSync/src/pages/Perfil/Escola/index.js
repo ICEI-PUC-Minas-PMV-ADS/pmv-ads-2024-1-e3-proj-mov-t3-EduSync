@@ -42,9 +42,9 @@ const Escola = () => {
     navigation.navigate(PerfilEscola);
   };
 
-  const Mural = () => {
+  /*const Mural = () => {
     navigation.navigate(Mural);
-  };
+  };*/
 
   const TipoCadastro = () => {
     navigation.navigate(TipoCadastro);
@@ -75,10 +75,10 @@ const Escola = () => {
           <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={Mural}>
+        {/*<TouchableOpacity style={styles.button} onPress={Mural}>
           <Text>MURAL</Text>
           <Ionicons style={styles.icon} name="exclamationcircleo" color={"#a9a9a9"} size={25} />
-        </TouchableOpacity>
+        </TouchableOpacity>*/}
 
         <TouchableOpacity style={styles.button} onPress={Mensagens}>
           <Text>MENSAGENS</Text>

@@ -27,8 +27,6 @@ const CadastrarUsuario = () => {
                 tipoPerfil: parseInt(tipo),
             };
 
-            console.log('payload', payload);
-
             try {
                 const response = await fetch('https://edusync20240424230659.azurewebsites.net/api/Usuarios', {
                     method: 'POST',

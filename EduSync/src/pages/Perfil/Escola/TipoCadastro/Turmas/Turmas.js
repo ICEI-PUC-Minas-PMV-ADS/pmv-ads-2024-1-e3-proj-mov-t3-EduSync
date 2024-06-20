@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert, ActivityIndicator } from 'react-native';
 import axios from 'axios';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { getTurmas, deleteTurma } from '../../../../../Service/AtividadesService';
 
 const TurmasScreen = () => {
-  const [turmas, setTurmas] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const navigation = useNavigation();
+const [turmas, setTurmas] = useState([]);
+const [loading, setLoading] = useState(true);
+const navigation = useNavigation();
+const isFocused = useIsFocused();
 
 
   useEffect(() => {
     const fetchTurmas = async () => {
-      try {
-        const response = await axios.get('https://edusync20240424230659.azurewebsites.net/api/Turmas');
-        setTurmas(response.data);
+      setLoading(true);
+      try {        
+        const dados = await getTurmas();
+        setTurmas(dados);
       } catch (error) {
         console.error(error);
         Alert.alert('Erro', 'Não foi possível carregar os usuários.');
@@ -22,13 +25,14 @@ const TurmasScreen = () => {
         setLoading(false);
       }
     };
-
-    fetchTurmas();
-  }, []);
+    if (isFocused) {
+      fetchTurmas();
+    }    
+  }, [isFocused]);
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://edusync20240424230659.azurewebsites.net/api/Turmas/${id}`);
+      await deleteTurma(id);
       setTurmas(turmas.filter(turma => turma.id !== id));
     } catch (error) {
       console.error(error);
@@ -37,7 +41,7 @@ const TurmasScreen = () => {
   };
 
   const handleEdit = (turma) => {
-    navigation.navigate('EditTurma', { turma });
+    navigation.navigate('EditarTurma', { turma });
   };
 
   const handleAdd = () => {

@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert, ActivityIndicator } from 'react-native';
 import axios from 'axios';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useIsFocused} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { getMatriculas,deleteMatricula } from '../../../../../Service/Matriculas'; 
 
 const MatriculasScreen = () => {
   const [matriculas, setMatriculas] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
   useEffect(() => {
-    const fetchMatriculas = async () => {
+    const fetchMatriculas = async () => {      
+      setLoading(true);
       try {
-        const response = await axios.get('https://edusync20240424230659.azurewebsites.net/api/Matricula');
+        const response = await getMatriculas();
         setMatriculas(response.data);
       } catch (error) {
         console.error(error);
@@ -21,22 +24,26 @@ const MatriculasScreen = () => {
         setLoading(false);
       }
     };
-
-    fetchMatriculas();
-  }, []);
+    if (isFocused) {
+      fetchMatriculas();
+    } 
+    
+  }, [isFocused]);
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://edusync20240424230659.azurewebsites.net/api/Matricula/${id}`);
-      setMatriculas(matriculas.filter(turma => turma.id !== id));
+      await deleteMatricula(id);      
+      setMatriculas(matriculas.filter(matricula => matricula.id !== id));
     } catch (error) {
       console.error(error);
       Alert.alert('Erro', 'Não foi possível remover a Matrícula.');
     }
+
+   
   };
 
   const handleEdit = (matricula) => {
-    navigation.navigate('EditMatricula', { matricula });
+    navigation.navigate('EditaMatricula', {  matriculaId: matricula.id });
   };
 
   const handleAdd = () => {

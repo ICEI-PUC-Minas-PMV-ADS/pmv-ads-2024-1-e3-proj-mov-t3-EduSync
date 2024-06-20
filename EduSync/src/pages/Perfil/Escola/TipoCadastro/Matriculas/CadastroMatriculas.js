@@ -4,6 +4,7 @@ import axios from 'axios';
 import RNPickerSelect from 'react-native-picker-select';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { registerMatricula } from '../../../../../Service/Matriculas'; 
 import { format } from 'date-fns';
 
 const CadastroMatriculas = () => {
@@ -50,23 +51,21 @@ const CadastroMatriculas = () => {
       Alert.alert('Erro', 'Por favor, preencha todos os campos obrigatórios.');
       return;
     }
+    const matriculaData = {
+      idAluno: selectedAluno,
+      idResponsavel1: selectedResponsavel1,
+      idResponsavel2: selectedResponsavel2,
+      idTurma: selectedTurma,
+      dtMatricula: new Date(dataMatricula).toISOString(),
+      dtInclusao: new Date().toISOString()
+    };
 
     try {
-      const token = await AsyncStorage.getItem('userToken');
-      await axios.post('https://edusync20240424230659.azurewebsites.net/api/Matricula', {
-        alunoId: selectedAluno,
-        responsavel1Id: selectedResponsavel1,
-        responsavel2Id: selectedResponsavel2,
-        turmaId: selectedTurma,
-        dataMatricula: dataMatricula.toISOString(),
-        dataInclusao: new Date().toISOString(),
-      }, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      Alert.alert('Sucesso', 'Matrícula registrada com sucesso!');
+      await registerMatricula(matriculaData);
+      Alert.alert('Sucesso', 'Matrícula registrada com sucesso!', [
+        { text: 'OK', onPress: () => navigation.navigate('TiposCadastro') },
+      ]);
     } catch (error) {
-      console.error(error);
       Alert.alert('Erro', 'Não foi possível registrar a matrícula.');
     }
   };
@@ -125,6 +124,7 @@ const CadastroMatriculas = () => {
       )}
       <TouchableOpacity style={styles.button} onPress={handleRegister}>
         <Text style={styles.buttonText}>Registrar Matrícula</Text>
+        
       </TouchableOpacity>
     </View>
   );

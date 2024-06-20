@@ -1,51 +1,89 @@
+import React, { useEffect, useState } from 'react';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import React, { useState, useEffect ,useLayoutEffect} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getMensagensUser,getMensagensRecebidas } from '../../Service/MensagensService';
 
-import CustomHeader from '../../components/CustomHeader';
-import CustomNavBar from '../../components/CustomNavBar';
-
-const formatDate = (date) => {
-  const options = {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    locale: 'pt-BR',
-  };
-  const formattedDate = new Date(date).toLocaleDateString('pt-BR', options);
-  const [weekday, day, , month] = formattedDate.split(' ');
-  return { weekday, day, month };
-};
-
-const Mural = () => {
+const MensagensScreen = () => {
+  const [mensagens, setMensagens] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
-  const [currentDate, setCurrentDate] = useState({});
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      header: () => <CustomHeader escolaNome="Escola - ED. Infantil" />,
-    });
-  }, [navigation]);
 
   useEffect(() => {
-    const getCurrentDate = () => {
-      const date = new Date();
-      setCurrentDate(formatDate(date));
+    const fetchMensagens = async () => {
+      setLoading(true);
+      try {
+        const userId = await AsyncStorage.getItem('userId');
+        if (!userId) {
+          Alert.alert('Erro', 'ID do usuário não encontrado.');
+          return;
+        }
+        //const data = await getMensagensUser(userId);
+        const enviadas = await getMensagensUser(userId);
+        const recebidas = await getMensagensRecebidas(userId);
+
+        const todasMensagens = [...enviadas, ...recebidas];
+        const groupedMensagens = groupByDestinatario(todasMensagens,userId);
+
+        setMensagens(Object.entries(groupedMensagens));
+      } catch (error) {
+        console.error(error);
+        Alert.alert('Erro', 'Não foi possível carregar as mensagens.');
+      } finally {
+        setLoading(false);
+      }
     };
-
-    getCurrentDate();
-
-    const interval = setInterval(getCurrentDate, 1000);
-
-    return () => clearInterval(interval);
+    fetchMensagens();
   }, []);
+
+  const groupByDestinatario = (mensagens,userId) => {
+    
+    return mensagens.reduce((grouped, mensagem) => {
+
+      const destId = mensagem.destinatario.id;
+       const remetId = mensagem.remetente.id;
+
+    // Verifica se o destinatário ou o remetente é diferente do usuário logado
+    if (destId !== userId && remetId !== userId) {
+      if (!grouped[destId]) {
+        grouped[destId] = [];
+      }
+      grouped[destId].push(mensagem);
+    }
+    console.log(grouped);
+      return grouped;
+
+    }, {});
+  };
+
+  const handleSelectDestinatario = (destinatarioId, mensagens) => {
+    navigation.navigate('ResponderMensagem', { destinatarioId, mensagens });
+  };
+
+  const handleNewMessage = () => {
+    navigation.navigate('EnviarMensagem'); // Navega para a tela de nova mensagem
+  };
+
+  if (loading) {
+    return <ActivityIndicator size="large" color="#00aaff" />;
+  }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.mainTitle}>Mensagens</Text>
-      
-      <CustomNavBar />
+      <TouchableOpacity style={styles.newMessageButton} onPress={handleNewMessage}>
+        <Text style={styles.newMessageButtonText}>Nova Mensagem</Text>
+      </TouchableOpacity>
+      <FlatList
+        data={mensagens}
+        keyExtractor={([destinatarioId]) => destinatarioId.toString()}
+        renderItem={({ item: [destinatarioId, mensagens] }) => (
+          <TouchableOpacity onPress={() => handleSelectDestinatario(destinatarioId, mensagens)}>
+            <View style={styles.item}>
+              <Text style={styles.name}>{mensagens[0].destinatario.nome} {mensagens[0].destinatario.sobreNome}</Text>
+            </View>
+          </TouchableOpacity>
+        )}
+      />
     </View>
   );
 };
@@ -53,40 +91,28 @@ const Mural = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f8f8',
-    paddingBottom: 60, // Adiciona espaço para a barra de navegação
+    padding: 16,
+    backgroundColor: '#fff',
   },
-  mainTitle: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    margin: 20,
-    textAlign: 'left',
+  newMessageButton: {
+    backgroundColor: '#00aaff',
+    padding: 16,
+    borderRadius: 5,
+    marginBottom: 16,
   },
-  gradientContainer: {
-    padding: 20,
-    borderRadius: 10,
-    elevation: 5,
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '80%',
+  newMessageButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    textAlign: 'center',
   },
-  date: {
-    fontSize: 20,
-    color: 'white',
+  item: {
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
   },
-  weekday: {
-    color: 'white',
-    fontSize: 20,
-  },
-  day: {
-    color: 'white',
-    fontSize: 30,
-  },
-  month: {
-    color: 'white',
-    fontSize: 30,
+  name: {
+    fontSize: 16,
   },
 });
 
-export default Mural;
+export default MensagensScreen;
