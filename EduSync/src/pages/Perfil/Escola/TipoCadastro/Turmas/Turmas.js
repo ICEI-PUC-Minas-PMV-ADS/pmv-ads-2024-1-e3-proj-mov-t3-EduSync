@@ -3,7 +3,7 @@ import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert, ActivityIndi
 import axios from 'axios';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { getTurmas, deleteTurma } from '../../../../../Service/AtividadesService';
+import { getTurmas, deleteTurma } from '../../../../../Service/TurmasService';
 
 const TurmasScreen = () => {
 const [turmas, setTurmas] = useState([]);
