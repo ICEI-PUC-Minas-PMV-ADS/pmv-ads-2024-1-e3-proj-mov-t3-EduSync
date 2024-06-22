@@ -36,7 +36,7 @@ const NovaMensagemScreen = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        setUsuarios(response.data);
+        setUsuarios([{ id: 0, nome: 'Selecione', sobreNome: '' }, ...response.data]);
       } catch (error) {
         console.error(error);
         Alert.alert('Erro', 'Não foi possível carregar os usuários.');
@@ -73,16 +73,20 @@ const NovaMensagemScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Selecione o destinatário:</Text>
-      <Picker
-        selectedValue={destinatarioId}
-        onValueChange={(itemValue) => setDestinatarioId(itemValue)}
-        style={styles.picker}
-      >
-        {usuarios.map((usuario) => (
-          <Picker.Item key={usuario.id} label={`${usuario.nome} ${usuario.sobreNome}`} value={usuario.id} />
-        ))}
-      </Picker>
+      <Text style={styles.title}>Selecione o destinatário:</Text>
+      <View style={styles.pickerContainer}>
+        <Picker
+          selectedValue={destinatarioId}
+          onValueChange={(itemValue) => setDestinatarioId(itemValue)}
+          style={styles.picker}
+        >
+          {usuarios.map((usuario) => (
+            <Picker.Item key={usuario.id} label={`${usuario.nome} ${usuario.sobreNome}`} value={usuario.id} />
+          ))}
+        </Picker>
+
+      </View>
+
       <Text style={styles.label}>Mensagem:</Text>
       <TextInput
         style={styles.input}
@@ -126,9 +130,25 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     alignItems: 'center',
   },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 16,
+  },
   buttonText: {
     color: '#fff',
     fontSize: 16,
+  },
+  pickerContainer: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    marginBottom: 16,
+    overflow: 'hidden',
+  },
+  picker: {
+    height: 50,
+    width: '100%',
   },
 });
 

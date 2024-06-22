@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getMensagensUser,getMensagensRecebidas } from '../../Service/MensagensService';
+import { getMensagensUser, getMensagensRecebidas } from '../../Service/MensagensService';
 
 const MensagensScreen = () => {
   const [mensagens, setMensagens] = useState([]);
@@ -23,7 +23,7 @@ const MensagensScreen = () => {
         const recebidas = await getMensagensRecebidas(userId);
 
         const todasMensagens = [...enviadas, ...recebidas];
-        const groupedMensagens = groupByDestinatario(todasMensagens,userId);
+        const groupedMensagens = groupByDestinatario(todasMensagens, userId);
 
         setMensagens(Object.entries(groupedMensagens));
       } catch (error) {
@@ -36,21 +36,21 @@ const MensagensScreen = () => {
     fetchMensagens();
   }, []);
 
-  const groupByDestinatario = (mensagens,userId) => {
-    
+  const groupByDestinatario = (mensagens, userId) => {
+
     return mensagens.reduce((grouped, mensagem) => {
 
       const destId = mensagem.destinatario.id;
-       const remetId = mensagem.remetente.id;
+      const remetId = mensagem.remetente.id;
 
-    // Verifica se o destinatário ou o remetente é diferente do usuário logado
-    if (destId !== userId && remetId !== userId) {
-      if (!grouped[destId]) {
-        grouped[destId] = [];
+      // Verifica se o destinatário ou o remetente é diferente do usuário logado
+      if (destId !== userId && remetId !== userId) {
+        if (!grouped[destId]) {
+          grouped[destId] = [];
+        }
+        grouped[destId].push(mensagem);
       }
-      grouped[destId].push(mensagem);
-    }
-    console.log(grouped);
+
       return grouped;
 
     }, {});
@@ -70,6 +70,9 @@ const MensagensScreen = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.instructions}>
+        Clique em um nome da lista ou Clique em nova Mensagem.
+      </Text>
       <TouchableOpacity style={styles.newMessageButton} onPress={handleNewMessage}>
         <Text style={styles.newMessageButtonText}>Nova Mensagem</Text>
       </TouchableOpacity>
@@ -112,6 +115,14 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 16,
+  },
+  instructions: {
+    fontSize: 14,
+    fontWeight: '300',
+    marginBottom: 16,
+    padding: 10,
+    backgroundColor: '#87cefa',
+    borderRadius: 8,
   },
 });
 
