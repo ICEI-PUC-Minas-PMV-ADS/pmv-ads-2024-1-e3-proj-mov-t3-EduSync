@@ -23,7 +23,7 @@ export const getProfessores = async () => {
 
 export const getTurmaProfessor = async (id) => {
     const token = await AsyncStorage.getItem('userToken');
-    const response = await axios.get(`${BASE_URL}/Turmas/getTurmasProfessor/${id}`, {
+    const response = await axios.get(`${BASE_URL}/Turmas/GetTurmasProfessor/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return response.data;
