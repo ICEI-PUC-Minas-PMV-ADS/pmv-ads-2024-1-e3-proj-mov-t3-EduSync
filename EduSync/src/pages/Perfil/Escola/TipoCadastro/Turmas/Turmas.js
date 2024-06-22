@@ -51,6 +51,7 @@ const isFocused = useIsFocused();
   const renderTurma = ({ item }) => (
     <View style={styles.row}>
       <Text style={styles.cell}>{item.descricao}</Text>
+      <Text style={styles.cell}>{item.usuario.nome}</Text>
       <TouchableOpacity style={styles.button} onPress={() => handleEdit(item)}>
         <Ionicons name="pencil" size={20} color="blue" />
       </TouchableOpacity>
@@ -71,6 +72,7 @@ const isFocused = useIsFocused();
       </TouchableOpacity>
       <View style={styles.header}>
         <Text style={styles.headerCell}>Descrição</Text>
+        <Text style={styles.headerCell}>Prof.</Text>
         <Text style={styles.headerCell}>Ações</Text>
       </View>
       <FlatList

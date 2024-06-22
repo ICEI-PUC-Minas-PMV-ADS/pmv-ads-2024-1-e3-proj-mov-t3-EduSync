@@ -5,9 +5,12 @@ import RNPickerSelect from 'react-native-picker-select';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { registerMatricula } from '../../../../../Service/Matriculas'; 
+import { useNavigation } from '@react-navigation/native';
 import { format } from 'date-fns';
 
 const CadastroMatriculas = () => {
+  const navigation = useNavigation();
+
   const [alunos, setAlunos] = useState([]);
   const [responsaveis, setResponsaveis] = useState([]);
   const [turmas, setTurmas] = useState([]);
@@ -63,7 +66,7 @@ const CadastroMatriculas = () => {
     try {
       await registerMatricula(matriculaData);
       Alert.alert('Sucesso', 'Matrícula registrada com sucesso!', [
-        { text: 'OK', onPress: () => navigation.navigate('TiposCadastro') },
+        { text: 'OK', onPress: () => navigation.navigate('Matriculas') },
       ]);
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível registrar a matrícula.');
@@ -170,14 +173,25 @@ const pickerSelectStyles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 5,
     marginBottom: 16,
+    backgroundColor: '#A9F5F2',
+    color: '#000',
+    fontSize: 16,
   },
   inputAndroid: {
     padding: 10,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: '#ccc',
     borderRadius: 5,
     marginBottom: 16,
+    backgroundColor: '#F2F2F2',
+    color: '#000',
+    fontSize: 16,
   },
+  placeholder: {
+    color: '#a9a9a9',
+    fontSize: 16,
+  },
+  
 });
 
 export default CadastroMatriculas;

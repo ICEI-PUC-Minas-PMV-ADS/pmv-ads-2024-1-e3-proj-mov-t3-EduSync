@@ -110,6 +110,7 @@ const EditMatriculaScreen = () => {
           onValueChange={(value) => setSelectedResponsavel1(value)}
           items={responsaveis}
           value={selectedResponsavel1}
+          style={pickerSelectStyles}
           placeholder={{ label: 'Selecione um responsável', value: null }}
         />
 
@@ -118,6 +119,7 @@ const EditMatriculaScreen = () => {
           onValueChange={(value) => setSelectedResponsavel2(value)}
           items={responsaveis}
           value={selectedResponsavel2}
+          style={pickerSelectStyles}
           placeholder={{ label: 'Selecione um responsável (opcional)', value: null }}
         />
 
@@ -126,6 +128,7 @@ const EditMatriculaScreen = () => {
           onValueChange={(value) => setSelectedTurma(value)}
           items={turmas}
           value={selectedTurma}
+          style={pickerSelectStyles}
           placeholder={{ label: 'Selecione uma turma', value: null }}
         />
 
@@ -135,8 +138,7 @@ const EditMatriculaScreen = () => {
           value={dataMatricula}
           onChangeText={setDataMatricula}
           placeholder="YYYY-MM-DD"
-        />
-        
+        />       
 
         <TouchableOpacity style={styles.button} onPress={handleUpdate}>
           <Text style={styles.buttonText}>Atualizar Matrícula</Text>
@@ -179,6 +181,34 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
   },
+  
 });
 
+const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    padding: 10,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    marginBottom: 16,
+    backgroundColor: '#A9F5F2',
+    color: '#000',
+    fontSize: 16,
+  },
+  inputAndroid: {
+    padding: 10,
+    borderWidth: 2,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    marginBottom: 16,
+    backgroundColor: '#F2F2F2',
+    color: '#000',
+    fontSize: 16,
+  },
+  placeholder: {
+    color: '#a9a9a9',
+    fontSize: 16,
+  },
+  
+});
 export default EditMatriculaScreen;

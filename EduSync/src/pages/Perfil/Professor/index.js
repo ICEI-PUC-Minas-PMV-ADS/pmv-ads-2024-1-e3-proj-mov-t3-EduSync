@@ -9,8 +9,8 @@ const Professor = () => {
 
   const navigation = useNavigation();
 
-  const PerfilProfessor = () => {
-    navigation.navigate('PerfilProfessor');
+  const PerfilUser = () => {
+    navigation.navigate('PerfilUser');
   };
 
   const Mensagens = () => {
@@ -56,7 +56,7 @@ const Professor = () => {
           <Ionicons style={styles.icon} name="calendar" color={"#a9a9a9"} size={25} />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={PerfilProfessor}>
+        <TouchableOpacity style={styles.button} onPress={PerfilUser}>
           <Text>PERFIL</Text>
           <IoniconsA style={styles.icon} name="user" color={"#a9a9a9"} size={25} />
         </TouchableOpacity>

@@ -2,9 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, {useEffect, useState,useLayoutEffect } from 'react';
 import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/AntDesign';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import CustomHeader from '../../../components/CustomHeader';
 
 const Escola = () => {
@@ -12,7 +10,7 @@ const Escola = () => {
   const [userNome, setUserNome] = useState('');
   const [userPerfil, setUserPerfil] = useState('');
   const [userToken, setUserToken] = useState('');
-
+  
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -38,8 +36,8 @@ const Escola = () => {
 
   const navigation = useNavigation();
 
-  const PerfilEscola = () => {
-    navigation.navigate(PerfilEscola);
+  const PerfilUser = () => {
+    navigation.navigate(PerfilUser);
   };
 
   /*const Mural = () => {
@@ -90,7 +88,7 @@ const Escola = () => {
           <Ionicons style={styles.icon} name="calendar" color={"#a9a9a9"} size={25} />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={PerfilEscola}>
+        <TouchableOpacity style={styles.button} onPress={PerfilUser}>
           <Text>PERFIL</Text>
           <Ionicons style={styles.icon} name="user" color={"#a9a9a9"} size={25} />
         </TouchableOpacity>      

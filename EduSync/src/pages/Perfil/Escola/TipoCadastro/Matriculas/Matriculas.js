@@ -12,11 +12,10 @@ const MatriculasScreen = () => {
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    const fetchMatriculas = async () => {      
-      setLoading(true);
+    const fetchMatriculas = async () => {
       try {
         const response = await getMatriculas();
-        setMatriculas(response.data);
+        setMatriculas(response);
       } catch (error) {
         console.error(error);
         Alert.alert('Erro', 'Não foi possível carregar as matrícula.');
@@ -24,9 +23,11 @@ const MatriculasScreen = () => {
         setLoading(false);
       }
     };
+
     if (isFocused) {
       fetchMatriculas();
-    } 
+    }
+    
     
   }, [isFocused]);
 
