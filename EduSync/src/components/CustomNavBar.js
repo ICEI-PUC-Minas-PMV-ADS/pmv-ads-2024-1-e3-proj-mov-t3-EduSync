@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { USER_PERFIL_PROFESSOR, USER_PERFIL_RESPONSAVEL, USER_PERFIL_ADM,USER_PERFIL_ALUNO} from '../constantes';
 
 const CustomNavBar = () => {
   const navigation = useNavigation();
@@ -18,16 +19,16 @@ const CustomNavBar = () => {
 
   const handleHomePress = () => {
     switch (userPerfil) {
-      case '1':
+      case USER_PERFIL_ADM:
         navigation.navigate('Escola');
         break;
-      case '2':
+      case USER_PERFIL_PROFESSOR:
         navigation.navigate('Professor'); 
         break;
-      case '3':
+      case USER_PERFIL_RESPONSAVEL:
         navigation.navigate('Responsavel'); 
         break;
-      case '4':
+      case USER_PERFIL_ALUNO:
         navigation.navigate('Aluno'); 
         break;                
     }
@@ -39,8 +40,7 @@ const CustomNavBar = () => {
         <Ionicons name="home" size={30} color={"#a9a9a9"} />
         <Text>Inicio</Text>
       </TouchableOpacity>
-      {/* se for professor e responsável*/}
-      {(userPerfil === '2' || userPerfil === '3') && (
+      {(userPerfil === USER_PERFIL_PROFESSOR || userPerfil === USER_PERFIL_RESPONSAVEL) && (
         <TouchableOpacity style={styles.icons} onPress={() => navigation.navigate('Mural')}>
           <Ionicons name="notifications" size={30} color={"#a9a9a9"} />
           <Text>Mural</Text>

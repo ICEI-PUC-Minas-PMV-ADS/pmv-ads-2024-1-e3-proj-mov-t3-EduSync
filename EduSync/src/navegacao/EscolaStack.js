@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Escola from '../pages/Perfil/Escola';
-import PerfilEscola from '../pages/Perfil/Escola/PerfilEscola';
+import PerfilUser from '../pages/Perfil/PerfilUser';
 import Usuarios from '../pages/Perfil/Escola/TipoCadastro/Usuarios/Usuarios';
 import CadastrarUsuario from '../pages/Perfil/Escola/TipoCadastro/Usuarios/CadastrarUsuario';
 import Turmas from '../pages/Perfil/Escola/TipoCadastro/Turmas/Turmas';
@@ -13,7 +13,6 @@ import EditaMatricula from '../pages/Perfil/Escola/TipoCadastro/Matriculas/Edita
 import Atividades from '../pages/Perfil/Escola/TipoCadastro/Atividades/Atividades';
 import CadastrarAtividades from '../pages/Perfil/Escola/TipoCadastro/Atividades/CadastrarAtividades';
 import EditarAtividade from '../pages/Perfil/Escola/TipoCadastro/Atividades/EditarAtividade';
-import Mural from '../pages/Mural';
 import TipoCadastro from '../pages/Perfil/Escola/TipoCadastro';
 import Calendario from '../pages/Calendario';
 import Mensagens from '../pages/Mensagens';
@@ -44,7 +43,7 @@ const EscolaStack = () => (
     <Stack.Screen name="Mensagens" component={Mensagens} />
     <Stack.Screen name="EnviarMensagem" component={EnviarMensagem} />
     <Stack.Screen name="ResponderMensagem" component={ResponderMensagem} />
-    <Stack.Screen name="PerfilEscola" component={PerfilEscola} />
+    <Stack.Screen name="PerfilUser" component={PerfilUser} />
   </Stack.Navigator>
 );
 
