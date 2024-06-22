@@ -1,63 +1,80 @@
+// src/screens/Mural/MuralScreen.js
+import React, { useEffect, useState } from 'react';
+import { View, Text, FlatList, StyleSheet, ActivityIndicator, Alert, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import React, { useState, useEffect ,useLayoutEffect} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getTurmaProfessor } from '../../Service/TurmasService';
+import { getFilhosResponsavel } from '../../Service/Matriculas';
+import { USER_PERFIL_PROFESSOR, USER_PERFIL_RESPONSAVEL } from '../../constantes';
 
-import CustomHeader from '../../components/CustomHeader';
-import CustomNavBar from '../../components/CustomNavBar';
-
-const formatDate = (date) => {
-  const options = {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    locale: 'pt-BR',
-  };
-  const formattedDate = new Date(date).toLocaleDateString('pt-BR', options);
-  const [weekday, day, , month] = formattedDate.split(' ');
-  return { weekday, day, month };
-};
-
-const Mural = () => {
+const MuralScreen = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [userPerfil, setUserPerfil] = useState(null);
   const navigation = useNavigation();
-  const [currentDate, setCurrentDate] = useState({});
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      header: () => <CustomHeader escolaNome="Escola - ED. Infantil" />,
-    });
-  }, [navigation]);
 
   useEffect(() => {
-    const getCurrentDate = () => {
-      const date = new Date();
-      setCurrentDate(formatDate(date));
+    const fetchData = async () => {
+      try {
+        const userId = await AsyncStorage.getItem('userId');
+        const userPerfil = await AsyncStorage.getItem('userPerfil');
+        setUserPerfil(userPerfil);
+
+        let fetchedData;
+        if (userPerfil === USER_PERFIL_PROFESSOR) {
+          fetchedData = await getTurmaProfessor(userId);
+          fetchedData = fetchedData.map(turma => ({
+            id: turma.id,
+            descricao: turma.descricao,
+          }));
+        } else if (userPerfil === USER_PERFIL_RESPONSAVEL) {
+          fetchedData = await getFilhosResponsavel(userId);
+          fetchedData = fetchedData.map(matricula => ({
+            id: matricula.aluno.id,
+            descricao: `${matricula.aluno.nome} ${matricula.aluno.sobreNome}`,
+          }));
+        }
+
+        setData(fetchedData);
+      } catch (error) {
+        console.error(error);
+        Alert.alert('Erro', 'Não foi possível carregar os dados do mural.');
+      } finally {
+        setLoading(false);
+      }
     };
 
-    getCurrentDate();
-
-    const interval = setInterval(getCurrentDate, 1000);
-
-    return () => clearInterval(interval);
+    fetchData();
   }, []);
+
+  const handlePress = (item) => {
+    if (userPerfil === USER_PERFIL_PROFESSOR) {
+      navigation.navigate('LancamentoMural', { id: item.id });
+    } else if (userPerfil === USER_PERFIL_RESPONSAVEL) {
+      navigation.navigate('DetalheMural', { id: item.id });
+    }
+  };
+
+  const renderItem = ({ item }) => (
+    <TouchableOpacity style={styles.item} onPress={() => handlePress(item)}>
+      <Text style={styles.itemText}>{item.descricao}</Text>
+    </TouchableOpacity>
+  );
+
+  if (loading) {
+    return <ActivityIndicator size="large" color="#00aaff" />;
+  }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.mainTitle}>MURAL</Text>
-      <LinearGradient
-        colors={['#2499DB', '#37BCE7']}
-        start={{ x: 1, y: 0 }}
-        end={{ x: 0, y: 0 }}
-        style={styles.gradientContainer}>
-        <Text style={styles.date}>
-          <Text style={styles.weekday}>{currentDate.weekday}</Text>
-        </Text>
-        <Text style={styles.date}>
-          <Text style={styles.day}>{currentDate.day} </Text>
-          <Text style={styles.month}>de {currentDate.month}</Text>
-        </Text>
-      </LinearGradient>
-      <CustomNavBar />
+      <Text style={styles.instructions}>
+        Precione uma turma para realizar lançamentos de Atividades.
+      </Text>
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={renderItem}
+      />
     </View>
   );
 };
@@ -65,40 +82,25 @@ const Mural = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f8f8',
-    paddingBottom: 60, // Adiciona espaço para a barra de navegação
+    padding: 16,
+    backgroundColor: '#fff',
   },
-  mainTitle: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    margin: 20,
-    textAlign: 'left',
+  item: {
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
   },
-  gradientContainer: {
-    padding: 20,
-    borderRadius: 10,
-    elevation: 5,
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '80%',
+  itemText: {
+    fontSize: 16,
   },
-  date: {
-    fontSize: 20,
-    color: 'white',
-  },
-  weekday: {
-    color: 'white',
-    fontSize: 20,
-  },
-  day: {
-    color: 'white',
-    fontSize: 30,
-  },
-  month: {
-    color: 'white',
-    fontSize: 30,
+  instructions: {
+    fontSize: 14,
+    fontWeight: '300',
+    marginBottom: 16,
+    padding: 10,
+    backgroundColor: '#87cefa',
+    borderRadius: 8,
   },
 });
 
-export default Mural;
+export default MuralScreen;
