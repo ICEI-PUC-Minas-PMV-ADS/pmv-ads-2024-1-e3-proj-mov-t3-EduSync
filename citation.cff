@@ -1,0 +1,26 @@
+message: Please cite this software using these metadata.
+title: EduSync - Agenda para escolas de nível de Educação Infaltil
+authors:
+  - family-names: Bezerra Sampaio
+    given-names:  Lucas
+  - family-names: Fernandes Sena
+    given-names: Bárbara
+  - family-names: Guimaraes Silva
+    given-names: Gleyston
+  - family-names: Silva Merenciano
+    given-names: Eduarda
+  - family-names: Tadashi Kawamura
+    given-names: Cassio
+  - family-names: Cassiano Januário de souza
+    given-names: Rafael
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Herman Silva
+    given-names: Harison
+keywords:
+  - Gestão
+  - Escola
+  - Agenda
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t3-EduSync
+version: 1.0.0
+date-released: 2024-06-23
