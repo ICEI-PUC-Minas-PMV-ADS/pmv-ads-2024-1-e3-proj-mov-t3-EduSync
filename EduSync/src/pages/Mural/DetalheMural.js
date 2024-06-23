@@ -26,7 +26,8 @@ const formatDateToISOEnd = (date) => {
 const DetalheMural = () => {
   const route = useRoute();
   const navigation = useNavigation();
-  const { id } = route.params;
+  const { id } = route.params;//id cadastro user
+  const [idMatricula, setMatriculaAluno] = useState('');
   const [alunoNome, setAlunoNome] = useState('');
   const [dataSelecionada, setDataSelecionada] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -36,10 +37,12 @@ const DetalheMural = () => {
     const fetchNomeAluno = async () => {
       try {
         const token = await AsyncStorage.getItem('userToken');
-        const response = await axios.get(`https://edusync20240424230659.azurewebsites.net/api/Usuarios/${id}`, {
+        const response = await axios.get(`https://edusync20240424230659.azurewebsites.net/api/Matricula/GetMatriculasAluno/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setAlunoNome(`${response.data.nome} ${response.data.sobreNome}`);
+        const primeiraMatricula = response.data[0];
+        setAlunoNome(`${primeiraMatricula.aluno.nome} ${primeiraMatricula.aluno.sobreNome}`);
+        setMatriculaAluno(primeiraMatricula.id);
       } catch (error) {
         console.error(error);
         Alert.alert('Erro', 'Não foi possível carregar o nome do aluno.');
@@ -50,15 +53,20 @@ const DetalheMural = () => {
   }, [id]);
 
   useEffect(() => {
-    buscarAtividades();
-  }, [dataSelecionada]);
-
+    if (idMatricula) { 
+      buscarAtividades();
+    }
+  }, [idMatricula, dataSelecionada]);
+  
   const buscarAtividades = async () => {
-    try {
+    try {        
       const token = await AsyncStorage.getItem('userToken');
       const dataInicioISO = formatDateToISOStart(dataSelecionada); // Formatar a data de início
       const dataFimISO = formatDateToISOEnd(dataSelecionada); // Formatar a data de fim
-      const response = await axios.get(`https://edusync20240424230659.azurewebsites.net/api/Mural/GetMuraisMatricula/14/dateInicio/${dataInicioISO}/dateFim/${dataFimISO}`, {
+      console.log('ID Matrícula:', idMatricula);
+    console.log('Data Início:', dataInicioISO);
+    console.log('Data Fim:', dataFimISO);
+      const response = await axios.get(`https://edusync20240424230659.azurewebsites.net/api/Mural/GetMuraisMatricula/${idMatricula}/dateInicio/${dataInicioISO}/dateFim/${dataFimISO}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAtividades(response.data);

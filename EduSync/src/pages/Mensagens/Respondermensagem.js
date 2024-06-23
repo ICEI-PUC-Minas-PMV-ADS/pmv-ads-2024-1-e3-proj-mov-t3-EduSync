@@ -69,7 +69,7 @@ const ResponderMensagemScreen = () => {
       setAllMensagens(prevMensagens => [
         ...prevMensagens,
         {
-          id: prevMensagens.length ? prevMensagens[prevMensagens.length - 1].id + 1 : 1, // Simula um ID para a nova mensagem
+          id: prevMensagens.length ? prevMensagens[prevMensagens.length - 1].id + 1 : 1, 
           mensagem: novaMensagem,
           destinatarioId: destinatarioId,
           remetenteId: userId,
