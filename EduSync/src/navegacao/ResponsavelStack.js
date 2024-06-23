@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Responsavel from '../pages/Perfil/Responsavel';
 import PerfilUser from '../pages/Perfil/PerfilUser';
 import Mural from '../pages/Mural';
+import DetalheMural from '../pages/Mural/DetalheMural';
 import Mensagens from '../pages/Mensagens';
 import EnviarMensagem from '../pages/Mensagens/EnviarMensagem';
 import ResponderMensagem from '../pages/Mensagens/Respondermensagem';
@@ -17,6 +18,7 @@ const ResponsavelStack = () => {
       <Stack.Screen name="Responsavel" component={Responsavel} />
       <Stack.Screen name="PerfilUser" component={PerfilUser} />
       <Stack.Screen name="Mural" component={Mural}  />
+      <Stack.Screen name="DetalheMural" component={DetalheMural}  />
       <Stack.Screen name="Mensagens" component={Mensagens} />
       <Stack.Screen name="EnviarMensagem" component={EnviarMensagem} />
       <Stack.Screen name="ResponderMensagem" component={ResponderMensagem} />

@@ -11,6 +11,7 @@ const MuralScreen = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userPerfil, setUserPerfil] = useState(null);
+  const [userMensagem, setUserMensagem] = useState(null);
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -27,12 +28,14 @@ const MuralScreen = () => {
             id: turma.id,
             descricao: turma.descricao,
           }));
+          setUserMensagem('Precione uma turma para realizar lançamentos de Atividades.');
         } else if (userPerfil === USER_PERFIL_RESPONSAVEL) {
           fetchedData = await getFilhosResponsavel(userId);
           fetchedData = fetchedData.map(matricula => ({
             id: matricula.aluno.id,
             descricao: `${matricula.aluno.nome} ${matricula.aluno.sobreNome}`,
           }));
+          setUserMensagem('Precione um Aluno para vizualizar os lançamentos das Atividades diárias');
         }
 
         setData(fetchedData);
@@ -66,9 +69,10 @@ const MuralScreen = () => {
   }
 
   return (
+    
     <View style={styles.container}>
       <Text style={styles.instructions}>
-        Precione uma turma para realizar lançamentos de Atividades.
+      {userMensagem}
       </Text>
       <FlatList
         data={data}
